@@ -17,11 +17,29 @@
         <div class="row form-inline">
           <div class="col-sm-4 col-sm-offset-2">
             <label for="player-name">Player name:</label>
-            <input type="text" class="form-control" id="player-name-input">
+            <input type="text" class="form-control" id="player-name-input"><br>
+            <div class="centered">
+              <label for="player-race">Race:</label>
+              <select class="form-control" id="race-input">
+                <option value="human">Human</option>
+                <option value="elf">Elf</option>
+                <option value="dwarf">Dwarf</option>
+                <option value="halfling">Halfling</option>
+              </select>
+            </div>
           </div>
           <div class="col-sm-4">
             <label for="character-name">Character name:</label>
-            <input type="text" class="form-control" id="character-name-input">
+            <input type="text" class="form-control" id="character-name-input"><br>
+            <div class="centered">
+              <label for="player-class">Class:</label>
+              <select class="form-control" id="class-input">
+                <option value="fighter">Fighter</option>
+                <option value="ranger">Ranger</option>
+                <option value="wizard">Wizard</option>
+                <option value="cleric">Cleric</option>
+              </select>
+            </div>
           </div>
         </div>
         <hr>
@@ -59,7 +77,16 @@
             <label for="charisma">Charisma</label>
           </div>
         </div>
-        <button type="submit" class="btn btn-lg btn-success" id="ability-form-submit">Submit</button>
+        <hr>
+        <div class="row">
+          <div class="col-sm-4">
+          </div>
+          <div class="col-sm-4">
+          </div>
+          <div class="col-sm-4">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-lg btn-primary" id="ability-form-submit">Submit</button>
       </form>
 
       <!-- Character Sheet Output -->
