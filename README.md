@@ -15,7 +15,7 @@ _This webpage generates a usable character sheet for Dungeons and Dragons 5th ed
 * Example Input: "Ethan", "Elf", "Ranger"
 * Example Output: Character sheet with empty values
 
-###### Behavior 2: Add a random roller to output all six ability scores in a prototype.
+###### Behavior 2: Add a random roller to output all six ability scores.
 
 * Example Input:roll1, roll2
 * Example Output: 16, 12
