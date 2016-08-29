@@ -5,9 +5,130 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-3.1.0.js"></script>
     <script src="js/scripts.js"></script>
-    <title>Template</title>
+    <title>5e Generator</title>
   </head>
   <body>
+    <div class= "container">
+      <h1>Dungeons &amp; Dragons</h1>
+      <h2>5e Character Generator</h2>
+      <br>
+      <!-- First Form: Names and Ability Scores -->
+      <form class="form-group" id="ability-form">
+        <div class="row form-inline">
+          <div class="col-sm-4 col-sm-offset-2">
+            <label for="player-name">Player name:</label>
+            <input type="text" class="form-control" id="player-name-input">
+          </div>
+          <div class="col-sm-4">
+            <label for="character-name">Character name:</label>
+            <input type="text" class="form-control" id="character-name-input">
+          </div>
+        </div>
+        <hr>
+        <button type="button" class="btn btn-lg btn-success btn-block" id="ability-roll">Roll for your ability scores!</button><br>
+        <h3>Ability scores:</h3>
+        <div class="row">
+          <div class="col-sm-2" id="ability-roll-1">
+          </div>
+          <div class="col-sm-2" id="ability-roll-2">
+          </div>
+          <div class="col-sm-2" id="ability-roll-3">
+          </div>
+          <div class="col-sm-2" id="ability-roll-4">
+          </div>
+          <div class="col-sm-2" id="ability-roll-5">
+          </div>
+          <div class="col-sm-2" id="ability-roll-6">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-sm-offset-2 form-inline">
+            <input required type="number" id="strength" class="form-control">
+            <label for="strength">Strength</label><br>
+            <input required type="number" id="dexterity" class="form-control">
+            <label for="dexterity">Dexterity</label><br>
+            <input required type="number" id="constitution" class="form-control">
+            <label for="constitution">Constitution</label>
+          </div>
+          <div class="col-sm-4 form-inline">
+            <input required type="number" id="intelligence" class="form-control">
+            <label for="intelligence">Intelligence</label><br>
+            <input required type="number" id="wisdom" class="form-control">
+            <label for="wisdom">Wisdom</label><br>
+            <input required type="number" id="charisma" class="form-control">
+            <label for="charisma">Charisma</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-lg btn-success" id="ability-form-submit">Submit</button>
+      </form>
 
+      <!-- Character Sheet Output -->
+      <div id="character-sheet">
+        <div id="sheet-header">
+          <h4 id="character-name-sheet"></h4>
+          <div class="row">
+            <div class="col-sm-4">
+              <p id="class-level-sheet"></p>
+              <p id="race-sheet"></p>
+            </div>
+            <div class="col-sm-4">
+              <p id="background-sheet"></p>
+              <p id="alignment-sheet"></p>
+            </div>
+            <div class="col-sm-4">
+              <p id="player-name-sheet"></p>
+              <p id="xp-sheet"></p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <p>Proficiency Bonus: <span id="proficiency-bonus-sheet"></span></p>
+            <p>Inspiration:</p>
+            <p>Strength: <span id="strength-sheet"></span></p>
+            <p>Dexterity: <span id="dexterity-sheet"></span></p>
+            <p>Constitution: <span id="constitution-sheet"></span></p>
+            <p>Intelligence: <span id="intelligence-sheet"></span></p>
+            <p>Wisdom: <span id="wisdom-sheet"></span></p>
+            <p>Charisma: <span id="charisma-sheet"></span></p>
+            <p>Passive Wisdom (Perception): <span id="passive-perception-sheet"></span></p>
+            <p>Languages:</p>
+            <ul id="languages-sheet">
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <p>AC: <span id="ac-sheet"></span></p>
+            <p>Initiative: <span id="initiative-sheet"></span></p>
+            <p>Speed: <span id="speed-sheet"></span></p>
+            <p>HP: <span id="hp-sheet"></span></p>
+            <p>Hit Dice: <span id="hd-sheet"></span></p>
+            <p>Attacks &amp; Spellcasting: </p>
+            <ul id="weapons-sheet">
+            </ul>
+            <ul id="spells-sheet">
+            </ul>
+            <p>Equipment:</p>
+            <ul id="equipment-sheet">
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <h5>Personality Traits</h5>
+            <p id="personality-sheet"></p>
+            <h5>Ideals</h5>
+            <p id="ideals-sheet"></p>
+            <h5>Bonds</h5>
+            <p id="bonds-sheet"></p>
+            <h5>Flaws</h5>
+            <p id="flaws-sheet"></p>
+            <h5>Race Traits</h5>
+            <ul id="race-traits-sheet">
+            </ul>
+            <h5>Class features</h5>
+            <ul id="class-features-sheet">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
