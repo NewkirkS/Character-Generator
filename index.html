@@ -5,9 +5,61 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-3.1.0.js"></script>
     <script src="js/scripts.js"></script>
-    <title>Template</title>
+    <title>5e Generator</title>
   </head>
   <body>
-
+    <div class= "container">
+      <h1>Dungeons &amp; Dragons</h1>
+      <h2>5e Character Generator</h2>
+      <br>
+      <form class="form-group" id="ability-form">
+        <div class="row form-inline">
+          <div class="col-sm-4 col-sm-offset-2">
+            <label for="player-name">Player name:</label>
+            <input type="text" class="form-control" id="player-name">
+          </div>
+          <div class="col-sm-4">
+            <label for="character-name">Character name:</label>
+            <input type="text" class="form-control" id="character-name">
+          </div>
+        </div>
+        <hr>
+        <button type="button" class="btn btn-lg btn-success btn-block" id="ability-roll">Roll for your ability scores!</button><br>
+        <h3>Ability scores:</h3>
+        <div class="row">
+          <div class="col-sm-2" id="ability-roll-1">
+          </div>
+          <div class="col-sm-2" id="ability-roll-2">
+          </div>
+          <div class="col-sm-2" id="ability-roll-3">
+          </div>
+          <div class="col-sm-2" id="ability-roll-4">
+          </div>
+          <div class="col-sm-2" id="ability-roll-5">
+          </div>
+          <div class="col-sm-2" id="ability-roll-6">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-sm-offset-2 form-inline">
+            <input type="number" id="strength" class="form-control">
+            <label for="strength">Strength</label><br>
+            <input type="number" id="dexterity" class="form-control">
+            <label for="dexterity">Dexterity</label><br>
+            <input type="number" id="constitution" class="form-control">
+            <label for="constitution">Constitution</label>
+          </div>
+          <div class="col-sm-4 form-inline">
+            <input type="number" id="intelligence" class="form-control">
+            <label for="intelligence">Intelligence</label><br>
+            <input type="number" id="wisdom" class="form-control">
+            <label for="wisdom">Wisdom</label><br>
+            <input type="number" id="charisma" class="form-control">
+            <label for="charisma">Charisma</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-lg btn-success" id="ability-form-submit">Submit</button>
+      </form>
+    </div>
   </body>
 </html>

@@ -1,0 +1,21 @@
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+label {
+  font-size: 15px;
+}
+
+input {
+  margin: 5px;
+}
+
+#ability-form-submit {
+  display: block;
+  margin: auto;
+  margin-top: 40px;
+}

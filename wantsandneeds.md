@@ -21,7 +21,7 @@
   * Include simple description of race and class skills etc.
   * Point buy system for ability scores
   * Add ability to select subraces.
-  * Add options for all races
+  * Add options for all races.
   * Add options for all classes.
 
 * Wishlist
