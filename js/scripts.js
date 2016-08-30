@@ -1,6 +1,3 @@
-var abilityScoreArray = [];
-var sumOfRolls = 0;
-
 var charAbilityScores = {
   str: 0,
   dex: 0,
@@ -9,6 +6,8 @@ var charAbilityScores = {
   wis: 0,
   cha: 0
 }
+
+var abilityScoreArray = [];
 
 var charAbilityScoreModifiers = {
   strMod: 0,
@@ -44,11 +43,12 @@ function Character(playerName, charName) {
   this.charProfBonus = 2;
   this.charSpells = [];
   this.charAttacks = [];
-  this.charEquipment = leatherArmor;
+  this.charArmor;
+  this.charWeapons = [];
 }
 
 Character.prototype.calculateAc = function() {
-  this.charAc = 10 + this.charAbilityScoreModifiers.dexMod + this.charEquipment;
+  this.charAc = 10 + this.charAbilityScoreModifiers.dexMod + this.charClass.armor.ac;
 };
 
 Character.prototype.baseSavingThrow = function(obj) {
@@ -98,12 +98,32 @@ Character.prototype.abilityScoreModifier = function(obj) {
 // ELF OBJECT
 var elf = {
   abilityScoreIncrease: function(character) {
-    return character.charAbilityScores.dex += 2; //check return
+    return character.charAbilityScores.dex += 2 //check return
   },
   size: "medium",
   speed: 30,
   languages: ["Common", "Elvish"],
   raceTraits: ["Darkvision", "Keen Senses", "Fey Ancestry", "Trance"]
+}
+
+//Weapons
+var longbow = {
+  name: "Longbow",
+  type: "ranged",
+  range: "150/600"
+  damage: "1d8 Piercing"
+}
+
+var shortsword = {
+  name: "Shortsword",
+  type: "melee",
+  damage: "1d6 Piercing"
+}
+
+//Armor
+var leatherArmor = {
+  name: "Leather Armor",
+  ac: 1
 }
 
 // RANGER OBJECT
@@ -115,30 +135,20 @@ var ranger = {
     character.charSavingThrows.strSave += character.charProfBonus;
     character.charSavingThrows.dexSave += character.charProfBonus;
   },
-  equipment: []
+  armor: leatherArmor,
+  weapons: [longbow, shortsword]
 }
-
-//Weapons
-var longbow = {
-  name: "Longbow",
-  type: "range",
-  damage: "1d6"
-}
-
-//Armor
-var leatherArmor = 1;
 
 //UI Simulation
-
-// var newCharacter = new Character("Caleb", "Thrond");
-// newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
-// newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
-// newCharacter.baseSavingThrow(charSavingThrows);
-// ranger.savingThrowsBonus(newCharacter);
-// newCharacter.calculateAc();
-// newCharacter;
-
-
+var newCharacter = new Character("Caleb", "Thrond");
+newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
+newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
+newCharacter.baseSavingThrow(charSavingThrows);
+ranger.savingThrowsBonus(newCharacter);
+newCharacter.charRace = elf;
+newCharacter.charClass = ranger;
+newCharacter.calculateAc();
+newCharacter;
 
 //Ability Score Roller
 var rollCharAbilityScores = function(array) {
@@ -172,7 +182,7 @@ $(document).ready(function() {
   $("#click-cleric-1st").click(function(){
     $("#cleric-1st-level").toggle();
   });
-
+  
   $("#ability-roll").click(function(){
     rollCharAbilityScores(abilityScoreArray);
     for (i=1; i < 7; i++) {
@@ -183,54 +193,26 @@ $(document).ready(function() {
   });
 
   $("#ranger").change(function(){
-    
+
   });
 
   $("#character-form").submit(function(){
     event.preventDefault();
-    //debugger;
     var playName = $("#player-name-input").val();
-    var characterName = $("#character-name-input").val();
+    var characterName = $("character-name-input").val();
+    rollCharAbilityScores(abilityScoreArray);
     var race = $("#race-input").val();
     var characterClass = $("#class-input").val();
-    var strength = parseInt($("#strength").val());
-    var dexterity = parseInt($("#dexterity").val());
-    var constitution = parseInt($("#constitution").val());
-    var intelligence = parseInt($("#intelligence").val());
-    var wisdom = parseInt($("#wisdom").val());
-    var charisma = parseInt($("#charisma").val());
     var newCharacter = new Character(playName, characterName);
-    newCharacter.charAbilityScores.str = strength;
-    newCharacter.charAbilityScores.dex = dexterity;
-    newCharacter.charAbilityScores.con = constitution;
-    newCharacter.charAbilityScores.int = intelligence;
-    newCharacter.charAbilityScores.wis = wisdom;
-    newCharacter.charAbilityScores.cha = charisma;
-      if (sumOfRolls !== (strength + dexterity + constitution + intelligence + wisdom + charisma)) {
-        alert("HEY!!! Please enter the exact numbers you were given!  What are you, some kind of CHEATER?!")
-      }
       if (race === "elf") {
-        newCharacter.charRace = elf;
-        elf.abilityScoreIncrease(newCharacter);
+        newCharacter.race = elf;
+        console.log(newCharacter);
       } else if (race === "human") {
-        newCharacter.charRace = human;
+        newCharacter.race = human;
       } else if (race === "dwarf") {
-        newCharacter.charRace = dwarf;
+        newCharacter.race = dwarf;
       } else if (race === "halfling") {
-        newCharacter.charRace = halfling;
+        newCharacter.race = halfling;
       }
-      if (characterClass === "ranger") {
-        ranger.savingThrowsBonus(newCharacter);
-        newCharacter.charClass = ranger;
-      } else if (characterClass === "fighter") {
-        newCharacter.charClass = fighter;
-      } else if (characterClass === "wizard") {
-        newCharacter.charClass = wizard;
-      } else if (characterClass === "cleric") {
-        newCharacter.charClass = cleric;
-      }
-      newCharacter.abilityScoreModifier(charAbilityScores);
-      newCharacter.baseSavingThrow(charSavingThrows);
-      console.log(newCharacter);
    });
 });
