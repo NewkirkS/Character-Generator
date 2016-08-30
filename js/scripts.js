@@ -94,6 +94,24 @@ Character.prototype.abilityScoreModifier = function(obj) {
   }
 }
 
+<<<<<<< HEAD
+=======
+Character.prototype.baseSavingThrow = function(obj) {
+  for (var score in obj) {
+    obj[score] += this.charAbilityScoreModifiers[score.replace("Save", "Mod")];
+  }
+}
+
+var charSavingThrows = {
+  strSave: newCharacter.charAbilityScoreModifiers.strMod,
+  dexSave: newCharacter.charAbilityScoreModifiers.dexMod,
+  conSave: newCharacter.charAbilityScoreModifiers.conMod,
+  intSave: newCharacter.charAbilityScoreModifiers.intMod,
+  wisSave: newCharacter.charAbilityScoreModifiers.wisMod,
+  chaSave: newCharacter.charAbilityScoreModifiers.chaMod
+}
+
+>>>>>>> master
 // ELF OBJECT
 var elf = {
   abilityScoreIncrease: function(character) {
@@ -126,7 +144,11 @@ var longbow = {
 //Armor
 var leatherArmor = 1;
 
+<<<<<<< HEAD
 //UI Simulation
+=======
+
+>>>>>>> master
 var newCharacter = new Character("Caleb", "Thrond");
 newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
 newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
@@ -177,5 +199,15 @@ $(document).ready(function() {
     var race = $("#race-input").val();
     var characterClass = $("#class-input").val();
     var newCharacter = new Character(playName, characterName);
-  });
+      if (race === "elf") {
+        newCharacter.race = elf;
+        console.log(newCharacter);
+      } else if (race === "human") {
+        newCharacter.race = human;
+      } else if (race === "dwarf") {
+        newCharacter.race = dwarf;
+      } else if (race === "halfling") {
+        newCharacter.race = halfling;
+      }
+   });
 });
