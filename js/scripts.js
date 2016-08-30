@@ -143,15 +143,38 @@ $(document).ready(function() {
     $("#cleric-1st-level").toggle();
   });
 
+  $("#ability-roll").click(function(){
+    rollCharAbilityScores(abilityScoreArray);
+    for (i=1; i < 7; i++) {
+      $("#ability-roll-" + i).text(abilityScoreArray[(i - 1)]);
+    }
+  });
+
   $("#character-form").submit(function(){
     event.preventDefault();
     debugger;
     var playName = $("#player-name-input").val();
     var characterName = $("#character-name-input").val();
-    rollCharAbilityScores(abilityScoreArray);
+    // rollCharAbilityScores(abilityScoreArray);
+    // for (i=1; i < 6; i++) {
+    //   $("#ability-roll-" + i +'"').text("<p>" + abilityScoreArray[(i - 1)] + "</p>");
+    // }
     var race = $("#race-input").val();
     var characterClass = $("#class-input").val();
+    var strength = parseInt($("#strength").val());
+    var dexterity = parseInt($("#dexterity").val());
+    var constitution = parseInt($("#constitution").val());
+    var intelligence = parseInt($("#intelligence").val());
+    var wisdom = parseInt($("#wisdom").val());
+    var charisma = parseInt($("#charisma").val());
     var newCharacter = new Character(playName, characterName);
+    newCharacter.charAbilityScores.str = strength;
+    newCharacter.charAbilityScores.dex = dexterity;
+    newCharacter.charAbilityScores.con = constitution;
+    newCharacter.charAbilityScores.int = intelligence;
+    newCharacter.charAbilityScores.wis = wisdom;
+    newCharacter.charAbilityScores.cha = charisma;
+
       if (race === "elf") {
         newCharacter.charRace = elf;
         elf.abilityScoreIncrease(newCharacter);
@@ -172,6 +195,8 @@ $(document).ready(function() {
       } else if (characterClass === "cleric") {
         newCharacter.charClass = cleric;
       }
+      newCharacter.abilityScoreModifier(charAbilityScores);
+      newCharacter.baseSavingThrow(charSavingThrows);
       console.log(newCharacter);
    });
 });
