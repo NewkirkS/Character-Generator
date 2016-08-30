@@ -57,3 +57,8 @@ var rollCharAbilityScores = function(array) {
   }
   array.sort(function(a, b) {return b-a});
 }
+
+//UI Logic
+$(document).ready(function() {
+
+            });
