@@ -133,3 +133,28 @@ var rollCharAbilityScores = function(array) {
   }
   array.sort(function(a, b) {return b-a});
 }
+
+//UI Logic
+$(document).ready(function() {
+  $("#click-wiz-cantrips").click(function(){
+    $("#wiz-cantrips").toggle();
+  });
+  $("#click-wiz-1st").click(function(){
+    $("#wiz-1st-level").toggle();
+  });
+  $("#click-cleric-cantrips").click(function(){
+    $("#cleric-cantrips").toggle();
+  });
+  $("#click-cleric-1st").click(function(){
+    $("#cleric-1st-level").toggle();
+  });
+  $("#character-form-submit").submit(function(){
+    event.preventDefault();
+    var playName = $("#player-name-input").val();
+    var characterName = $("character-name-input").val();
+    rollCharAbilityScores(abilityScoreArray);
+    var race = $("#race-input").val();
+    var characterClass = $("#class-input").val();
+    var newCharacter = new Character(playName, characterName);
+  });
+});
