@@ -120,6 +120,7 @@ var ranger = {
 
 //Weapons
 var longbow = {
+  name: "Longbow",
   type: "range",
   damage: "1d6"
 }
@@ -179,6 +180,10 @@ $(document).ready(function() {
       sumOfRolls += abilityScoreArray[(i - 1)];
     }
     console.log(sumOfRolls);
+  });
+
+  $("#ranger").change(function(){
+    
   });
 
   $("#character-form").submit(function(){

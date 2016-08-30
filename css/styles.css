@@ -20,6 +20,10 @@ input {
   text-align: center;
 }
 
+.class-skills {
+  display: none;
+}
+
 #ability-form-submit {
   display: block;
   margin: auto;
