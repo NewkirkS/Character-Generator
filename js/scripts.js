@@ -89,15 +89,6 @@ Character.prototype.baseSavingThrow = function(obj) {
   }
 }
 
-// charSavingThrows = {
-//   strSave: newCharacter.charAbilityScoreModifiers.strMod,
-//   dexSave: newCharacter.charAbilityScoreModifiers.dexMod,
-//   conSave: newCharacter.charAbilityScoreModifiers.conMod,
-//   intSave: newCharacter.charAbilityScoreModifiers.intMod,
-//   wisSave: newCharacter.charAbilityScoreModifiers.wisMod,
-//   chaSave: newCharacter.charAbilityScoreModifiers.chaMod
-// }
-
 // ELF OBJECT
 var elf = {
   abilityScoreIncrease: function() {
@@ -125,9 +116,6 @@ var newCharacter = new Character("Caleb", "Thrond");
 newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
 newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
 ranger.savingThrowsBonus();
-
-
-
 
 var rollCharAbilityScores = function(array) {
   for (var i = 0; i <= 5; i++) {
