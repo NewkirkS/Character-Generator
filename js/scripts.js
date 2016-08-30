@@ -18,7 +18,32 @@ var charAbilityScoreModifiers = {
   chaMod: 0
 }
 
+var charSavingThrows = {
+  strSave: 0,
+  dexSave: 0,
+  conSave: 0,
+  intSave: 0,
+  wisSave: 0,
+  chaSave: 0
+}
 
+function Character(playerName, charName) {
+  this.playerName = playerName;
+  this.charName = charName;
+  this.charRace ;
+  this.charClass ;
+  this.charLevel = 1;
+  this.charSpeed = 0;
+  this.charHp = 0;
+  this.charAc = 0;
+  this.charAbilityScores = charAbilityScores;
+  this.charAbilityScoreModifiers = charAbilityScoreModifiers;
+  this.charSavingThrows = charSavingThrows;
+  this.charInit = 0;
+  this.charProfBonus = 2;
+  this.charSpells = [];
+  this.charWeapons = [];
+}
 
 Character.prototype.abilityScoreModifier = function(obj) {
   for (var score in obj) {
@@ -58,22 +83,10 @@ Character.prototype.abilityScoreModifier = function(obj) {
   }
 }
 
-function Character(playerName, charName) {
-  this.playerName = playerName;
-  this.charName = charName;
-  this.charRace ;
-  this.charClass ;
-  this.charLevel = 1;
-  this.charSpeed = 0;
-  this.charHp = 0;
-  this.charAc = 0;
-  this.charAbilityScores = charAbilityScores;
-  this.charAbilityScoreModifiers = charAbilityScoreModifiers;
-  this.charSavingThrows = charSavingThrows;
-  this.charInit = 0;
-  this.charProfBonus = 2;
-  this.charSpells = [];
-  this.charWeapons = [];
+Character.prototype.baseSavingThrow = function(obj) {
+  for (var score in obj) {
+    obj[score] += this.charAbilityScoreModifiers[score.replace("Save", "Mod")];
+  }
 }
 
 var charSavingThrows = {
@@ -106,6 +119,13 @@ var ranger = {
     newCharacter.charSavingThrows.dexSave += newCharacter.charProfBonus;
   }
 }
+
+
+
+var newCharacter = new Character("Caleb", "Thrond");
+newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
+newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
+ranger.savingThrowsBonus();
 
 var rollCharAbilityScores = function(array) {
   for (var i = 0; i <= 5; i++) {
