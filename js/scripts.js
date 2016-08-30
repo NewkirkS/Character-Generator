@@ -1,5 +1,3 @@
-var abilityScoreArray = [];
-
 var charAbilityScores = {
   str: 0,
   dex: 0,
@@ -8,6 +6,8 @@ var charAbilityScores = {
   wis: 0,
   cha: 0
 }
+
+var abilityScoreArray = [];
 
 var charAbilityScoreModifiers = {
   strMod: 0,
@@ -30,8 +30,8 @@ var charSavingThrows = {
 function Character(playerName, charName) {
   this.playerName = playerName;
   this.charName = charName;
-  this.charRace ;
-  this.charClass ;
+  this.charRace;
+  this.charClass;
   this.charLevel = 1;
   this.charSpeed = 0;
   this.charHp = 0;
@@ -42,7 +42,18 @@ function Character(playerName, charName) {
   this.charInit = 0;
   this.charProfBonus = 2;
   this.charSpells = [];
-  this.charWeapons = [];
+  this.charAttacks = [];
+  this.charEquipment = leatherArmor;
+}
+
+Character.prototype.calculateAc = function() {
+  this.charAc = 10 + this.charAbilityScoreModifiers.dexMod + this.charEquipment;
+};
+
+Character.prototype.baseSavingThrow = function(obj) {
+  for (var score in obj) {
+    obj[score] += this.charAbilityScoreModifiers[score.replace("Save", "Mod")];
+  }
 }
 
 Character.prototype.abilityScoreModifier = function(obj) {
@@ -83,16 +94,10 @@ Character.prototype.abilityScoreModifier = function(obj) {
   }
 }
 
-Character.prototype.baseSavingThrow = function(obj) {
-  for (var score in obj) {
-    obj[score] += this.charAbilityScoreModifiers[score.replace("Save", "Mod")];
-  }
-}
-
 // ELF OBJECT
 var elf = {
-  abilityScoreIncrease: function() {
-    return newCharacter.charAbilityScores.dex += 2 //check return
+  abilityScoreIncrease: function(character) {
+    return character.charAbilityScores.dex += 2 //check return
   },
   size: "medium",
   speed: 30,
@@ -105,18 +110,34 @@ var ranger = {
   classHp: 10,
   proficiencies: ["Simple weapons", "Martial weapons", "Light armor", "Medium armor", "Shields"],
   skills: ["Animal handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
-  savingThrowsBonus: function() {
-    newCharacter.charSavingThrows.strSave += newCharacter.charProfBonus;
-    newCharacter.charSavingThrows.dexSave += newCharacter.charProfBonus;
-  }
+  savingThrowsBonus: function(character) {
+    character.charSavingThrows.strSave += character.charProfBonus;
+    character.charSavingThrows.dexSave += character.charProfBonus;
+  },
+  equipment: []
 }
 
+//Weapons
+var longbow = {
+  type: "range",
+  damage: "1d6"
+}
 
+//Armor
+var leatherArmor = 1;
+
+//UI Simulation
 var newCharacter = new Character("Caleb", "Thrond");
 newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
 newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
-ranger.savingThrowsBonus();
+newCharacter.baseSavingThrow(charSavingThrows);
+ranger.savingThrowsBonus(newCharacter);
+newCharacter.calculateAc();
+newCharacter;
 
+
+
+//Ability Score Roller
 var rollCharAbilityScores = function(array) {
   for (var i = 0; i <= 5; i++) {
     var rolls = [];
