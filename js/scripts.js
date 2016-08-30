@@ -18,14 +18,7 @@ var charAbilityScoreModifiers = {
   chaMod: 0
 }
 
-var charSavingThrows = {
-  strSave: newCharacter.charAbilityScoreModifiers.strMod,
-  dexSave: newCharacter.charAbilityScoreModifiers.dexMod,
-  conSave: newCharacter.charAbilityScoreModifiers.conMod,
-  intSave: newCharacter.charAbilityScoreModifiers.intMod,
-  wisSave: newCharacter.charAbilityScoreModifiers.wisMod,
-  chaSave: newCharacter.charAbilityScoreModifiers.chaMod
-}
+
 
 Character.prototype.abilityScoreModifier = function(obj) {
   for (var score in obj) {
@@ -83,6 +76,14 @@ function Character(playerName, charName) {
   this.charWeapons = [];
 }
 
+var charSavingThrows = {
+  strSave: newCharacter.charAbilityScoreModifiers.strMod,
+  dexSave: newCharacter.charAbilityScoreModifiers.dexMod,
+  conSave: newCharacter.charAbilityScoreModifiers.conMod,
+  intSave: newCharacter.charAbilityScoreModifiers.intMod,
+  wisSave: newCharacter.charAbilityScoreModifiers.wisMod,
+  chaSave: newCharacter.charAbilityScoreModifiers.chaMod
+}
 
 // ELF OBJECT
 var elf = {
@@ -105,15 +106,6 @@ var ranger = {
     newCharacter.charSavingThrows.dexSave += newCharacter.charProfBonus;
   }
 }
-
-
-var newCharacter = new Character("Caleb", "Thrond");
-newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
-newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
-ranger.savingThrowsBonus();
-
-
-
 
 var rollCharAbilityScores = function(array) {
   for (var i = 0; i <= 5; i++) {
@@ -154,5 +146,15 @@ $(document).ready(function() {
     var race = $("#race-input").val();
     var characterClass = $("#class-input").val();
     var newCharacter = new Character(playName, characterName);
-  });
+      if (race === "elf") {
+        newCharacter.race = elf;
+        console.log(newCharacter);
+      } else if (race === "human") {
+        newCharacter.race = human;
+      } else if (race === "dwarf") {
+        newCharacter.race = dwarf;
+      } else if (race === "halfling") {
+        newCharacter.race = halfling;
+      }
+   });
 });
