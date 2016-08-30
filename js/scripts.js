@@ -19,12 +19,30 @@ var charAbilityScoreModifiers = {
 }
 
 var charSavingThrows = {
-  strSave: newCharacter.charAbilityScoreModifiers.strMod,
-  dexSave: newCharacter.charAbilityScoreModifiers.dexMod,
-  conSave: newCharacter.charAbilityScoreModifiers.conMod,
-  intSave: newCharacter.charAbilityScoreModifiers.intMod,
-  wisSave: newCharacter.charAbilityScoreModifiers.wisMod,
-  chaSave: newCharacter.charAbilityScoreModifiers.chaMod
+  strSave: 0,
+  dexSave: 0,
+  conSave: 0,
+  intSave: 0,
+  wisSave: 0,
+  chaSave: 0
+}
+
+function Character(playerName, charName) {
+  this.playerName = playerName;
+  this.charName = charName;
+  this.charRace ;
+  this.charClass ;
+  this.charLevel = 1;
+  this.charSpeed = 0;
+  this.charHp = 0;
+  this.charAc = 0;
+  this.charAbilityScores = charAbilityScores;
+  this.charAbilityScoreModifiers = charAbilityScoreModifiers;
+  this.charSavingThrows = charSavingThrows;
+  this.charInit = 0;
+  this.charProfBonus = 2;
+  this.charSpells = [];
+  this.charWeapons = [];
 }
 
 Character.prototype.abilityScoreModifier = function(obj) {
@@ -65,24 +83,20 @@ Character.prototype.abilityScoreModifier = function(obj) {
   }
 }
 
-function Character(playerName, charName) {
-  this.playerName = playerName;
-  this.charName = charName;
-  this.charRace ;
-  this.charClass ;
-  this.charLevel = 1;
-  this.charSpeed = 0;
-  this.charHp = 0;
-  this.charAc = 0;
-  this.charAbilityScores = charAbilityScores;
-  this.charAbilityScoreModifiers = charAbilityScoreModifiers;
-  this.charSavingThrows = charSavingThrows;
-  this.charInit = 0;
-  this.charProfBonus = 2;
-  this.charSpells = [];
-  this.charWeapons = [];
+Character.prototype.baseSavingThrow = function(obj) {
+  for (var score in obj) {
+    obj[score] += this.charAbilityScoreModifiers[score.replace("Save", "Mod")];
+  }
 }
 
+// charSavingThrows = {
+//   strSave: newCharacter.charAbilityScoreModifiers.strMod,
+//   dexSave: newCharacter.charAbilityScoreModifiers.dexMod,
+//   conSave: newCharacter.charAbilityScoreModifiers.conMod,
+//   intSave: newCharacter.charAbilityScoreModifiers.intMod,
+//   wisSave: newCharacter.charAbilityScoreModifiers.wisMod,
+//   chaSave: newCharacter.charAbilityScoreModifiers.chaMod
+// }
 
 // ELF OBJECT
 var elf = {
