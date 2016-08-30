@@ -1,4 +1,5 @@
 var abilityScoreArray = [];
+var sumOfRolls = 0;
 
 var charAbilityScores = {
   str: 0,
@@ -147,12 +148,14 @@ $(document).ready(function() {
     rollCharAbilityScores(abilityScoreArray);
     for (i=1; i < 7; i++) {
       $("#ability-roll-" + i).text(abilityScoreArray[(i - 1)]);
+      sumOfRolls += abilityScoreArray[(i - 1)];
     }
+    console.log(sumOfRolls);
   });
 
   $("#character-form").submit(function(){
     event.preventDefault();
-    debugger;
+    //debugger;
     var playName = $("#player-name-input").val();
     var characterName = $("#character-name-input").val();
     // rollCharAbilityScores(abilityScoreArray);
@@ -174,7 +177,9 @@ $(document).ready(function() {
     newCharacter.charAbilityScores.int = intelligence;
     newCharacter.charAbilityScores.wis = wisdom;
     newCharacter.charAbilityScores.cha = charisma;
-
+      if (sumOfRolls !== (strength + dexterity + constitution + intelligence + wisdom + charisma)) {
+        alert("HEY!!! Please enter the exact numbers you were given!  What are you, some kind of CHEATER?!")
+      }
       if (race === "elf") {
         newCharacter.charRace = elf;
         elf.abilityScoreIncrease(newCharacter);
