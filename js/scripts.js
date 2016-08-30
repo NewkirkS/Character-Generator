@@ -43,11 +43,12 @@ function Character(playerName, charName) {
   this.charProfBonus = 2;
   this.charSpells = [];
   this.charAttacks = [];
-  this.charEquipment = leatherArmor;
+  this.charArmor;
+  this.charWeapons = [];
 }
 
 Character.prototype.calculateAc = function() {
-  this.charAc = 10 + this.charAbilityScoreModifiers.dexMod + this.charEquipment;
+  this.charAc = 10 + this.charAbilityScoreModifiers.dexMod + this.charClass.armor.ac;
 };
 
 Character.prototype.baseSavingThrow = function(obj) {
@@ -94,24 +95,6 @@ Character.prototype.abilityScoreModifier = function(obj) {
   }
 }
 
-<<<<<<< HEAD
-=======
-Character.prototype.baseSavingThrow = function(obj) {
-  for (var score in obj) {
-    obj[score] += this.charAbilityScoreModifiers[score.replace("Save", "Mod")];
-  }
-}
-
-var charSavingThrows = {
-  strSave: newCharacter.charAbilityScoreModifiers.strMod,
-  dexSave: newCharacter.charAbilityScoreModifiers.dexMod,
-  conSave: newCharacter.charAbilityScoreModifiers.conMod,
-  intSave: newCharacter.charAbilityScoreModifiers.intMod,
-  wisSave: newCharacter.charAbilityScoreModifiers.wisMod,
-  chaSave: newCharacter.charAbilityScoreModifiers.chaMod
-}
-
->>>>>>> master
 // ELF OBJECT
 var elf = {
   abilityScoreIncrease: function(character) {
@@ -123,6 +106,26 @@ var elf = {
   raceTraits: ["Darkvision", "Keen Senses", "Fey Ancestry", "Trance"]
 }
 
+//Weapons
+var longbow = {
+  name: "Longbow",
+  type: "ranged",
+  range: "150/600"
+  damage: "1d8 Piercing"
+}
+
+var shortsword = {
+  name: "Shortsword",
+  type: "melee",
+  damage: "1d6 Piercing"
+}
+
+//Armor
+var leatherArmor = {
+  name: "Leather Armor",
+  ac: 1
+}
+
 // RANGER OBJECT
 var ranger = {
   classHp: 10,
@@ -132,28 +135,18 @@ var ranger = {
     character.charSavingThrows.strSave += character.charProfBonus;
     character.charSavingThrows.dexSave += character.charProfBonus;
   },
-  equipment: []
+  armor: leatherArmor,
+  weapons: [longbow, shortsword]
 }
 
-//Weapons
-var longbow = {
-  type: "range",
-  damage: "1d6"
-}
-
-//Armor
-var leatherArmor = 1;
-
-<<<<<<< HEAD
 //UI Simulation
-=======
-
->>>>>>> master
 var newCharacter = new Character("Caleb", "Thrond");
 newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
 newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
 newCharacter.baseSavingThrow(charSavingThrows);
 ranger.savingThrowsBonus(newCharacter);
+newCharacter.charRace = elf;
+newCharacter.charClass = ranger;
 newCharacter.calculateAc();
 newCharacter;
 
