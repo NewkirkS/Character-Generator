@@ -150,8 +150,6 @@ newCharacter.charClass = ranger;
 newCharacter.calculateAc();
 newCharacter;
 
-
-
 //Ability Score Roller
 var rollCharAbilityScores = function(array) {
   for (var i = 0; i <= 5; i++) {
