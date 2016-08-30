@@ -74,6 +74,11 @@ $(document).ready(function() {
   });
   $("#character-form-submit").submit(function(){
     event.preventDefault();
-    
+    var playName = $("#player-name-input").val();
+    var characterName = $("character-name-input").val();
+    rollCharAbilityScores(abilityScoreArray);
+    var race = $("#race-input").val();
+    var characterClass = $("#class-input").val();
+    var newCharacter = new Character(playName, characterName);
   });
 });
