@@ -89,19 +89,10 @@ Character.prototype.baseSavingThrow = function(obj) {
   }
 }
 
-var charSavingThrows = {
-  strSave: newCharacter.charAbilityScoreModifiers.strMod,
-  dexSave: newCharacter.charAbilityScoreModifiers.dexMod,
-  conSave: newCharacter.charAbilityScoreModifiers.conMod,
-  intSave: newCharacter.charAbilityScoreModifiers.intMod,
-  wisSave: newCharacter.charAbilityScoreModifiers.wisMod,
-  chaSave: newCharacter.charAbilityScoreModifiers.chaMod
-}
-
 // ELF OBJECT
 var elf = {
-  abilityScoreIncrease: function() {
-    return newCharacter.charAbilityScores.dex += 2 //check return
+  abilityScoreIncrease: function(character) {
+    return character.charAbilityScores.dex += 2 //check return
   },
   size: "medium",
   speed: 30,
@@ -114,18 +105,11 @@ var ranger = {
   classHp: 10,
   proficiencies: ["Simple weapons", "Martial weapons", "Light armor", "Medium armor", "Shields"],
   skills: ["Animal handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
-  savingThrowsBonus: function() {
-    newCharacter.charSavingThrows.strSave += newCharacter.charProfBonus;
-    newCharacter.charSavingThrows.dexSave += newCharacter.charProfBonus;
+  savingThrowsBonus: function(character) {
+    character.charSavingThrows.strSave += character.charProfBonus;
+    character.charSavingThrows.dexSave += character.charProfBonus;
   }
 }
-
-
-
-var newCharacter = new Character("Caleb", "Thrond");
-newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
-newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
-ranger.savingThrowsBonus();
 
 var rollCharAbilityScores = function(array) {
   for (var i = 0; i <= 5; i++) {
@@ -158,23 +142,36 @@ $(document).ready(function() {
   $("#click-cleric-1st").click(function(){
     $("#cleric-1st-level").toggle();
   });
-  $("#character-form-submit").submit(function(){
+
+  $("#character-form").submit(function(){
     event.preventDefault();
+    debugger;
     var playName = $("#player-name-input").val();
-    var characterName = $("character-name-input").val();
+    var characterName = $("#character-name-input").val();
     rollCharAbilityScores(abilityScoreArray);
     var race = $("#race-input").val();
     var characterClass = $("#class-input").val();
     var newCharacter = new Character(playName, characterName);
       if (race === "elf") {
-        newCharacter.race = elf;
-        console.log(newCharacter);
+        newCharacter.charRace = elf;
+        elf.abilityScoreIncrease(newCharacter);
       } else if (race === "human") {
-        newCharacter.race = human;
+        newCharacter.charRace = human;
       } else if (race === "dwarf") {
-        newCharacter.race = dwarf;
+        newCharacter.charRace = dwarf;
       } else if (race === "halfling") {
-        newCharacter.race = halfling;
+        newCharacter.charRace = halfling;
       }
+      if (characterClass === "ranger") {
+        ranger.savingThrowsBonus(newCharacter);
+        newCharacter.charClass = ranger;
+      } else if (characterClass === "fighter") {
+        newCharacter.charClass = fighter;
+      } else if (characterClass === "wizard") {
+        newCharacter.charClass = wizard;
+      } else if (characterClass === "cleric") {
+        newCharacter.charClass = cleric;
+      }
+      console.log(newCharacter);
    });
 });
