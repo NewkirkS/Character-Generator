@@ -60,5 +60,20 @@ var rollCharAbilityScores = function(array) {
 
 //UI Logic
 $(document).ready(function() {
-
-            });
+  $("#click-wiz-cantrips").click(function(){
+    $("#wiz-cantrips").toggle();
+  });
+  $("#click-wiz-1st").click(function(){
+    $("#wiz-1st-level").toggle();
+  });
+  $("#click-cleric-cantrips").click(function(){
+    $("#cleric-cantrips").toggle();
+  });
+  $("#click-cleric-1st").click(function(){
+    $("#cleric-1st-level").toggle();
+  });
+  $("#character-form-submit").submit(function(){
+    event.preventDefault();
+    
+  });
+});

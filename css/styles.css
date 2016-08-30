@@ -25,3 +25,11 @@ input {
   margin: auto;
   margin-top: 40px;
 }
+
+#click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover {
+  color: darkred;
+}
+
+#wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level {
+  display: none;
+}
