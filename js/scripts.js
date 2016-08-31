@@ -8,6 +8,7 @@ var charAbilityScores = {
 }
 
 var abilityScoreArray = [];
+var sumOfRolls = 0;
 
 var charAbilityScoreModifiers = {
   strMod: 0,
@@ -110,7 +111,7 @@ var elf = {
 var longbow = {
   name: "Longbow",
   type: "ranged",
-  range: "150/600"
+  range: "150/600",
   damage: "1d8 Piercing"
 }
 
@@ -140,15 +141,15 @@ var ranger = {
 }
 
 //UI Simulation
-var newCharacter = new Character("Caleb", "Thrond");
-newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
-newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
-newCharacter.baseSavingThrow(charSavingThrows);
-ranger.savingThrowsBonus(newCharacter);
-newCharacter.charRace = elf;
-newCharacter.charClass = ranger;
-newCharacter.calculateAc();
-newCharacter;
+// var newCharacter = new Character("Caleb", "Thrond");
+// newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
+// newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
+// newCharacter.baseSavingThrow(charSavingThrows);
+// ranger.savingThrowsBonus(newCharacter);
+// newCharacter.charRace = elf;
+// newCharacter.charClass = ranger;
+// newCharacter.calculateAc();
+// newCharacter;
 
 //Ability Score Roller
 var rollCharAbilityScores = function(array) {
@@ -182,7 +183,7 @@ $(document).ready(function() {
   $("#click-cleric-1st").click(function(){
     $("#cleric-1st-level").toggle();
   });
-  
+
   $("#ability-roll").click(function(){
     rollCharAbilityScores(abilityScoreArray);
     for (i=1; i < 7; i++) {
@@ -197,22 +198,51 @@ $(document).ready(function() {
   });
 
   $("#character-form").submit(function(){
-    event.preventDefault();
-    var playName = $("#player-name-input").val();
-    var characterName = $("character-name-input").val();
-    rollCharAbilityScores(abilityScoreArray);
-    var race = $("#race-input").val();
-    var characterClass = $("#class-input").val();
-    var newCharacter = new Character(playName, characterName);
-      if (race === "elf") {
-        newCharacter.race = elf;
-        console.log(newCharacter);
-      } else if (race === "human") {
-        newCharacter.race = human;
-      } else if (race === "dwarf") {
-        newCharacter.race = dwarf;
-      } else if (race === "halfling") {
-        newCharacter.race = halfling;
-      }
-   });
+      event.preventDefault();
+ -    //debugger;
+      var playName = $("#player-name-input").val();
+ -    var characterName = $("#character-name-input").val();
+ +    rollCharAbilityScores(abilityScoreArray);
+      var race = $("#race-input").val();
+      var characterClass = $("#class-input").val();
+ -    var strength = parseInt($("#strength").val());
+ -    var dexterity = parseInt($("#dexterity").val());
+ -    var constitution = parseInt($("#constitution").val());
+ -    var intelligence = parseInt($("#intelligence").val());
+ -    var wisdom = parseInt($("#wisdom").val());
+ -    var charisma = parseInt($("#charisma").val());
+      var newCharacter = new Character(playName, characterName);
+ -    newCharacter.charAbilityScores.str = strength;
+ -    newCharacter.charAbilityScores.dex = dexterity;
+ -    newCharacter.charAbilityScores.con = constitution;
+ -    newCharacter.charAbilityScores.int = intelligence;
+ -    newCharacter.charAbilityScores.wis = wisdom;
+ -    newCharacter.charAbilityScores.cha = charisma;
+ -      if (sumOfRolls !== (strength + dexterity + constitution + intelligence + wisdom + charisma)) {
+ -        alert("HEY!!! Please enter the exact numbers you were given!  What are you, some kind of CHEATER?!")
+ -      }
+        if (race === "elf") {
+ -        newCharacter.charRace = elf;
+         elf.abilityScoreIncrease(newCharacter);
+        } else if (race === "human") {
+ -        newCharacter.charRace = human;
+        } else if (race === "dwarf") {
+ -        newCharacter.charRace = dwarf;
+        } else if (race === "halfling") {
+ -        newCharacter.charRace = halfling;
+ -      }
+ -      if (characterClass === "ranger") {
+ -        ranger.savingThrowsBonus(newCharacter);
+ -        newCharacter.charClass = ranger;
+ -      } else if (characterClass === "fighter") {
+ -        newCharacter.charClass = fighter;
+ -      } else if (characterClass === "wizard") {
+ -        newCharacter.charClass = wizard;
+ -      } else if (characterClass === "cleric") {
+ -        newCharacter.charClass = cleric;
+        }
+ -      newCharacter.abilityScoreModifier(charAbilityScores);
+ -      newCharacter.baseSavingThrow(charSavingThrows);
+ -      console.log(newCharacter);
+     });
 });
