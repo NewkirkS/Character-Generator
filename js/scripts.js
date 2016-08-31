@@ -127,7 +127,7 @@ var lightCrossbow = {
   type: "simple ranged",
   damage: "1d8 piercing",
   range: "80/320",
-  properties: ["loading", "ammunition", "two-handed"],
+  properties: ["loading", "ammunition", "two-handed"]
 }
 
 var longsword = {
@@ -135,7 +135,15 @@ var longsword = {
   type: "martial melee",
   damage: "1d8 slashing",
   range: "5",
-  properties: ["versatile (1d10)"],
+  properties: ["versatile (1d10)"]
+}
+
+var quarterstaff = {
+  name: "Quarterstaff",
+  type: "simple melee",
+  damage: "1d6 bludgeoning",
+  range: "5",
+  properties: ["versatile (1d8)"]
 }
 
 //Armor
@@ -150,6 +158,13 @@ var chainMail = {
   armorType: "Heavy",
   ac: 6
 }
+
+var cloth = {
+  name: "Cloth",
+  armorType: "Cloth",
+  ac: 0
+}
+
 /******
 RACES
 *******/
@@ -183,14 +198,16 @@ var human = {
 
 // DWARF
 var dwarf = {
-  abilityScoreIncrease: function(character) {
-    character.charAbilityScores.con += 2
-  },
   size: "medium",
   speed: 25,
   languages: ["Common", "Dwarvish"],
-  raceTraits: ["Darkvision", "Dwarven Resilience", "Dwarven Combat Training", "Tool Proficiency", "Stonecunning"]
+  raceTraits: ["Darkvision", "Dwarven Resilience", "Dwarven Combat Training", "Tool Proficiency", "Stonecunning"],
+  abilityScoreIncrease: function(character) {
+    character.charAbilityScores.con += 2
+  }
 }
+
+
 
 /******
 CLASSES
@@ -202,25 +219,43 @@ var ranger = {
   hitDie: "1d10",
   proficiencies: ["Simple weapons", "Martial weapons", "Light armor", "Medium armor", "Shields"],
   skills: ["Animal handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
+  features: ["Favored Enemy", "Natural Explorer"],
+  armor: leatherArmor,
+  weapons: [longbow, shortsword],
   savingThrowsBonus: function(character) {
     character.charSavingThrows.strSave += character.charProfBonus;
     character.charSavingThrows.dexSave += character.charProfBonus;
-  },
-  armor: leatherArmor,
-  weapons: [longbow, shortsword]
+  }
 }
 
+// FIGHTER
 var fighter = {
   classHp: 10,
   hitDie: "1d10",
   proficiencies: ["Simple weapons", "Martial weapons", "Light armor", "Medium armor", "Heavy Armor", "Shields"],
   skills: ["Animal handling", "Athletics", "Acrobatics", "History", "Insight", "Intimidation", "Perception", "Survival"],
+  features: ["Fighting Style", "Second Wind"],
+  armor: chainMail,
+  weapons: [longsword, lightCrossbow],
   savingThrowsBonus: function(character) {
     character.charSavingThrows.strSave += character.charProfBonus;
     character.charSavingThrows.conSave += character.charProfBonus;
-  },
-  armor: chainMail,
-  weapons: [longsword, lightCrossbow]
+  }
+}
+
+//Wizard
+
+var wizard = {
+  classHp: 6,
+  hitDie: "1d6",
+  proficiencies: ["Daggers", "Darts", "Slings", "Quarter staffs", "Light crossbows"],
+  skills: ["Arcana", "History", "Insight", "Investigation", "Medicine", "Religion"],
+  features: ["Spellcasting", "Arcane Recovery"],
+  armor: cloth,
+  weapons: [quarterstaff],
+  savingThrowsBonus: function(character) {
+
+  }
 }
 
 //UI Simulation
@@ -361,6 +396,6 @@ $(document).ready(function() {
     $("#hp-sheet").text(newCharacter.charHp);
     $("#hd-sheet").text(newCharacter.charLevel);
     $("#race-traits-sheet").text(newCharacter.charRace.raceTraits);
-    // $("#class-features-sheet").text(newCharacter.charClass.classFeatures);
+    $("#class-features-sheet").text(newCharacter.charClass.features);
   });
 });
