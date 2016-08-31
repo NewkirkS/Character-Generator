@@ -30,6 +30,7 @@ var charSavingThrows = {
 function Character(playerName, charName) {
   this.playerName = playerName;
   this.charName = charName;
+  this.charAlignment;
   this.charRace;
   this.charClass;
   this.charLevel = 1;
@@ -131,6 +132,7 @@ var leatherArmor = {
 // RANGER OBJECT
 var ranger = {
   classHp: 10,
+  hitDie: "1d10",
   proficiencies: ["Simple weapons", "Martial weapons", "Light armor", "Medium armor", "Shields"],
   skills: ["Animal handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
   savingThrowsBonus: function(character) {
@@ -149,11 +151,12 @@ newCharacter.baseSavingThrow(charSavingThrows);
 ranger.savingThrowsBonus(newCharacter);
 newCharacter.charRace = elf;
 newCharacter.charClass = ranger;
-newCharacter.calculateAc();
-newCharacter.calculateInit();
-newCharacter.calculateHp();
+newCharacter.calculateStats();
 newCharacter.charSpeed = newCharacter.charRace.speed;
+newCharacter.charAlignment = "Chaotic-Neutral";
+
 newCharacter;
+//Passive Wisdom, Hit Dice, Alignment,
 
 //Ability Score Roller
 var rollCharAbilityScores = function(array) {
