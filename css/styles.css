@@ -16,12 +16,19 @@ input {
 
 .centered {
   display: block;
-  margin: 5px;
   text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .class-skills {
   display: none;
+}
+
+.ability-scores-display {
+  font-size: 16px;
+  font-weight: bolder;
+  margin: 10px;
 }
 
 #ability-form-submit {
