@@ -200,8 +200,18 @@ $(document).ready(function() {
     console.log(sumOfRolls);
   });
 
-  $("#ranger").change(function(){
-
+  $("#class-input").change(function(){
+    var characterClass = $("#class-input").val();
+    $(".class-skills").hide();
+    if (characterClass === "ranger") {
+      $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival").show();
+    } else if (characterClass === "fighter") {
+      $("#acrobatics, #animal-handling, #athletics, #history, #insight, #intimidation, #perception, #survival").show();
+    } else if (characterClass === "wizard") {
+      $("#arcana, #history, #insight, #investigation, #medicine, #religion").show();
+    } else if (characterClass === "cleric") {
+      $("#history, #insight, #medicine, #persuasion, #religion").show();
+    }
   });
 
   $("#character-form").submit(function(){
