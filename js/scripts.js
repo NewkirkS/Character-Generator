@@ -54,7 +54,7 @@ Character.prototype.calculateStats = function(character) {
   this.abilityScoreModifier(character.charAbilityScores);
   this.baseSavingThrow(charSavingThrows);
   this.charClass.savingThrowsBonus(character);
-  if (this.charClass.armor.armorType === "Heavy") {
+  if (this.charClass.armor.type === "heavy") {
     this.charAc = 10 + this.charClass.armor.ac;
   } else {
     this.charAc = 10 + this.charAbilityScoreModifiers.dexMod + this.charClass.armor.ac;
@@ -207,6 +207,16 @@ var dwarf = {
   }
 }
 
+// HALFLING
+var halfling = {
+  size: "small",
+  speed: 25,
+  languages: ["Common", "Halfling"],
+  raceTraits: ["Lucky", "Brave", "Halfling Nimbleness"],
+  abilityScoreIncrease: function(character) {
+    character.charAbilityScores.dex += 2
+  }
+}
 
 
 /******
@@ -254,10 +264,25 @@ var wizard = {
   armor: cloth,
   weapons: [quarterstaff],
   savingThrowsBonus: function(character) {
-
+    character.charSavingThrows.intSave += character.charProfBonus;
+    character.charSavingThrows.wisSave += character.charProfBonus;
   }
 }
 
+//Cleric
+var cleric = {
+  classHp: 8,
+  hitDie: "1d8",
+  proficiencies: ["Simple Weapons", "Light Armor", "Medium Armor", "Shields"],
+  skills: ["Religion", "History", "Insight", "Persuasion", "Medicine",],
+  features: ["Spellcasting", "Divine Domain"],
+  armor: scaleMail,
+  weapons: [mace, lightCrossbow],
+  savingThrowsBonus: function(character) {
+    character.charSavingThrows.wisSave += character.charProfBonus;
+    character.charSavingThrows.chaSave += character.charProfBonus;
+  }
+}
 //UI Simulation
 // var submitTest = function(){
 //   var newCharacter = new Character("Caleb", "Thrond");
@@ -269,6 +294,7 @@ var wizard = {
 //   console.log(newCharacter);
 // }
 // submitTest();
+
 
 //Ability Score Roller
 var rollCharAbilityScores = function(array) {

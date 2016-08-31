@@ -1,3 +1,4 @@
+//Weapons
 function Weapon (name, type, damage, range, properties) {
   this.name = name;
   this.type = type;
@@ -240,4 +241,84 @@ var net = {
   damage: "",
   range: "5/15",
   properties: ["special", "thrown"],
+}
+
+//Armor
+
+var leather = {
+  name: "Leather armor",
+  type: "light",
+  ac: 1,
+}
+
+var padded = {
+  name: "Padded armor",
+  type: "light",
+  ac: 1,
+}
+
+var studdedLeather = {
+  name: "Leather armor",
+  type: "light",
+  ac: 2,
+}
+
+var hide = {
+  name: "Hide armor",
+  type: "medium",
+  ac: 2,
+}
+
+var chainShirt = {
+  name: "Chain shirt armor",
+  type: "medium",
+  ac: 3,
+}
+
+var scaleMail = {
+  name: "Scale mail armor",
+  type: "medium",
+  ac: 4,
+}
+
+var breastplate = {
+  name: "Breastplate armor",
+  type: "medium",
+  ac: 4,
+}
+
+var halfPlate = {
+  name: "Half plate armor",
+  type: "medium",
+  ac: 5,
+}
+
+var ringMail = {
+  name: "Ring mail armor",
+  type: "heavy",
+  ac: 4,
+}
+
+var chainMail = {
+  name: "Chain mail armor",
+  type: "heavy",
+  ac: 6,
+}
+
+var splint = {
+  name: "Splint armor",
+  type: "heavy",
+  ac: 7,
+}
+
+var plate = {
+  name: "Plate armor",
+  type: "heavy",
+  ac: 8,
+}
+
+var shield = {
+  name: "Shield",
+  type: "shield",
+  ac: 2,
 }
