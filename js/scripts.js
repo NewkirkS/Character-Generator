@@ -1,3 +1,5 @@
+var abilityScoreArray = [];
+
 var charAbilityScores = {
   str: 0,
   dex: 0,
@@ -6,8 +8,6 @@ var charAbilityScores = {
   wis: 0,
   cha: 0
 }
-
-var abilityScoreArray = [];
 
 var charAbilityScoreModifiers = {
   strMod: 0,
@@ -47,17 +47,11 @@ function Character(playerName, charName) {
   this.charWeapons = [];
 }
 
-Character.prototype.calculateAc = function() {
+Character.prototype.calculateStats = function() {
   this.charAc = 10 + this.charAbilityScoreModifiers.dexMod + this.charClass.armor.ac;
-};
-
-Character.prototype.calculateInit = function() {
   this.charInit = this.charAbilityScoreModifiers.dexMod;
-}
-
-Character.prototype.calculateHp = function() {
   this.charHp = this.charClass.classHp + this.charAbilityScoreModifiers.conMod;
-}
+};
 
 Character.prototype.baseSavingThrow = function(obj) {
   for (var score in obj) {
@@ -156,6 +150,9 @@ ranger.savingThrowsBonus(newCharacter);
 newCharacter.charRace = elf;
 newCharacter.charClass = ranger;
 newCharacter.calculateAc();
+newCharacter.calculateInit();
+newCharacter.calculateHp();
+newCharacter.charSpeed = newCharacter.charRace.speed;
 newCharacter;
 
 //Ability Score Roller
