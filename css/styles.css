@@ -19,9 +19,18 @@ input {
   text-align: center;
   margin-top: 5px;
   margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .class-skills {
+  display: none;
+}
+
+.second-row {
+  min-height: 200px;
+}
+#wizard-spells, #cleric-spells {
   display: none;
 }
 
