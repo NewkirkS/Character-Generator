@@ -51,8 +51,12 @@ Character.prototype.calculateAc = function() {
   this.charAc = 10 + this.charAbilityScoreModifiers.dexMod + this.charClass.armor.ac;
 };
 
-Character.prototype.calculateInit = function(){
+Character.prototype.calculateInit = function() {
   this.charInit = this.charAbilityScoreModifiers.dexMod;
+}
+
+Character.prototype.calculateHp = function() {
+  this.charHp = this.charClass.classHp + this.charAbilityScoreModifiers.conMod;
 }
 
 Character.prototype.baseSavingThrow = function(obj) {
