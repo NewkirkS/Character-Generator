@@ -47,19 +47,21 @@ function Character(playerName, charName) {
   this.charAttacks = [];
   this.charArmor;
   this.charWeapons = [];
-}
+};
 
-Character.prototype.calculateStats = function() {
+Character.prototype.calculateStats = function(character) {
   this.charAc = 10 + this.charAbilityScoreModifiers.dexMod + this.charClass.armor.ac;
   this.charInit = this.charAbilityScoreModifiers.dexMod;
   this.charHp = this.charClass.classHp + this.charAbilityScoreModifiers.conMod;
+  this.charRace.abilityScoreIncrease(character);
+  this.charClass.savingThrowsBonus(character);
 };
 
 Character.prototype.baseSavingThrow = function(obj) {
   for (var score in obj) {
     obj[score] += this.charAbilityScoreModifiers[score.replace("Save", "Mod")];
   }
-}
+};
 
 Character.prototype.abilityScoreModifier = function(obj) {
   for (var score in obj) {
@@ -177,8 +179,10 @@ var fighter = {
     character.charSavingThrows.strSave += character.charProfBonus;
     character.charSavingThrows.conSave += character.charProfBonus;
   },
-  armor: chainMail
-  weapons: [longsword, lightCrossbow]
+  // armor: chainMail
+  // weapons: [longsword, lightCrossbow]
+  armor: leatherArmor,
+  weapons: [longbow, shortsword]
 }
 
 //UI Simulation
@@ -187,11 +191,11 @@ var submitTest = function(){
   newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
   newCharacter.charRace = human;
   newCharacter.charClass = fighter;
-  elf.abilityScoreIncrease(newCharacter);
+  // human.abilityScoreIncrease(newCharacter);
   newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
   newCharacter.baseSavingThrow(charSavingThrows);
-  ranger.savingThrowsBonus(newCharacter);
-  newCharacter.calculateStats();
+  // fighter.savingThrowsBonus(newCharacter);
+  newCharacter.calculateStats(newCharacter);
   newCharacter.charSpeed = newCharacter.charRace.speed;
   newCharacter.charAlignment = "Chaotic-Neutral";
   console.log(newCharacter);
