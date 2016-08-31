@@ -50,11 +50,18 @@ function Character(playerName, charName) {
 };
 
 Character.prototype.calculateStats = function(character) {
-  this.charAc = 10 + this.charAbilityScoreModifiers.dexMod + this.charClass.armor.ac;
+  this.charRace.abilityScoreIncrease(character);
+  this.abilityScoreModifier(character.charAbilityScores);
+  this.baseSavingThrow(charSavingThrows);
+  this.charClass.savingThrowsBonus(character);
+  if (this.charClass.armor.armorType === "Heavy") {
+    this.charAc = 10 + this.charClass.armor.ac;
+  } else {
+    this.charAc = 10 + this.charAbilityScoreModifiers.dexMod + this.charClass.armor.ac;
+  }
   this.charInit = this.charAbilityScoreModifiers.dexMod;
   this.charHp = this.charClass.classHp + this.charAbilityScoreModifiers.conMod;
-  this.charRace.abilityScoreIncrease(character);
-  this.charClass.savingThrowsBonus(character);
+  this.charSpeed = character.charRace.speed;
 };
 
 Character.prototype.baseSavingThrow = function(obj) {
@@ -115,12 +122,34 @@ var shortsword = {
   damage: "1d6 Piercing"
 }
 
+var lightCrossbow = {
+  name: "Light crossbow",
+  type: "simple ranged",
+  damage: "1d8 piercing",
+  range: "80/320",
+  properties: ["loading", "ammunition", "two-handed"],
+}
+
+var longsword = {
+  name: "Longsword",
+  type: "martial melee",
+  damage: "1d8 slashing",
+  range: "5",
+  properties: ["versatile (1d10)"],
+}
+
 //Armor
 var leatherArmor = {
   name: "Leather Armor",
+  armorType: "Light",
   ac: 1
 }
 
+var chainMail = {
+  name: "Chain Mail",
+  armorType: "Heavy",
+  ac: 6
+}
 /******
 RACES
 *******/
@@ -179,24 +208,17 @@ var fighter = {
     character.charSavingThrows.strSave += character.charProfBonus;
     character.charSavingThrows.conSave += character.charProfBonus;
   },
-  // armor: chainMail
-  // weapons: [longsword, lightCrossbow]
-  armor: leatherArmor,
-  weapons: [longbow, shortsword]
+  armor: chainMail,
+  weapons: [longsword, lightCrossbow]
 }
 
 //UI Simulation
 var submitTest = function(){
   var newCharacter = new Character("Caleb", "Thrond");
   newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
-  newCharacter.charRace = human;
-  newCharacter.charClass = fighter;
-  // human.abilityScoreIncrease(newCharacter);
-  newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
-  newCharacter.baseSavingThrow(charSavingThrows);
-  // fighter.savingThrowsBonus(newCharacter);
+  newCharacter.charRace = elf;
+  newCharacter.charClass = ranger;
   newCharacter.calculateStats(newCharacter);
-  newCharacter.charSpeed = newCharacter.charRace.speed;
   newCharacter.charAlignment = "Chaotic-Neutral";
   console.log(newCharacter);
 }
