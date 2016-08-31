@@ -18,7 +18,16 @@
           <div class="col-sm-4 col-sm-offset-2">
             <label for="player-name">Player name:</label>
             <input type="text" class="form-control" id="player-name-input"><br>
-            <div class="centered class-form">
+          </div>
+          <div class="col-sm-4">
+            <label for="character-name">Character name:</label>
+            <input type="text" class="form-control" id="character-name-input"><br>
+          </div>
+        </div>
+
+        <div class="row form-inline">
+          <div class="col-sm-3 col-sm-offset-1">
+            <div class="centered">
               <label for="player-race">Race:</label>
               <select class="form-control" id="race-input">
                 <option value="human">Human</option>
@@ -28,9 +37,7 @@
               </select>
             </div>
           </div>
-          <div class="col-sm-4">
-            <label for="character-name">Character name:</label>
-            <input type="text" class="form-control" id="character-name-input"><br>
+          <div class="col-sm-3">
             <div class="centered">
               <label for="player-class">Class:</label>
               <select class="form-control" id="class-input">
@@ -41,39 +48,48 @@
               </select>
             </div>
           </div>
+          <div class="col-sm-3">
+            <div class="centered">
+              <label for="player-level">Level:</label>
+              <select class="form-control" id="level-input">
+                <option id="" value="1">1</option>
+              </select>
+            </div>
+          </div>
         </div>
+
         <hr>
         <button type="button" class="btn btn-lg btn-success btn-block" id="ability-roll">Roll for your ability scores!</button><br>
         <h3>Ability scores:</h3>
-        <div class="row">
-          <div class="col-sm-2" id="ability-roll-1">
+        <div class="row ability-scores-display">
+          <div class="col-sm-2 centered" id="ability-roll-1">
           </div>
-          <div class="col-sm-2" id="ability-roll-2">
+          <div class="col-sm-2 centered" id="ability-roll-2">
           </div>
-          <div class="col-sm-2" id="ability-roll-3">
+          <div class="col-sm-2 centered" id="ability-roll-3">
           </div>
-          <div class="col-sm-2" id="ability-roll-4">
+          <div class="col-sm-2 centered" id="ability-roll-4">
           </div>
-          <div class="col-sm-2" id="ability-roll-5">
+          <div class="col-sm-2 centered" id="ability-roll-5">
           </div>
-          <div class="col-sm-2" id="ability-roll-6">
+          <div class="col-sm-2 centered" id="ability-roll-6">
           </div>
         </div>
         <div class="row">
           <div class="col-sm-4 col-sm-offset-2 form-inline">
-            <input required type="number" id="strength" class="form-control">
+            <input type="number" id="strength" class="form-control">
             <label for="strength">Strength</label><br>
-            <input required type="number" id="dexterity" class="form-control">
+            <input type="number" id="dexterity" class="form-control">
             <label for="dexterity">Dexterity</label><br>
-            <input required type="number" id="constitution" class="form-control">
+            <input type="number" id="constitution" class="form-control">
             <label for="constitution">Constitution</label>
           </div>
           <div class="col-sm-4 form-inline">
-            <input required type="number" id="intelligence" class="form-control">
+            <input type="number" id="intelligence" class="form-control">
             <label for="intelligence">Intelligence</label><br>
-            <input required type="number" id="wisdom" class="form-control">
+            <input type="number" id="wisdom" class="form-control">
             <label for="wisdom">Wisdom</label><br>
-            <input required type="number" id="charisma" class="form-control">
+            <input type="number" id="charisma" class="form-control">
             <label for="charisma">Charisma</label>
           </div>
         </div>
@@ -287,7 +303,7 @@
             <h4>Equipment</h4>
           </div>
         </div>
-        <button type="submit" class="btn btn-lg btn-primary" id="character-form-submit">Submit</button>
+        <button type="submit" class="btn btn-lg btn-primary centered" id="character-form-submit">Submit</button>
       </form>
 
       <!-- Character Sheet Output -->
@@ -348,7 +364,7 @@
             <p id="bonds-sheet"></p>
             <h5>Flaws</h5>
             <p id="flaws-sheet"></p>
-            <h5>Race Traits</h5>
+            <h5>Racial Traits</h5>
             <ul id="race-traits-sheet">
             </ul>
             <h5>Class features</h5>
