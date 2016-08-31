@@ -165,6 +165,7 @@ var elf = {
   raceTraits: ["Darkvision", "Keen Senses", "Fey Ancestry", "Trance"]
 }
 
+//HUMAN
 var human = {
   abilityScoreIncrease: function(character) {
     character.charAbilityScores.str += 1
@@ -180,6 +181,16 @@ var human = {
   raceTraits: ["Extra Language"]
 }
 
+// DWARF
+var dwarf = {
+  abilityScoreIncrease: function(character) {
+    character.charAbilityScores.con += 2
+  },
+  size: "medium",
+  speed: 25,
+  languages: ["Common", "Dwarvish"],
+  raceTraits: ["Darkvision", "Dwarven Resilience", "Dwarven Combat Training", "Tool Proficiency", "Stonecunning"]
+}
 
 /******
 CLASSES
@@ -216,7 +227,7 @@ var fighter = {
 var submitTest = function(){
   var newCharacter = new Character("Caleb", "Thrond");
   newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
-  newCharacter.charRace = elf;
+  newCharacter.charRace = dwarf;
   newCharacter.charClass = ranger;
   newCharacter.calculateStats(newCharacter);
   newCharacter.charAlignment = "Chaotic-Neutral";
