@@ -315,10 +315,10 @@ $(document).ready(function() {
   $("#class-input").change(function(){
     var characterClass = $("#class-input").val();
     $(".class-skills").hide();
-    if (characterClass === "ranger") {
-      $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival").show();
-    } else if (characterClass === "fighter") {
+    if (characterClass === "fighter") {
       $("#acrobatics, #animal-handling, #athletics, #history, #insight, #intimidation, #perception, #survival").show();
+    } else if (characterClass === "ranger") {
+      $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival").show();
     } else if (characterClass === "wizard") {
       $("#arcana, #history, #insight, #investigation, #medicine, #religion").show();
     } else if (characterClass === "cleric") {
@@ -351,9 +351,9 @@ $(document).ready(function() {
     newCharacter.charAbilityScores.wis = wisdom;
     newCharacter.charAbilityScores.cha = charisma;
     newCharacter.charLevel = level;
-    // if (sumOfRolls !== (strength + dexterity + constitution + intelligence + wisdom + charisma)) {
-    //   alert("HEY!!! Please enter the exact numbers you were given!  What are you, some kind of CHEATER?!")
-    // }
+    if (sumOfRolls !== (strength + dexterity + constitution + intelligence + wisdom + charisma)) {
+      alert("HEY!!! Please enter the exact numbers you were given!  What are you, some kind of CHEATER?!")
+    }
     if (race === "elf") {
       newCharacter.charRace = elf;
     } else if (race === "human") {
@@ -381,6 +381,17 @@ $(document).ready(function() {
     //output values
     $("#proficiency-bonus-sheet").text(newCharacter.charProfBonus);
     //Inspiriation needed
+
+    var skillArray = []
+    $("input:checkbox[name=skills]:checked").each (function() {
+      skillArray.push($(this).val());
+    });
+    skillArray.forEach(function(skill) {
+      $("#skills").append("<li>" + skill + " (+" + (newCharacter.charAbilityScoreModifiers.strMod + newCharacter.charProfBonus)  + ") </li>")
+    });
+
+    $("#skills").show();
+
     $("#strength-sheet").text(newCharacter.charAbilityScores.str + " (+" + newCharacter.charAbilityScoreModifiers.strMod + ")");
     $("#dexterity-sheet").text(newCharacter.charAbilityScores.dex + " (+" + newCharacter.charAbilityScoreModifiers.dexMod + ")");
     $("#constitution-sheet").text(newCharacter.charAbilityScores.con + " (+" + newCharacter.charAbilityScoreModifiers.conMod + ")");
@@ -390,8 +401,7 @@ $(document).ready(function() {
     $("#perception-sheet").text(newCharacter.charAbilityScoreModifiers.wis); //plus perception
     $("#languages-sheet").text(newCharacter.charRace.languages[0] + " and " + newCharacter.charRace.languages[1]);
     $("#ac-sheet").text(newCharacter.charAc);
-    //char Init.
-    $("#initiative-sheet").text(newCharacter.charAbilityScoreModifiers.dex);
+    $("#initiative-sheet").text(newCharacter.charAbilityScoreModifiers.dexMod);
     $("#speed-sheet").text(newCharacter.charRace.speed);
     $("#hp-sheet").text(newCharacter.charHp);
     $("#hd-sheet").text(newCharacter.charLevel);
