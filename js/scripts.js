@@ -51,6 +51,10 @@ Character.prototype.calculateAc = function() {
   this.charAc = 10 + this.charAbilityScoreModifiers.dexMod + this.charClass.armor.ac;
 };
 
+Character.prototype.calculateInit = function(){
+  this.charInit = this.charAbilityScoreModifiers.dexMod;
+}
+
 Character.prototype.baseSavingThrow = function(obj) {
   for (var score in obj) {
     obj[score] += this.charAbilityScoreModifiers[score.replace("Save", "Mod")];
@@ -110,7 +114,7 @@ var elf = {
 var longbow = {
   name: "Longbow",
   type: "ranged",
-  range: "150/600"
+  range: "150/600",
   damage: "1d8 Piercing"
 }
 
@@ -182,7 +186,7 @@ $(document).ready(function() {
   $("#click-cleric-1st").click(function(){
     $("#cleric-1st-level").toggle();
   });
-  
+
   $("#ability-roll").click(function(){
     rollCharAbilityScores(abilityScoreArray);
     for (i=1; i < 7; i++) {
