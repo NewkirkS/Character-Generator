@@ -1,6 +1,6 @@
 //Weapons
 
-function weapon (name, type, damage, range, properties) {
+function Weapon (name, type, damage, range, properties) {
   this.name = name;
   this.type = type;
   this.damage = damage;
@@ -206,7 +206,7 @@ var whip = {
 
 var blowgun = {
   name: "Blowgun",
-  type: "martial melee",
+  type: "martial ranged",
   damage: "1 piercing",
   range: "25/100",
   properties: ["ammunition", "loading"],
@@ -214,7 +214,7 @@ var blowgun = {
 
 var handCrossbow = {
   name: "Blowgun",
-  type: "martial melee",
+  type: "martial ranged",
   damage: "1d6 piercing",
   range: "30/120",
   properties: ["ammunition", "light", "loading"],
@@ -222,7 +222,7 @@ var handCrossbow = {
 
 var heavyCrossbow = {
   name: "Heavy crossbow",
-  type: "martial melee",
+  type: "martial ranged",
   damage: "1d10 piercing",
   range: "100/400",
   properties: ["ammunition", "loading", "heavy", "two-handed"],
@@ -230,7 +230,7 @@ var heavyCrossbow = {
 
 var longbow = {
   name: "Longbow",
-  type: "martial melee",
+  type: "martial ranged",
   damage: "1d8 piercing",
   range: "150/600",
   properties: ["ammunition", "heavy", "two-handed"],
@@ -238,7 +238,7 @@ var longbow = {
 
 var net = {
   name: "Net",
-  type: "martial melee",
+  type: "martial ranged",
   damage: "",
   range: "5/15",
   properties: ["special", "thrown"],
@@ -322,4 +322,10 @@ var shield = {
   name: "Shield",
   type: "shield",
   ac: 2,
+}
+
+var cloth = {
+  name: "Cloth",
+  armorType: "Cloth",
+  ac: 0
 }
