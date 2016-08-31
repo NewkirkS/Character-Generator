@@ -109,61 +109,61 @@ Character.prototype.abilityScoreModifier = function(obj) {
 }
 
 // Weapons
-var longbow = {
-  name: "Longbow",
-  type: "ranged",
-  range: "150/600",
-  damage: "1d8 Piercing"
-}
-
-var shortsword = {
-  name: "Shortsword",
-  type: "melee",
-  damage: "1d6 Piercing"
-}
-
-var lightCrossbow = {
-  name: "Light crossbow",
-  type: "simple ranged",
-  damage: "1d8 piercing",
-  range: "80/320",
-  properties: ["loading", "ammunition", "two-handed"]
-}
-
-var longsword = {
-  name: "Longsword",
-  type: "martial melee",
-  damage: "1d8 slashing",
-  range: "5",
-  properties: ["versatile (1d10)"]
-}
-
-var quarterstaff = {
-  name: "Quarterstaff",
-  type: "simple melee",
-  damage: "1d6 bludgeoning",
-  range: "5",
-  properties: ["versatile (1d8)"]
-}
-
-//Armor
-var leatherArmor = {
-  name: "Leather Armor",
-  armorType: "Light",
-  ac: 1
-}
-
-var chainMail = {
-  name: "Chain Mail",
-  armorType: "Heavy",
-  ac: 6
-}
-
-var cloth = {
-  name: "Cloth",
-  armorType: "Cloth",
-  ac: 0
-}
+// var longbow = {
+//   name: "Longbow",
+//   type: "ranged",
+//   range: "150/600",
+//   damage: "1d8 Piercing"
+// }
+//
+// var shortsword = {
+//   name: "Shortsword",
+//   type: "melee",
+//   damage: "1d6 Piercing"
+// }
+//
+// var lightCrossbow = {
+//   name: "Light crossbow",
+//   type: "simple ranged",
+//   damage: "1d8 piercing",
+//   range: "80/320",
+//   properties: ["loading", "ammunition", "two-handed"]
+// }
+//
+// var longsword = {
+//   name: "Longsword",
+//   type: "martial melee",
+//   damage: "1d8 slashing",
+//   range: "5",
+//   properties: ["versatile (1d10)"]
+// }
+//
+// var quarterstaff = {
+//   name: "Quarterstaff",
+//   type: "simple melee",
+//   damage: "1d6 bludgeoning",
+//   range: "5",
+//   properties: ["versatile (1d8)"]
+// }
+//
+// //Armor
+// var leatherArmor = {
+//   name: "Leather Armor",
+//   armorType: "Light",
+//   ac: 1
+// }
+//
+// var chainMail = {
+//   name: "Chain Mail",
+//   armorType: "Heavy",
+//   ac: 6
+// }
+//
+// var cloth = {
+//   name: "Cloth",
+//   armorType: "Cloth",
+//   ac: 0
+// }
 
 /******
 RACES
@@ -226,11 +226,11 @@ CLASSES
 // RANGER
 var ranger = {
   classHp: 10,
-  hitDie: "1d10",
+  hitDie: "d10",
   proficiencies: ["Simple weapons", "Martial weapons", "Light armor", "Medium armor", "Shields"],
   skills: ["Animal handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
   features: ["Favored Enemy", "Natural Explorer"],
-  armor: leatherArmor,
+  armor: leather,
   weapons: [longbow, shortsword],
   savingThrowsBonus: function(character) {
     character.charSavingThrows.strSave += character.charProfBonus;
@@ -241,7 +241,7 @@ var ranger = {
 // FIGHTER
 var fighter = {
   classHp: 10,
-  hitDie: "1d10",
+  hitDie: "d10",
   proficiencies: ["Simple weapons", "Martial weapons", "Light armor", "Medium armor", "Heavy Armor", "Shields"],
   skills: ["Animal handling", "Athletics", "Acrobatics", "History", "Insight", "Intimidation", "Perception", "Survival"],
   features: ["Fighting Style", "Second Wind"],
@@ -257,7 +257,7 @@ var fighter = {
 
 var wizard = {
   classHp: 6,
-  hitDie: "1d6",
+  hitDie: "d6",
   proficiencies: ["Daggers", "Darts", "Slings", "Quarter staffs", "Light crossbows"],
   skills: ["Arcana", "History", "Insight", "Investigation", "Medicine", "Religion"],
   features: ["Spellcasting", "Arcane Recovery"],
@@ -272,7 +272,7 @@ var wizard = {
 //Cleric
 var cleric = {
   classHp: 8,
-  hitDie: "1d8",
+  hitDie: "d8",
   proficiencies: ["Simple Weapons", "Light Armor", "Medium Armor", "Shields"],
   skills: ["Religion", "History", "Insight", "Persuasion", "Medicine",],
   features: ["Spellcasting", "Divine Domain"],
@@ -347,8 +347,10 @@ $(document).ready(function() {
       $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival").show();
     } else if (characterClass === "wizard") {
       $("#arcana, #history, #insight, #investigation, #medicine, #religion").show();
+      $("#wizard-spells").show();
     } else if (characterClass === "cleric") {
       $("#history, #insight, #medicine, #persuasion, #religion").show();
+      $("#cleric-spells").show();
     }
   });
 
@@ -413,8 +415,10 @@ $(document).ready(function() {
       skillArray.push($(this).val());
     });
     skillArray.forEach(function(skill) {
-      $("#skills").append("<li>" + skill + " (+" + (newCharacter.charAbilityScoreModifiers.strMod + newCharacter.charProfBonus)  + ") </li>")
+      $("#skills").append("<li>" + skill +  "</li>")
     });
+    //add to list items to include ability modifier specific to skill ability
+    // " (+" + (newCharacter.charAbilityScoreModifiers.strMod + newCharacter.charProfBonus)  + ")
 
     $("#skills").show();
 
@@ -430,8 +434,20 @@ $(document).ready(function() {
     $("#initiative-sheet").text(newCharacter.charAbilityScoreModifiers.dexMod);
     $("#speed-sheet").text(newCharacter.charRace.speed);
     $("#hp-sheet").text(newCharacter.charHp);
-    $("#hd-sheet").text(newCharacter.charLevel);
+    $("#hd-sheet").text(newCharacter.charLevel + newCharacter.charClass.hitDie);
     $("#race-traits-sheet").text(newCharacter.charRace.raceTraits);
     $("#class-features-sheet").text(newCharacter.charClass.features);
+    //Display equipment and attacks in character sheet
+    newCharacter.charClass.weapons.forEach(function(index){
+      if (index.type === "simple melee" || index.type === "martial melee") {
+        $("#attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.strMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.strMod + "</li>");
+      } else {
+        $("#attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.dexMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.dexMod + "<br> Range: " + index.range + " ft.</li>");
+      }
+    });
+    newCharacter.charClass.weapons.forEach(function(index){
+      $("#equipment-sheet").append("<li>" + index.name + "</li>");
+    });
+    $("#equipment-sheet").append("<li>" + newCharacter.charClass.armor.name + "</li>");
   });
 });
