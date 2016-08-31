@@ -224,16 +224,16 @@ var fighter = {
 }
 
 //UI Simulation
-var submitTest = function(){
-  var newCharacter = new Character("Caleb", "Thrond");
-  newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
-  newCharacter.charRace = dwarf;
-  newCharacter.charClass = ranger;
-  newCharacter.calculateStats(newCharacter);
-  newCharacter.charAlignment = "Chaotic-Neutral";
-  console.log(newCharacter);
-}
-submitTest();
+// var submitTest = function(){
+//   var newCharacter = new Character("Caleb", "Thrond");
+//   newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
+//   newCharacter.charRace = dwarf;
+//   newCharacter.charClass = ranger;
+//   newCharacter.calculateStats(newCharacter);
+//   newCharacter.charAlignment = "Chaotic-Neutral";
+//   console.log(newCharacter);
+// }
+// submitTest();
 
 //Ability Score Roller
 var rollCharAbilityScores = function(array) {
@@ -344,12 +344,12 @@ $(document).ready(function() {
     //output values
     $("#proficiency-bonus-sheet").text(newCharacter.charProfBonus);
     //Inspiriation needed
-    $("#strength-sheet").text(newCharacter.charAbilityScores.str);
-    $("#dexterity-sheet").text(newCharacter.charAbilityScores.dex);
-    $("#constitution-sheet").text(newCharacter.charAbilityScores.con);
-    $("#intelligence-sheet").text(newCharacter.charAbilityScores.int);
-    $("#wisdom-sheet").text(newCharacter.charAbilityScores.wis);
-    $("#charisma-sheet").text(newCharacter.charAbilityScores.cha);
+    $("#strength-sheet").text(newCharacter.charAbilityScores.str + " (+" + newCharacter.charAbilityScoreModifiers.strMod + ")");
+    $("#dexterity-sheet").text(newCharacter.charAbilityScores.dex + " (+" + newCharacter.charAbilityScoreModifiers.dexMod + ")");
+    $("#constitution-sheet").text(newCharacter.charAbilityScores.con + " (+" + newCharacter.charAbilityScoreModifiers.conMod + ")");
+    $("#intelligence-sheet").text(newCharacter.charAbilityScores.int + " (+" + newCharacter.charAbilityScoreModifiers.intMod + ")");
+    $("#wisdom-sheet").text(newCharacter.charAbilityScores.wis + " (+" + newCharacter.charAbilityScoreModifiers.wisMod + ")");
+    $("#charisma-sheet").text(newCharacter.charAbilityScores.cha + " (+" + newCharacter.charAbilityScoreModifiers.chaMod + ")");
     $("#perception-sheet").text(newCharacter.charAbilityScoreModifiers.wis); //plus perception
     $("#languages-sheet").text(newCharacter.charRace.languages[0] + " and " + newCharacter.charRace.languages[1]);
     $("#ac-sheet").text(newCharacter.charAc);

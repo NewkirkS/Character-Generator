@@ -1,4 +1,4 @@
-function weapon (name, type, damage, range, properties) {
+function Weapon (name, type, damage, range, properties) {
   this.name = name;
   this.type = type;
   this.damage = damage;
