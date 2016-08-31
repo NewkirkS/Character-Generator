@@ -99,18 +99,7 @@ Character.prototype.abilityScoreModifier = function(obj) {
   }
 }
 
-// ELF OBJECT
-var elf = {
-  abilityScoreIncrease: function(character) {
-    return character.charAbilityScores.dex += 2 //check return
-  },
-  size: "medium",
-  speed: 30,
-  languages: ["Common", "Elvish"],
-  raceTraits: ["Darkvision", "Keen Senses", "Fey Ancestry", "Trance"]
-}
-
-//Weapons
+// Weapons
 var longbow = {
   name: "Longbow",
   type: "ranged",
@@ -130,7 +119,42 @@ var leatherArmor = {
   ac: 1
 }
 
-// RANGER OBJECT
+/******
+RACES
+*******/
+
+// ELF
+var elf = {
+  abilityScoreIncrease: function(character) {
+    character.charAbilityScores.dex += 2 //check return
+  },
+  size: "medium",
+  speed: 30,
+  languages: ["Common", "Elvish"],
+  raceTraits: ["Darkvision", "Keen Senses", "Fey Ancestry", "Trance"]
+}
+
+var human = {
+  abilityScoreIncrease: function(character) {
+    character.charAbilityScores.str += 1
+    character.charAbilityScores.dex += 1
+    character.charAbilityScores.con += 1
+    character.charAbilityScores.int += 1
+    character.charAbilityScores.wis += 1
+    character.charAbilityScores.cha += 1
+  },
+  size: "medium",
+  speed: 30,
+  languages: ["Common"],
+  raceTraits: ["Extra Language"]
+}
+
+
+/******
+CLASSES
+*******/
+
+// RANGER
 var ranger = {
   classHp: 10,
   hitDie: "1d10",
@@ -144,19 +168,35 @@ var ranger = {
   weapons: [longbow, shortsword]
 }
 
-//UI Simulation
-// var newCharacter = new Character("Caleb", "Thrond");
-// newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
-// newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
-// newCharacter.baseSavingThrow(charSavingThrows);
-// ranger.savingThrowsBonus(newCharacter);
-// newCharacter.charRace = elf;
-// newCharacter.charClass = ranger;
-// newCharacter.calculateStats();
-// newCharacter.charSpeed = newCharacter.charRace.speed;
-// newCharacter.charAlignment = "Chaotic-Neutral";
-// newCharacter;
+var fighter = {
+  classHp: 10,
+  hitDie: "1d10",
+  proficiencies: ["Simple weapons", "Martial weapons", "Light armor", "Medium armor", "Heavy Armor", "Shields"],
+  skills: ["Animal handling", "Athletics", "Acrobatics", "History", "Insight", "Intimidation", "Perception", "Survival"],
+  savingThrowsBonus: function(character) {
+    character.charSavingThrows.strSave += character.charProfBonus;
+    character.charSavingThrows.conSave += character.charProfBonus;
+  },
+  armor: chainMail
+  weapons: [longsword, lightCrossbow]
+}
 
+//UI Simulation
+var submitTest = function(){
+  var newCharacter = new Character("Caleb", "Thrond");
+  newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
+  newCharacter.charRace = human;
+  newCharacter.charClass = fighter;
+  elf.abilityScoreIncrease(newCharacter);
+  newCharacter.abilityScoreModifier(newCharacter.charAbilityScores);
+  newCharacter.baseSavingThrow(charSavingThrows);
+  ranger.savingThrowsBonus(newCharacter);
+  newCharacter.calculateStats();
+  newCharacter.charSpeed = newCharacter.charRace.speed;
+  newCharacter.charAlignment = "Chaotic-Neutral";
+  console.log(newCharacter);
+}
+submitTest();
 
 //Ability Score Roller
 var rollCharAbilityScores = function(array) {
