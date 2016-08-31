@@ -306,7 +306,9 @@ $(document).ready(function() {
     var wisdom = parseInt($("#wisdom").val());
     var charisma = parseInt($("#charisma").val());
     var level = parseInt($("#level-input").val());
+
     var newCharacter = new Character(playName, characterName);
+
     newCharacter.charAbilityScores.str = strength;
     newCharacter.charAbilityScores.dex = dexterity;
     newCharacter.charAbilityScores.con = constitution;
@@ -319,7 +321,6 @@ $(document).ready(function() {
     // }
     if (race === "elf") {
       newCharacter.charRace = elf;
-      elf.abilityScoreIncrease(newCharacter);
     } else if (race === "human") {
       newCharacter.charRace = human;
     } else if (race === "dwarf") {
@@ -327,8 +328,8 @@ $(document).ready(function() {
     } else if (race === "halfling") {
       newCharacter.charRace = halfling;
     }
+
     if (characterClass === "ranger") {
-      ranger.savingThrowsBonus(newCharacter);
       newCharacter.charClass = ranger;
     } else if (characterClass === "fighter") {
       newCharacter.charClass = fighter;
@@ -337,8 +338,9 @@ $(document).ready(function() {
     } else if (characterClass === "cleric") {
       newCharacter.charClass = cleric;
     }
-    newCharacter.abilityScoreModifier(charAbilityScores);
-    newCharacter.baseSavingThrow(charSavingThrows);
+
+    newCharacter.calculateStats(newCharacter);
+
     console.log(newCharacter);
 
     //output values
@@ -353,6 +355,7 @@ $(document).ready(function() {
     $("#perception-sheet").text(newCharacter.charAbilityScoreModifiers.wis); //plus perception
     $("#languages-sheet").text(newCharacter.charRace.languages[0] + " and " + newCharacter.charRace.languages[1]);
     $("#ac-sheet").text(newCharacter.charAc);
+    //char Init.
     $("#initiative-sheet").text(newCharacter.charAbilityScoreModifiers.dex);
     $("#speed-sheet").text(newCharacter.charRace.speed);
     $("#hp-sheet").text(newCharacter.charHp);
