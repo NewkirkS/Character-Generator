@@ -207,6 +207,16 @@ var dwarf = {
   }
 }
 
+// HALFLING
+var halfling = {
+  size: "small",
+  speed: 25,
+  languages: ["Common", "Halfling"],
+  raceTraits: ["Lucky", "Brave", "Halfling Nimbleness"],
+  abilityScoreIncrease: function(character) {
+    character.charAbilityScores.dex += 2
+  }
+}
 
 
 /******
@@ -261,8 +271,8 @@ var wizard = {
 //UI Simulation
 var submitTest = function(){
   var newCharacter = new Character("Caleb", "Thrond");
-  newCharacter.charAbilityScores = {str: 15, dex: 12, con: 19, int: 5, wis: 7, cha: 12}
-  newCharacter.charRace = elf;
+  newCharacter.charAbilityScores = {str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10}
+  newCharacter.charRace = halfling;
   newCharacter.charClass = ranger;
   newCharacter.calculateStats(newCharacter);
   newCharacter.charAlignment = "Chaotic-Neutral";
