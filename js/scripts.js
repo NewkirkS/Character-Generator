@@ -108,62 +108,62 @@ Character.prototype.abilityScoreModifier = function(obj) {
   }
 }
 
-// Weapons
-var longbow = {
-  name: "Longbow",
-  type: "ranged",
-  range: "150/600",
-  damage: "1d8 Piercing"
-}
-
-var shortsword = {
-  name: "Shortsword",
-  type: "melee",
-  damage: "1d6 Piercing"
-}
-
-var lightCrossbow = {
-  name: "Light crossbow",
-  type: "simple ranged",
-  damage: "1d8 piercing",
-  range: "80/320",
-  properties: ["loading", "ammunition", "two-handed"]
-}
-
-var longsword = {
-  name: "Longsword",
-  type: "martial melee",
-  damage: "1d8 slashing",
-  range: "5",
-  properties: ["versatile (1d10)"]
-}
-
-var quarterstaff = {
-  name: "Quarterstaff",
-  type: "simple melee",
-  damage: "1d6 bludgeoning",
-  range: "5",
-  properties: ["versatile (1d8)"]
-}
-
-//Armor
-var leatherArmor = {
-  name: "Leather Armor",
-  armorType: "Light",
-  ac: 1
-}
-
-var chainMail = {
-  name: "Chain Mail",
-  armorType: "Heavy",
-  ac: 6
-}
-
-var cloth = {
-  name: "Cloth",
-  armorType: "Cloth",
-  ac: 0
-}
+// // Weapons
+// var longbow = {
+//   name: "Longbow",
+//   type: "ranged",
+//   range: "150/600",
+//   damage: "1d8 Piercing"
+// }
+//
+// var shortsword = {
+//   name: "Shortsword",
+//   type: "melee",
+//   damage: "1d6 Piercing"
+// }
+//
+// var lightCrossbow = {
+//   name: "Light crossbow",
+//   type: "simple ranged",
+//   damage: "1d8 piercing",
+//   range: "80/320",
+//   properties: ["loading", "ammunition", "two-handed"]
+// }
+//
+// var longsword = {
+//   name: "Longsword",
+//   type: "martial melee",
+//   damage: "1d8 slashing",
+//   range: "5",
+//   properties: ["versatile (1d10)"]
+// }
+//
+// var quarterstaff = {
+//   name: "Quarterstaff",
+//   type: "simple melee",
+//   damage: "1d6 bludgeoning",
+//   range: "5",
+//   properties: ["versatile (1d8)"]
+// }
+//
+// //Armor
+// var leatherArmor = {
+//   name: "Leather Armor",
+//   armorType: "Light",
+//   ac: 1
+// }
+//
+// var chainMail = {
+//   name: "Chain Mail",
+//   armorType: "Heavy",
+//   ac: 6
+// }
+//
+// var cloth = {
+//   name: "Cloth",
+//   armorType: "Cloth",
+//   ac: 0
+// }
 
 /******
 RACES
@@ -220,7 +220,7 @@ var ranger = {
   proficiencies: ["Simple weapons", "Martial weapons", "Light armor", "Medium armor", "Shields"],
   skills: ["Animal handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
   features: ["Favored Enemy", "Natural Explorer"],
-  armor: leatherArmor,
+  armor: leather,
   weapons: [longbow, shortsword],
   savingThrowsBonus: function(character) {
     character.charSavingThrows.strSave += character.charProfBonus;
@@ -407,5 +407,16 @@ $(document).ready(function() {
     $("#hd-sheet").text(newCharacter.charLevel);
     $("#race-traits-sheet").text(newCharacter.charRace.raceTraits);
     $("#class-features-sheet").text(newCharacter.charClass.features);
+    newCharacter.charClass.weapons.forEach(function(index){
+      if (index.type === "simple melee" || index.type === "martial melee") {
+        $("#attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.strMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.strMod + "</li>");
+      } else {
+        $("#attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.dexMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.dexMod + "<br> Range: " + index.range + " ft.</li>");
+      }
+    });
+    newCharacter.charClass.weapons.forEach(function(index){
+      $("#equipment-sheet").append("<li>" + index.name + "</li>");
+    });
+    $("#equipment-sheet").append("<li>" + newCharacter.charClass.armor.name + "</li>");
   });
 });
