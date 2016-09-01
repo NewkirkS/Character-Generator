@@ -289,9 +289,6 @@ $(document).ready(function() {
   $("#click-cleric-1st").click(function(){
     $("#cleric-1st-level").toggle();
   });
-  $("#click-cleric-1st").click(function(){
-    $("#cleric-1st-level").toggle();
-  });
   $("#weapons-show").click(function(){
     $("#weapons").toggle();
   });
@@ -316,7 +313,7 @@ $(document).ready(function() {
     } else if (characterClass === "fighter") {
       $("#acrobatics, #animal-handling, #athletics, #history, #insight, #intimidation, #perception, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged").show();
     } else if (characterClass === "wizard") {
-      $("#arcana, #history, #insight, #investigation, #medicine, #religion, #wizard-spells, #dagger, #dart, #sling, #quarterstaff, #lightCrossbow").show();
+      $("#arcana, #history, #insight, #investigation, #medicine, #religion, #wizard-spells, #simple-melee").show();
     } else if (characterClass === "cleric") {
       $("#history, #insight, #medicine, #persuasion, #religion, #cleric-spells, #simple-melee, #simple-ranged").show();
     }
@@ -393,7 +390,6 @@ $(document).ready(function() {
     $("#wisdom-sheet").text(newCharacter.charAbilityScores.wis + " (+" + newCharacter.charAbilityScoreModifiers.wisMod + ")");
     $("#charisma-sheet").text(newCharacter.charAbilityScores.cha + " (+" + newCharacter.charAbilityScoreModifiers.chaMod + ")");
     $("#perception-sheet").text(newCharacter.charAbilityScoreModifiers.wis); //plus perception
-    $("#languages-sheet").text(newCharacter.charRace.languages[0] + " and " + newCharacter.charRace.languages[1]);
     $("#ac-sheet").text(newCharacter.charAc);
     $("#initiative-sheet").text(newCharacter.charAbilityScoreModifiers.dex);
     $("#speed-sheet").text(newCharacter.charRace.speed);

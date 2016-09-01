@@ -105,7 +105,7 @@
 <!-- Skills, Spells, and Equipment checkboxes -->
         <div class="row">
           <div class="col-sm-4 second-row">
-            <h4>Skills</h4>
+            <h4>Skills: <span id="click-description">(Pick Two)</span></h4>
             <div class="class-skills" id="acrobatics">
               <label>
               <input type="checkbox" value="Acrobatics" name="skills"> Acrobatics (Dex)
@@ -200,9 +200,9 @@
           </div>
           <div class="col-sm-4 spells second-row">
             <div id="spells">
-              <h4>Spells</h4>
+              <h4>Spells: <span id="click-description">(Click to expand)</span></h4>
               <div id="wizard-spells">
-                <h5 id="click-wiz-cantrips">Cantrips:</h5>
+                <h5 id="click-wiz-cantrips">Cantrips: (Pick Four)</h5>
                 <div id="wiz-cantrips">
                     <label> <input type="checkbox" name="spells" value="Acid Splash">Acid Splash</label><br>
                     <label> <input type="checkbox" name="spells" value="Blade Ward">Blade Ward</label><br>
@@ -222,7 +222,7 @@
                     <label> <input type="checkbox" name="spells" value="True Strike">True Strike</label><br>
                   </select>
                 </div>
-                <h5 id="click-wiz-1st">1st Level Spells:</h5>
+                <h5 id="click-wiz-1st">1st Level Spells: (Pick Two)</h5>
                 <div id="wiz-1st-level">
                     <label> <input type="checkbox" name="spells" value="Alarm">Alarm</label><br>
                     <label> <input type="checkbox" name="spells" value="Burning Hands">Burning Hands</label><br>
@@ -258,7 +258,7 @@
                 </div>
               </div>
               <div id="cleric-spells">
-                <h5 id="click-cleric-cantrips">Cantrips:</h5>
+                <h5 id="click-cleric-cantrips">Cantrips: (Pick Three)</h5>
                 <div id="cleric-cantrips">
                     <label> <input type="checkbox" name="spells" value="Guidance">Guidance</label><br>
                     <label> <input type="checkbox" name="spells" value="Light">Light</label><br>
@@ -269,7 +269,7 @@
                     <label> <input type="checkbox" name="spells" value="Thaumaturgy">Thaumaturgy</label>
                   </select>
                 </div>
-                <h5 id="click-cleric-1st">1st Level Spells:</h5>
+                <h5 id="click-cleric-1st">1st Level Spells: (Pick Two)</h5>
                 <div id="cleric-1st-level">
                   <label> <input type="checkbox"name="spells" value="Bane">Bane</label><br>
                   <label> <input type="checkbox"name="spells" value="Bless">Bless</label><br>
@@ -292,13 +292,13 @@
             </div>
           </div>
           <div class="col-sm-4 second-row">
-            <h4>Equipment</h4>
+            <h4>Equipment: <span id="click-description">(Click to expand)</span></h4>
             <h5 id="weapons-show">Weapons:</h5>
             <div id="weapons">
               <div id="simple-melee">
                 <h6>Simple melee</h6>
                 <label> <input type="checkbox" name="weapons" value="club">Club</label><br>
-                <label> <input type="checkbox" name="weapons" value="dagger">Dagger</label><br>
+                <label > <input type="checkbox" name="weapons" value="dagger">Dagger</label><br>
                 <label> <input type="checkbox" name="weapons" value="greatclub">Greatclub</label><br>
                 <label> <input type="checkbox" name="weapons" value="handaxe">Handaxe</label><br>
                 <label> <input type="checkbox" name="weapons" value="javelin">Javelin</label><br>
