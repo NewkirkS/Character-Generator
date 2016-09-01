@@ -9,9 +9,14 @@
     <title>5e Generator</title>
   </head>
   <body>
-    <div class= "container">
+    <div class="hero">
       <h1>Dungeons &amp; Dragons</h1>
       <h2>5e Character Generator</h2>
+      <a href="#container" id="begin">Begin</a>
+    </div>
+    <div id="container" class="container">
+      <!-- <h1>Dungeons &amp; Dragons</h1>
+      <h2>5e Character Generator</h2> -->
       <br>
       <!-- First Form: Names and Ability Scores -->
       <form class="form-group" id="character-form">
@@ -25,7 +30,6 @@
             <input type="text" class="form-control" id="character-name-input"><br>
           </div>
         </div>
-
         <div class="row form-inline">
           <div class="col-sm-3 col-sm-offset-1">
             <div class="centered">
@@ -60,22 +64,21 @@
             </div>
           </div>
         </div>
-
         <hr>
-        <button type="button" class="btn btn-lg btn-success btn-block" id="ability-roll">Roll for your ability scores!</button><br>
-        <h3>Ability scores:</h3>
+        <button type="button" class="btn btn-lg btn-secondary btn-block" id="ability-roll">Roll for your ability scores!</button><br>
+        <h3 id="ability-scores-title">Ability scores:</h3>
         <div class="row ability-scores-display">
-          <div class="col-sm-2 centered" id="ability-roll-1">
+          <div class="col-sm-1 centered" id="ability-roll-1">
           </div>
-          <div class="col-sm-2 centered" id="ability-roll-2">
+          <div class="col-sm-1 centered" id="ability-roll-2">
           </div>
-          <div class="col-sm-2 centered" id="ability-roll-3">
+          <div class="col-sm-1 centered" id="ability-roll-3">
           </div>
-          <div class="col-sm-2 centered" id="ability-roll-4">
+          <div class="col-sm-1 centered" id="ability-roll-4">
           </div>
-          <div class="col-sm-2 centered" id="ability-roll-5">
+          <div class="col-sm-1 centered" id="ability-roll-5">
           </div>
-          <div class="col-sm-2 centered" id="ability-roll-6">
+          <div class="col-sm-1 centered" id="ability-roll-6">
           </div>
         </div>
         <div class="row">

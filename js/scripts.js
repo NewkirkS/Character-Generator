@@ -247,6 +247,13 @@ var rollCharAbilityScores = function(array) {
 
 //User Interface Logic
 $(document).ready(function() {
+  $("#begin").click(function() {
+    var target = $(this).attr('href');
+          $('html, body')
+              .animate({
+                  scrollTop: $(target).offset().top}, 'slow', 'swing', function() {});
+  });
+
   $("#click-wiz-cantrips").click(function(){
     $("#wiz-cantrips").toggle();
   });
@@ -261,6 +268,7 @@ $(document).ready(function() {
   });
 
   $("#ability-roll").click(function(){
+    abilityScoreArray = [];
     rollCharAbilityScores(abilityScoreArray);
     for (i=1; i < 7; i++) {
       $("#ability-roll-" + i).text(abilityScoreArray[(i - 1)]);
@@ -288,7 +296,7 @@ $(document).ready(function() {
 
   $("#character-form").submit(function(){
     event.preventDefault();
-    $("#proficiency-bonus-sheet, #strength-sheet, #dexterity-sheet, #constitution-sheet, #intelligence-sheet, #wisdom-sheet, #charisma-sheet, #perception-sheet, #languages-sheet, #ac-sheet, #initiative-sheet, #speed-sheet, #hp-sheet, #hd-sheet, #race-traits-sheet, #class-features-sheet, #spells-sheet, #attacks-sheet, #equipment-sheet").empty();
+    $("#proficiency-bonus-sheet, #strength-sheet, #dexterity-sheet, #constitution-sheet, #intelligence-sheet, #wisdom-sheet, #charisma-sheet, #perception-sheet, #languages-sheet, #ac-sheet, #initiative-sheet, #speed-sheet, #hp-sheet, #hd-sheet, #race-traits-sheet, #class-features-sheet, #spells-sheet, #attacks-sheet, #equipment-sheet, #skills").empty();
     var playName = $("#player-name-input").val();
     var characterName = $("#character-name-input").val();
     rollCharAbilityScores(abilityScoreArray);

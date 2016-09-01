@@ -1,8 +1,42 @@
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.hero {
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  padding-top: 40vh;
+  background: url("../img/background.jpg");
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a#begin {
+  width: 10vw;
+  text-transform: uppercase;
+  background: transparent;
+  border: 2px solid white;
+  letter-spacing: 2px;
+  padding: 10px 20px;
+  color: white;
+}
+
+a#begin:hover {
+  text-decoration: none;
+}
+
 h1 {
   text-align: center;
 }
 
-h2, h4 {
+h2 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+h4 {
   text-align: center;
 }
 
@@ -17,6 +51,11 @@ label {
 
 input {
   margin: 5px;
+}
+
+.btn {
+    outline: none !important;
+    border-radius: 4px;
 }
 
 .centered {
@@ -45,10 +84,32 @@ input {
   margin: 10px;
 }
 
+#character-form-submit {
+  background-color: black;
+}
+
+#ability-roll {
+ background-color: white;
+ border-color: black;
+ border-width: 4px;
+}
+#ability-roll:hover{
+  background-color: lightgray;
+}
+
+#ability-scores-title {
+  float: left;
+  margin-right: 10vw;
+}
+
 #ability-form-submit {
   display: block;
   margin: auto;
   margin-top: 40px;
+}
+
+.ability-scores-display {
+  padding-top: 5px;
 }
 
 #click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover {
