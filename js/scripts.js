@@ -163,7 +163,6 @@ var halfling = {
   }
 }
 
-
 /******
 CLASSES
 *******/
