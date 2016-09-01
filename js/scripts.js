@@ -161,6 +161,30 @@ var halfling = {
     character.charAbilityScores.dex += 2
   }
 }
+
+//HALF-ORC
+var halfOrc = {
+  size: "medium",
+  speed: 30,
+  languages: ["Common", "Orc"],
+  raceTraits: ["Darkvision", "Menacing", "Relentless Endurance", "Savage Attacks"],
+  abilityScoreIncrease: function(character) {
+    character.charAbilityScores.str += 2
+    character.charAbilityScores.con += 1
+  }
+}
+
+//GNOME
+var gnome = {
+  size: "small",
+  speed: 25,
+  languages: ["Common", "Gnomish"],
+  raceTraits: ["Darkvision", "Gnome Cunning"],
+  abilityScoreIncrease: function(character) {
+    character.charAbilityScores.int += 2
+  }
+}
+
 /******
 CLASSES
 *******/
@@ -246,6 +270,13 @@ var rollCharAbilityScores = function(array) {
 //User Interface Logic
 //Spell Toggle Hover Buttons
 $(document).ready(function() {
+  $("#begin").click(function() {
+    var target = $(this).attr('href');
+          $('html, body')
+              .animate({
+                  scrollTop: $(target).offset().top}, 'slow', 'swing', function() {});
+  });
+
   $("#click-wiz-cantrips").click(function(){
     $("#wiz-cantrips").toggle();
   });
@@ -258,9 +289,16 @@ $(document).ready(function() {
   $("#click-cleric-1st").click(function(){
     $("#cleric-1st-level").toggle();
   });
+  $("#click-cleric-1st").click(function(){
+    $("#cleric-1st-level").toggle();
+  });
+  $("#weapons-show").click(function(){
+    $("#weapons").toggle();
+  });
 
 //Random Ability Score Button
   $("#ability-roll").click(function(){
+    abilityScoreArray = [];
     rollCharAbilityScores(abilityScoreArray);
     for (i=1; i < 7; i++) {
       $("#ability-roll-" + i).text(abilityScoreArray[(i - 1)]);
@@ -271,18 +309,16 @@ $(document).ready(function() {
 //Skill Hide/Show Event on Class Dropdown Change
   $("#class-input").change(function(){
     var characterClass = $("#class-input").val();
-    $(".class-skills").hide();
-    $("#wizard-spells, #cleric-spells").hide();
+    $(".class-skills, #wizard-spells, #cleric-spells, #weapons").hide();
+    $("#weapons-show").show();
     if (characterClass === "ranger") {
-      $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival").show();
+      $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged").show();
     } else if (characterClass === "fighter") {
-      $("#acrobatics, #animal-handling, #athletics, #history, #insight, #intimidation, #perception, #survival").show();
+      $("#acrobatics, #animal-handling, #athletics, #history, #insight, #intimidation, #perception, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged").show();
     } else if (characterClass === "wizard") {
-      $("#arcana, #history, #insight, #investigation, #medicine, #religion").show();
-      $("#wizard-spells").show();
+      $("#arcana, #history, #insight, #investigation, #medicine, #religion, #wizard-spells, #dagger, #dart, #sling, #quarterstaff, #lightCrossbow").show();
     } else if (characterClass === "cleric") {
-      $("#history, #insight, #medicine, #persuasion, #religion").show();
-      $("#cleric-spells").show();
+      $("#history, #insight, #medicine, #persuasion, #religion, #cleric-spells, #simple-melee, #simple-ranged").show();
     }
   });
 //User Form Submit and Results Output
@@ -321,7 +357,12 @@ $(document).ready(function() {
       newCharacter.charRace = dwarf;
     } else if (race === "halfling") {
       newCharacter.charRace = halfling;
+    } else if (race === "halfOrc") {
+      newCharacter.charRace = halfOrc;
+    } else if (race === "gnome") {
+      newCharacter.charRace = gnome;
     }
+
     if (characterClass === "ranger") {
       newCharacter.charClass = ranger;
     } else if (characterClass === "fighter") {

@@ -3,17 +3,57 @@ body {
   font-family: 'Marcellus SC', serif;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.hero {
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  padding-top: 40vh;
+  background: url("../img/background.jpg");
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a#begin {
+  width: 10vw;
+  text-transform: uppercase;
+  background: transparent;
+  border: 2px solid white;
+  letter-spacing: 2px;
+  padding: 10px 20px;
+  color: white;
+}
+
+a#begin:hover {
+  text-decoration: none;
+}
+
 h1 {
   text-align: center;
 }
 
-h2, h4 {
+h2 {
   text-align: center;
+  padding-bottom: 10px;
+}
+
+h4 {
+  text-align: center;
+  padding-bottom: 10px;
 }
 
 h5 {
-  font-size: 18px;
+  font-size: 16px;
   text-decoration: underline;
+  padding-top: 10px;
+}
+
+h6 {
+  font-size: 14px;
 }
 
 p, li {
@@ -27,7 +67,13 @@ label {
 input {
   margin: 5px;
 }
+
 /*Class Selectors*/
+.btn {
+    outline: none !important;
+    border-radius: 4px;
+}
+
 .centered {
   display: block;
   text-align: center;
@@ -50,9 +96,28 @@ input {
   font-weight: bolder;
   margin: 10px;
 }
+
 /*ID Selectors*/
 #wizard-spells, #cleric-spells {
   display: none;
+}
+
+#character-form-submit {
+  background-color: black;
+}
+
+#ability-roll {
+ background-color: white;
+ border-color: black;
+ border-width: 4px;
+}
+#ability-roll:hover{
+  background-color: lightgray;
+}
+
+#ability-scores-title {
+  float: left;
+  margin-right: 10vw;
 }
 
 #ability-form-submit {
@@ -61,17 +126,26 @@ input {
   margin-top: 40px;
 }
 
-#click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover {
+#click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover, #weapons-show:hover {
   color: firebrick;
 }
 
-#wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level {
+.ability-scores-display {
+  padding-top: 5px;
+}
+
+#wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level, #weapons-show {
+  display: none;
+}
+
+#simple-melee, #simple-ranged, #martial-melee, #martial-ranged {
   display: none;
 }
 
 #output-sheet {
   display: none;
 }
+
 /*Media Queries*/
 @media only screen and (max-width:1195px) {
   #player-name-input {
@@ -81,7 +155,6 @@ input {
 
 @media only screen and (max-width:1000px) {
   #race-input, #class-input, #level-input {
-
     float:right;
   }
 }
