@@ -406,12 +406,21 @@ $(document).ready(function() {
     //output values
     $("#proficiency-bonus-sheet").text(newCharacter.charProfBonus);
     //Inspiriation needed
-    $("#strength-sheet").text(newCharacter.charAbilityScores.str);
-    $("#dexterity-sheet").text(newCharacter.charAbilityScores.dex);
-    $("#constitution-sheet").text(newCharacter.charAbilityScores.con);
-    $("#intelligence-sheet").text(newCharacter.charAbilityScores.int);
-    $("#wisdom-sheet").text(newCharacter.charAbilityScores.wis);
-    $("#charisma-sheet").text(newCharacter.charAbilityScores.cha);
+    var skillArray = []
+    $("input:checkbox[name=skills]:checked").each (function() {
+      skillArray.push($(this).val());
+    });
+    skillArray.forEach(function(skill) {
+      $("#skills").append("<li>" + skill + "</li>")
+    });
+    $("#skills").show();
+
+    $("#strength-sheet").text(newCharacter.charAbilityScores.str + " (+" + newCharacter.charAbilityScoreModifiers.strMod + ")");
+    $("#dexterity-sheet").text(newCharacter.charAbilityScores.dex + " (+" + newCharacter.charAbilityScoreModifiers.dexMod + ")");
+    $("#constitution-sheet").text(newCharacter.charAbilityScores.con + " (+" + newCharacter.charAbilityScoreModifiers.conMod + ")");
+    $("#intelligence-sheet").text(newCharacter.charAbilityScores.int + " (+" + newCharacter.charAbilityScoreModifiers.intMod + ")");
+    $("#wisdom-sheet").text(newCharacter.charAbilityScores.wis + " (+" + newCharacter.charAbilityScoreModifiers.wisMod + ")");
+    $("#charisma-sheet").text(newCharacter.charAbilityScores.cha + " (+" + newCharacter.charAbilityScoreModifiers.chaMod + ")");
     $("#perception-sheet").text(newCharacter.charAbilityScoreModifiers.wis); //plus perception
     $("#languages-sheet").text(newCharacter.charRace.languages[0] + " and " + newCharacter.charRace.languages[1]);
     $("#ac-sheet").text(newCharacter.charAc);
