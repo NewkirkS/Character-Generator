@@ -68,6 +68,10 @@ input {
   margin: 5px;
 }
 
+.container{
+  height: 100vh;
+}
+
 /*Class Selectors*/
 .btn {
     outline: none !important;
