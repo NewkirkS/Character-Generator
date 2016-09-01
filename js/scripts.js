@@ -290,6 +290,8 @@ $(document).ready(function() {
                   scrollTop: $(target).offset().top}, 'slow', 'swing', function() {});
   });
 
+  $("#weapons, #armor, #wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level, #down-arrow").hide();
+
   $("#click-wiz-cantrips").click(function(){
     $("#wiz-cantrips").toggle();
   });
