@@ -1,3 +1,4 @@
+/*Universal Selectors*/
 h1 {
   text-align: center;
 }
@@ -11,6 +12,10 @@ h5 {
   text-decoration: underline;
 }
 
+p, li {
+  font-size: 1.2em;
+}
+
 label {
   font-size: 15px;
 }
@@ -18,7 +23,7 @@ label {
 input {
   margin: 5px;
 }
-
+/*Class Selectors*/
 .centered {
   display: block;
   text-align: center;
@@ -35,14 +40,15 @@ input {
 .second-row {
   min-height: 200px;
 }
-#wizard-spells, #cleric-spells {
-  display: none;
-}
 
 .ability-scores-display {
   font-size: 16px;
   font-weight: bolder;
   margin: 10px;
+}
+/*ID Selectors*/
+#wizard-spells, #cleric-spells {
+  display: none;
 }
 
 #ability-form-submit {
@@ -52,9 +58,26 @@ input {
 }
 
 #click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover {
-  color: darkred;
+  color: firebrick;
 }
 
 #wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level {
   display: none;
+}
+
+#output-sheet {
+  display: none;
+}
+/*Media Queries*/
+@media only screen and (max-width:1195px) {
+  #player-name-input {
+    display: block;
+  }
+}
+
+@media only screen and (max-width:1000px) {
+  #race-input, #class-input, #level-input {
+
+    float:right;
+  }
 }

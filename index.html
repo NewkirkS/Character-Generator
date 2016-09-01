@@ -13,7 +13,7 @@
       <h1>Dungeons &amp; Dragons</h1>
       <h2>5e Character Generator</h2>
       <br>
-      <!-- First Form: Names and Ability Scores -->
+<!-- First Form: Names, Race, Class, and Ability Scores -->
       <form class="form-group" id="character-form">
         <div class="row form-inline">
           <div class="col-sm-4 col-sm-offset-2">
@@ -63,6 +63,7 @@
 
         <hr>
         <button type="button" class="btn btn-lg btn-success btn-block" id="ability-roll">Roll for your ability scores!</button><br>
+<!-- Ability Scores Output for user to arange into the appropriate user fields -->
         <h3>Ability scores:</h3>
         <div class="row ability-scores-display">
           <div class="col-sm-2 centered" id="ability-roll-1">
@@ -97,10 +98,10 @@
           </div>
         </div>
         <hr>
+<!-- Skills, Spells, and Equipment checkboxes -->
         <div class="row">
           <div class="col-sm-4 second-row">
             <h4>Skills</h4>
-<!-- FIX THIS FIRST THING (Put each checkbox in div, get rid of br, put ids etc on div.) -->
             <div class="class-skills" id="acrobatics">
               <label>
               <input type="checkbox" value="Acrobatics" name="skills"> Acrobatics (Dex)
@@ -291,7 +292,7 @@
         <button type="submit" class="btn btn-lg btn-primary centered" id="character-form-submit">Submit</button>
       </form>
 
-      <!-- Character Sheet Output -->
+<!-- Character Sheet Output -->
       <div id="character-sheet">
         <div id="sheet-header">
           <h4 id="character-name-sheet"></h4>
@@ -310,7 +311,8 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" id="output-sheet">
+        <a href="#output-sheet"></a>
           <div class="col-sm-4">
             <p>Proficiency Bonus: <span id="proficiency-bonus-sheet"></span></p>
             <p>Strength: <span id="strength-sheet"></span></p>

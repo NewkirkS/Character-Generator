@@ -1,4 +1,5 @@
 //Business logic
+//Global variable and Objects
 var abilityScoreArray = [];
 var sumOfRolls = 0;
 
@@ -28,7 +29,7 @@ var charSavingThrows = {
   wisSave: 0,
   chaSave: 0
 }
-
+//Objects and Prototypes
 function Character(playerName, charName) {
   this.playerName = playerName;
   this.charName = charName;
@@ -108,8 +109,6 @@ Character.prototype.abilityScoreModifier = function(obj) {
     }
   }
 }
-
-
 /******
 RACES
 *******/
@@ -162,7 +161,6 @@ var halfling = {
     character.charAbilityScores.dex += 2
   }
 }
-
 /******
 CLASSES
 *******/
@@ -246,6 +244,7 @@ var rollCharAbilityScores = function(array) {
 }
 
 //User Interface Logic
+//Spell Toggle Hover Buttons
 $(document).ready(function() {
   $("#click-wiz-cantrips").click(function(){
     $("#wiz-cantrips").toggle();
@@ -260,15 +259,16 @@ $(document).ready(function() {
     $("#cleric-1st-level").toggle();
   });
 
+//Random Ability Score Button
   $("#ability-roll").click(function(){
     rollCharAbilityScores(abilityScoreArray);
     for (i=1; i < 7; i++) {
       $("#ability-roll-" + i).text(abilityScoreArray[(i - 1)]);
         sumOfRolls += abilityScoreArray[(i - 1)];
     }
-    console.log(sumOfRolls);
   });
 
+//Skill Hide/Show Event on Class Dropdown Change
   $("#class-input").change(function(){
     var characterClass = $("#class-input").val();
     $(".class-skills").hide();
@@ -285,10 +285,11 @@ $(document).ready(function() {
       $("#cleric-spells").show();
     }
   });
-
+//User Form Submit and Results Output
   $("#character-form").submit(function(){
     event.preventDefault();
     $("#proficiency-bonus-sheet, #strength-sheet, #dexterity-sheet, #constitution-sheet, #intelligence-sheet, #wisdom-sheet, #charisma-sheet, #perception-sheet, #languages-sheet, #ac-sheet, #initiative-sheet, #speed-sheet, #hp-sheet, #hd-sheet, #race-traits-sheet, #class-features-sheet, #spells-sheet, #attacks-sheet, #equipment-sheet").empty();
+    $("#output-sheet").show('1000');
     var playName = $("#player-name-input").val();
     var characterName = $("#character-name-input").val();
     rollCharAbilityScores(abilityScoreArray);
@@ -309,12 +310,11 @@ $(document).ready(function() {
     newCharacter.charAbilityScores.wis = wisdom;
     newCharacter.charAbilityScores.cha = charisma;
     newCharacter.charLevel = level;
-    // if (sumOfRolls !== (strength + dexterity + constitution + intelligence + wisdom + charisma)) {
-    //   alert("HEY!!! Please enter the exact numbers you were given!  What are you, some kind of CHEATER?!")
-    // }
+    if (sumOfRolls !== (strength + dexterity + constitution + intelligence + wisdom + charisma)) {
+      alert("HEY!!! Please enter the exact numbers you were given!  What are you, some kind of CHEATER?!")
+    }
     if (race === "elf") {
       newCharacter.charRace = elf;
-      elf.abilityScoreIncrease(newCharacter);
     } else if (race === "human") {
       newCharacter.charRace = human;
     } else if (race === "dwarf") {
@@ -323,7 +323,6 @@ $(document).ready(function() {
       newCharacter.charRace = halfling;
     }
     if (characterClass === "ranger") {
-      ranger.savingThrowsBonus(newCharacter);
       newCharacter.charClass = ranger;
     } else if (characterClass === "fighter") {
       newCharacter.charClass = fighter;
@@ -333,9 +332,8 @@ $(document).ready(function() {
       newCharacter.charClass = cleric;
     }
     newCharacter.calculateStats(newCharacter);
-    console.log(newCharacter);
 
-    //Character Sheet
+//Character Sheet Output
     $("#proficiency-bonus-sheet").text(newCharacter.charProfBonus);
     //Inspiriation needed
     var skillArray = []
@@ -366,7 +364,10 @@ $(document).ready(function() {
     newCharacter.charClass.features.forEach(function(index){
       $("#class-features-sheet").append("<li>" + index + "</li>");
     });
-    //Display chosen spells in character sheet
+    newCharacter.charRace.languages.forEach(function(index){
+      $("#languages-sheet").append("<li>" + index + "</li>");
+    });
+//Display Chosen Spells in Character Sheet
     var chosenSpells = [];
     $("input:checkbox[name=spells]:checked").each(function(){
       chosenSpells.push($(this).val());
@@ -374,7 +375,7 @@ $(document).ready(function() {
     chosenSpells.forEach(function(index){
       $("#spells-sheet").append("<li>" + index + "</li>");
     });
-    //Display melee and ranged weapon attacks in character sheet
+//Display Melee and Ranged Weapon Attacks in Character Sheet
     newCharacter.charClass.weapons.forEach(function(index){
       if (index.type === "simple melee" || index.type === "martial melee") {
         $("#attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.strMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.strMod + "</li>");
@@ -383,11 +384,10 @@ $(document).ready(function() {
       }
     });
 
-    //Display equipment in character sheet
+//Display Equipment in Character Sheet
     newCharacter.charClass.weapons.forEach(function(index){
       $("#equipment-sheet").append("<li>" + index.name + "</li>");
     });
     $("#equipment-sheet").append("<li>" + newCharacter.charClass.armor.name + "</li>");
-
   });
 });
