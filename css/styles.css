@@ -1,4 +1,8 @@
 /*Universal Selectors*/
+body {
+  font-family: 'Marcellus SC', serif;
+}
+
 h1 {
   text-align: center;
 }
@@ -17,7 +21,7 @@ p, li {
 }
 
 label {
-  font-size: 15px;
+  font-size: 18px;
 }
 
 input {
