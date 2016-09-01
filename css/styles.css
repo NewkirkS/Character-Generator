@@ -130,7 +130,7 @@ input {
   margin-top: 40px;
 }
 
-#click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover, #weapons-show:hover {
+#click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover, #weapons-show:hover, #armor-show:hover {
   color: firebrick;
 }
 
@@ -138,16 +138,22 @@ input {
   padding-top: 5px;
 }
 
-#wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level, #weapons-show {
+#wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level, #weapons-show, #armor-show {
   display: none;
 }
 
-#simple-melee, #simple-ranged, #martial-melee, #martial-ranged {
+#simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #light-armor, #medium-armor, #heavy-armor, #shield, #cloth-armor {
   display: none;
 }
 
 #output-sheet {
   display: none;
+}
+
+#down-arrow {
+  display: none;
+  text-align: center;
+  font-size: 15px;
 }
 
 /*Media Queries*/

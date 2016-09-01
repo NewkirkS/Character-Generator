@@ -344,9 +344,42 @@
                 <label> <input type="checkbox" name="weapons" value="net">Net</label><br>
               </div>
             </div>
+            <h5 id="armor-show">Armor:</h5>
+            <div id="armor">
+              <div id="cloth-armor">
+                <label> <input type="checkbox" name="armor">Cloth </label><br>
+              </div>
+              <div id="light-armor">
+                <h6>Light armor</h6>
+                <label> <input type="checkbox" name="armor">Leather </label><br>
+                <label> <input type="checkbox" name="armor">Padded </label><br>
+                <label> <input type="checkbox" name="armor">Studded leather </label><br>
+              </div>
+              <div id="medium-armor">
+                <h6>Medium armor</h6>
+                  <label> <input type="checkbox" name="armor">Hide </label><br>
+                  <label> <input type="checkbox" name="armor">Chain shirt </label><br>
+                  <label> <input type="checkbox" name="armor">Scale mail </label><br>
+                  <label> <input type="checkbox" name="armor">Breatplate </label><br>
+                  <label> <input type="checkbox" name="armor">Half plate </label><br>
+              </div>
+              <div id="heavy-armor">
+                <h6>Heavy armor</h6>
+                <label> <input type="checkbox" name="armor">Ring mail </label><br>
+                <label> <input type="checkbox" name="armor">Chain mail </label><br>
+                <label> <input type="checkbox" name="armor">Splint </label><br>
+                <label> <input type="checkbox" name="armor">Plate </label><br>
+              </div>
+              <div id="shield">
+                <h6>Shield</h6>
+                  <label> <input type="checkbox" name="armor">Shield</label><br>
+              </div>
+            </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-lg btn-primary centered" id="character-form-submit"><a href="#character-sheet">Submit</a></button>
+        <button type="submit" class="btn btn-lg btn-primary centered" id="character-form-submit">Submit</button>
+        <br>
+        <p id="down-arrow">Character sheet below<br>&darr;</p>
       </form>
     </div>
 
@@ -355,10 +388,9 @@
       <div id="character-sheet">
         <div id="sheet-header">
           <h4 id="character-name-sheet"></h4>
+          <h4 id="race-class-sheet"></h4>
           <div class="row">
             <div class="col-sm-4">
-              <p id="class-level-sheet"></p>
-              <p id="race-sheet"></p>
             </div>
             <div class="col-sm-4">
               <p id="background-sheet"></p>

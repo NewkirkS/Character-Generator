@@ -118,6 +118,7 @@ var elf = {
   abilityScoreIncrease: function(character) {
     character.charAbilityScores.dex += 2
   },
+  name: "Elf",
   size: "medium",
   speed: 30,
   languages: ["Common", "Elvish"],
@@ -134,6 +135,7 @@ var human = {
     character.charAbilityScores.wis += 1
     character.charAbilityScores.cha += 1
   },
+  name: "Human",
   size: "medium",
   speed: 30,
   languages: ["Common"],
@@ -142,6 +144,7 @@ var human = {
 
 // DWARF
 var dwarf = {
+  name: "Dwarf",
   size: "medium",
   speed: 25,
   languages: ["Common", "Dwarvish"],
@@ -153,6 +156,7 @@ var dwarf = {
 
 // HALFLING
 var halfling = {
+  name: "Halfling",
   size: "small",
   speed: 25,
   languages: ["Common", "Halfling"],
@@ -164,6 +168,7 @@ var halfling = {
 
 //HALF-ORC
 var halfOrc = {
+  name: "Half-Orc",
   size: "medium",
   speed: 30,
   languages: ["Common", "Orc"],
@@ -176,6 +181,7 @@ var halfOrc = {
 
 //GNOME
 var gnome = {
+  name: "Gnome",
   size: "small",
   speed: 25,
   languages: ["Common", "Gnomish"],
@@ -191,6 +197,7 @@ CLASSES
 
 // RANGER
 var ranger = {
+  name: "Ranger",
   classHp: 10,
   hitDie: "d10",
   proficiencies: ["Simple weapons", "Martial weapons", "Light armor", "Medium armor", "Shields"],
@@ -206,6 +213,7 @@ var ranger = {
 
 // FIGHTER
 var fighter = {
+  name: "Fighter",
   classHp: 10,
   hitDie: "d10",
   proficiencies: ["Simple weapons", "Martial weapons", "Light armor", "Medium armor", "Heavy Armor", "Shields"],
@@ -221,6 +229,7 @@ var fighter = {
 
 //Wizard
 var wizard = {
+  name: "Wizard",
   classHp: 6,
   hitDie: "d6",
   proficiencies: ["Daggers", "Darts", "Slings", "Quarter staffs", "Light crossbows"],
@@ -236,6 +245,7 @@ var wizard = {
 
 //Cleric
 var cleric = {
+  name: "Cleric",
   classHp: 8,
   hitDie: "d8",
   proficiencies: ["Simple Weapons", "Light Armor", "Medium Armor", "Shields"],
@@ -270,6 +280,9 @@ var rollCharAbilityScores = function(array) {
 //User Interface Logic
 //Spell Toggle Hover Buttons
 $(document).ready(function() {
+
+  $(this).scrollTop(0);
+
   $("#begin").click(function() {
     var target = $(this).attr('href');
           $('html, body')
@@ -295,6 +308,9 @@ $(document).ready(function() {
   $("#weapons-show").click(function(){
     $("#weapons").toggle();
   });
+  $("#armor-show").click(function(){
+    $("#armor").toggle();
+  });
 
 //Random Ability Score Button
   $("#ability-roll").click(function(){
@@ -304,28 +320,33 @@ $(document).ready(function() {
       $("#ability-roll-" + i).text(abilityScoreArray[(i - 1)]);
         sumOfRolls += abilityScoreArray[(i - 1)];
     }
+    $("#ability-roll").prop("disabled", true);
+    $("#character-form-submit").prop("disabled", false);
   });
 
 //Skill Hide/Show Event on Class Dropdown Change
   $("#class-input").change(function(){
     var characterClass = $("#class-input").val();
-    $(".class-skills, #wizard-spells, #cleric-spells, #weapons").hide();
-    $("#weapons-show").show();
+    $(".class-skills, #wizard-spells, #cleric-spells, #weapons, #armor, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #cloth-armor, #light-armor, #medium-armor, #shield, #heavy-armor").hide();
+    $("#weapons-show, #armor-show").show();
     if (characterClass === "ranger") {
-      $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged").show();
+      $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #light-armor, #medium-armor, #shield").show();
     } else if (characterClass === "fighter") {
-      $("#acrobatics, #animal-handling, #athletics, #history, #insight, #intimidation, #perception, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged").show();
+      $("#acrobatics, #animal-handling, #athletics, #history, #insight, #intimidation, #perception, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #light-armor, #medium-armor, #heavy-armor, #shield").show();
     } else if (characterClass === "wizard") {
-      $("#arcana, #history, #insight, #investigation, #medicine, #religion, #wizard-spells, #dagger, #dart, #sling, #quarterstaff, #lightCrossbow").show();
+      $("#arcana, #history, #insight, #investigation, #medicine, #religion, #wizard-spells, #simple-melee, #cloth-armor").show();
     } else if (characterClass === "cleric") {
-      $("#history, #insight, #medicine, #persuasion, #religion, #cleric-spells, #simple-melee, #simple-ranged").show();
+      $("#history, #insight, #medicine, #persuasion, #religion, #cleric-spells, #simple-melee, #simple-ranged, #light-armor, #medium-armor, #shield").show();
     }
   });
 //User Form Submit and Results Output
+
   $("#character-form").submit(function(){
     event.preventDefault();
     $("#proficiency-bonus-sheet, #strength-sheet, #dexterity-sheet, #constitution-sheet, #intelligence-sheet, #wisdom-sheet, #charisma-sheet, #perception-sheet, #languages-sheet, #ac-sheet, #initiative-sheet, #speed-sheet, #hp-sheet, #hd-sheet, #race-traits-sheet, #class-features-sheet, #spells-sheet, #attacks-sheet, #equipment-sheet").empty();
-    $("#output-sheet").show('1000');
+    $("#output-sheet, #down-arrow").show();
+    $("#character-form-submit").prop("disabled", true);
+    $("#ability-roll").prop("disabled", false);
     var playName = $("#player-name-input").val();
     var characterName = $("#character-name-input").val();
     rollCharAbilityScores(abilityScoreArray);
@@ -346,9 +367,9 @@ $(document).ready(function() {
     newCharacter.charAbilityScores.wis = wisdom;
     newCharacter.charAbilityScores.cha = charisma;
     newCharacter.charLevel = level;
-    if (sumOfRolls !== (strength + dexterity + constitution + intelligence + wisdom + charisma)) {
-      alert("HEY!!! Please enter the exact numbers you were given!  What are you, some kind of CHEATER?!")
-    }
+    // if (sumOfRolls !== (strength + dexterity + constitution + intelligence + wisdom + charisma)) {
+    //   alert("HEY!!! Please enter the exact numbers you were given!  What are you, some kind of CHEATER?!")
+    // }
     if (race === "elf") {
       newCharacter.charRace = elf;
     } else if (race === "human") {
@@ -375,6 +396,9 @@ $(document).ready(function() {
     newCharacter.calculateStats(newCharacter);
 
 //Character Sheet Output
+    $("#character-name-sheet").text(newCharacter.charName);
+    $("#race-class-sheet").text(newCharacter.charRace.name + " " + newCharacter.charClass.name);
+    $("#proficiency-bonus-sheet").text(newCharacter.charProfBonus);
     $("#proficiency-bonus-sheet").text(newCharacter.charProfBonus);
     //Inspiriation needed
     var skillArray = []
