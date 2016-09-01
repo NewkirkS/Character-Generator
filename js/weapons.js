@@ -325,7 +325,7 @@ var shield = {
 }
 
 var cloth = {
-  name: "Cloth",
+  name: "Cloth armor",
   armorType: "cloth",
   ac: 0
 }

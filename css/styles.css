@@ -38,11 +38,17 @@ h2 {
 
 h4 {
   text-align: center;
+  padding-bottom: 10px;
 }
 
 h5 {
-  font-size: 18px;
+  font-size: 16px;
   text-decoration: underline;
+  padding-top: 10px;
+}
+
+h6 {
+  font-size: 14px;
 }
 
 label {
@@ -112,10 +118,14 @@ input {
   padding-top: 5px;
 }
 
-#click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover {
+#click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover, #weapons-show:hover {
   color: darkred;
 }
 
-#wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level {
+#wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level, #weapons-show {
+  display: none;
+}
+
+#simple-melee, #simple-ranged, #martial-melee, #martial-ranged {
   display: none;
 }

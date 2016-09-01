@@ -163,6 +163,29 @@ var halfling = {
   }
 }
 
+//HALF-ORC
+var halfOrc = {
+  size: "medium",
+  speed: 30,
+  languages: ["Common", "Orc"],
+  raceTraits: ["Darkvision", "Menacing", "Relentless Endurance", "Savage Attacks"],
+  abilityScoreIncrease: function(character) {
+    character.charAbilityScores.str += 2
+    character.charAbilityScores.con += 1
+  }
+}
+
+//GNOME
+var gnome = {
+  size: "small",
+  speed: 25,
+  languages: ["Common", "Gnomish"],
+  raceTraits: ["Darkvision", "Gnome Cunning"],
+  abilityScoreIncrease: function(character) {
+    character.charAbilityScores.int += 2
+  }
+}
+
 /******
 CLASSES
 *******/
@@ -266,6 +289,12 @@ $(document).ready(function() {
   $("#click-cleric-1st").click(function(){
     $("#cleric-1st-level").toggle();
   });
+  $("#click-cleric-1st").click(function(){
+    $("#cleric-1st-level").toggle();
+  });
+  $("#weapons-show").click(function(){
+    $("#weapons").toggle();
+  });
 
   $("#ability-roll").click(function(){
     abilityScoreArray = [];
@@ -279,18 +308,16 @@ $(document).ready(function() {
 
   $("#class-input").change(function(){
     var characterClass = $("#class-input").val();
-    $(".class-skills").hide();
-    $("#wizard-spells, #cleric-spells").hide();
+    $(".class-skills, #wizard-spells, #cleric-spells, #weapons").hide();
+    $("#weapons-show").show();
     if (characterClass === "ranger") {
-      $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival").show();
+      $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged").show();
     } else if (characterClass === "fighter") {
-      $("#acrobatics, #animal-handling, #athletics, #history, #insight, #intimidation, #perception, #survival").show();
+      $("#acrobatics, #animal-handling, #athletics, #history, #insight, #intimidation, #perception, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged").show();
     } else if (characterClass === "wizard") {
-      $("#arcana, #history, #insight, #investigation, #medicine, #religion").show();
-      $("#wizard-spells").show();
+      $("#arcana, #history, #insight, #investigation, #medicine, #religion, #wizard-spells, #dagger, #dart, #sling, #quarterstaff, #lightCrossbow").show();
     } else if (characterClass === "cleric") {
-      $("#history, #insight, #medicine, #persuasion, #religion").show();
-      $("#cleric-spells").show();
+      $("#history, #insight, #medicine, #persuasion, #religion, #cleric-spells, #simple-melee, #simple-ranged").show();
     }
   });
 
@@ -322,16 +349,19 @@ $(document).ready(function() {
     // }
     if (race === "elf") {
       newCharacter.charRace = elf;
-      elf.abilityScoreIncrease(newCharacter);
     } else if (race === "human") {
       newCharacter.charRace = human;
     } else if (race === "dwarf") {
       newCharacter.charRace = dwarf;
     } else if (race === "halfling") {
       newCharacter.charRace = halfling;
+    } else if (race === "halfOrc") {
+      newCharacter.charRace = halfOrc;
+    } else if (race === "gnome") {
+      newCharacter.charRace = gnome;
     }
+
     if (characterClass === "ranger") {
-      ranger.savingThrowsBonus(newCharacter);
       newCharacter.charClass = ranger;
     } else if (characterClass === "fighter") {
       newCharacter.charClass = fighter;
