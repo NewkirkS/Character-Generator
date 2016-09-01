@@ -8,6 +8,8 @@
 
 _This webpage generates a usable character sheet for Dungeons and Dragons 5th edition rules from the selections chosen by the user._
 
+_Check out the site [Here!] (https://newkirks.github.io/Character-Generator/)_
+
 ##Specifications
 
 ###### Behavior 1: Store all fields for gameplay in character object (player name(string), character name(string), race(Object), level(number), class(Object), speed(number), hp(number), ac(number), languages[string], ability scores(Object), initiative(number), proficiency bonus(number), spells[strings], weapons[String], size (string).)
