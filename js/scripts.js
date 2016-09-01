@@ -108,7 +108,7 @@ Character.prototype.abilityScoreModifier = function(obj) {
   }
 }
 
-// Weapons
+// // Weapons
 // var longbow = {
 //   name: "Longbow",
 //   type: "ranged",
@@ -284,16 +284,16 @@ var cleric = {
   }
 }
 //UI Simulation
-var submitTest = function(){
-  var newCharacter = new Character("Caleb", "Thrond");
-  newCharacter.charAbilityScores = {str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10}
-  newCharacter.charRace = halfling;
-  newCharacter.charClass = ranger;
-  newCharacter.calculateStats(newCharacter);
-  newCharacter.charAlignment = "Chaotic-Neutral";
-  console.log(newCharacter);
-}
-submitTest();
+// var submitTest = function(){
+//   var newCharacter = new Character("Caleb", "Thrond");
+//   newCharacter.charAbilityScores = {str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10}
+//   newCharacter.charRace = halfling;
+//   newCharacter.charClass = ranger;
+//   newCharacter.calculateStats(newCharacter);
+//   newCharacter.charAlignment = "Chaotic-Neutral";
+//   console.log(newCharacter);
+// }
+// submitTest();
 
 //Ability Score Roller
 var rollCharAbilityScores = function(array) {
@@ -400,8 +400,7 @@ $(document).ready(function() {
     } else if (characterClass === "cleric") {
       newCharacter.charClass = cleric;
     }
-    newCharacter.abilityScoreModifier(charAbilityScores);
-    newCharacter.baseSavingThrow(charSavingThrows);
+    newCharacter.calculateStats(newCharacter);
     console.log(newCharacter);
 
     //output values
@@ -422,15 +421,6 @@ $(document).ready(function() {
     $("#hd-sheet").text(newCharacter.charLevel + newCharacter.charClass.hitDie);
     $("#race-traits-sheet").text(newCharacter.charRace.raceTraits);
     $("#class-features-sheet").text(newCharacter.charClass.features);
-
-
-
-
-
-
-
-    //Display equipment and attacks in character sheet
-
     newCharacter.charClass.weapons.forEach(function(index){
       if (index.type === "simple melee" || index.type === "martial melee") {
         $("#attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.strMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.strMod + "</li>");
@@ -438,12 +428,9 @@ $(document).ready(function() {
         $("#attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.dexMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.dexMod + "<br> Range: " + index.range + " ft.</li>");
       }
     });
-
-
     newCharacter.charClass.weapons.forEach(function(index){
       $("#equipment-sheet").append("<li>" + index.name + "</li>");
     });
     $("#equipment-sheet").append("<li>" + newCharacter.charClass.armor.name + "</li>");
-
   });
 });
