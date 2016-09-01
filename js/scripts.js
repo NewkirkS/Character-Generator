@@ -302,9 +302,6 @@ $(document).ready(function() {
   $("#click-cleric-1st").click(function(){
     $("#cleric-1st-level").toggle();
   });
-  $("#click-cleric-1st").click(function(){
-    $("#cleric-1st-level").toggle();
-  });
   $("#weapons-show").click(function(){
     $("#weapons").toggle();
   });
@@ -417,7 +414,6 @@ $(document).ready(function() {
     $("#wisdom-sheet").text(newCharacter.charAbilityScores.wis + " (+" + newCharacter.charAbilityScoreModifiers.wisMod + ")");
     $("#charisma-sheet").text(newCharacter.charAbilityScores.cha + " (+" + newCharacter.charAbilityScoreModifiers.chaMod + ")");
     $("#perception-sheet").text(newCharacter.charAbilityScoreModifiers.wis); //plus perception
-    $("#languages-sheet").text(newCharacter.charRace.languages[0] + " and " + newCharacter.charRace.languages[1]);
     $("#ac-sheet").text(newCharacter.charAc);
     $("#initiative-sheet").text(newCharacter.charAbilityScoreModifiers.dex);
     $("#speed-sheet").text(newCharacter.charRace.speed);

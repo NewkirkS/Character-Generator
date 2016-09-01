@@ -130,8 +130,20 @@ input {
   margin-top: 40px;
 }
 
+<<<<<<< HEAD
 #click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover, #weapons-show:hover, #armor-show:hover {
+=======
+#click-wiz-cantrips, #click-wiz-1st, #click-cleric-cantrips, #click-cleric-1st, #weapons-show {
+>>>>>>> 40bf2be6833e9809fdb6fae1181497a80688e30d
   color: firebrick;
+}
+
+#click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover, #weapons-show:hover {
+  color: black;
+}
+
+#click-description {
+  font-size: .8em;
 }
 
 .ability-scores-display {
