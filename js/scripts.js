@@ -1,3 +1,4 @@
+//Business logic
 var abilityScoreArray = [];
 var sumOfRolls = 0;
 
@@ -108,62 +109,6 @@ Character.prototype.abilityScoreModifier = function(obj) {
   }
 }
 
-// // Weapons
-// var longbow = {
-//   name: "Longbow",
-//   type: "ranged",
-//   range: "150/600",
-//   damage: "1d8 Piercing"
-// }
-//
-// var shortsword = {
-//   name: "Shortsword",
-//   type: "melee",
-//   damage: "1d6 Piercing"
-// }
-//
-// var lightCrossbow = {
-//   name: "Light crossbow",
-//   type: "simple ranged",
-//   damage: "1d8 piercing",
-//   range: "80/320",
-//   properties: ["loading", "ammunition", "two-handed"]
-// }
-//
-// var longsword = {
-//   name: "Longsword",
-//   type: "martial melee",
-//   damage: "1d8 slashing",
-//   range: "5",
-//   properties: ["versatile (1d10)"]
-// }
-//
-// var quarterstaff = {
-//   name: "Quarterstaff",
-//   type: "simple melee",
-//   damage: "1d6 bludgeoning",
-//   range: "5",
-//   properties: ["versatile (1d8)"]
-// }
-//
-// //Armor
-// var leatherArmor = {
-//   name: "Leather Armor",
-//   armorType: "Light",
-//   ac: 1
-// }
-//
-// var chainMail = {
-//   name: "Chain Mail",
-//   armorType: "Heavy",
-//   ac: 6
-// }
-//
-// var cloth = {
-//   name: "Cloth",
-//   armorType: "Cloth",
-//   ac: 0
-// }
 
 /******
 RACES
@@ -172,7 +117,7 @@ RACES
 // ELF
 var elf = {
   abilityScoreIncrease: function(character) {
-    character.charAbilityScores.dex += 2 //check return
+    character.charAbilityScores.dex += 2
   },
   size: "medium",
   speed: 30,
@@ -254,7 +199,6 @@ var fighter = {
 }
 
 //Wizard
-
 var wizard = {
   classHp: 6,
   hitDie: "d6",
@@ -283,17 +227,6 @@ var cleric = {
     character.charSavingThrows.chaSave += character.charProfBonus;
   }
 }
-//UI Simulation
-// var submitTest = function(){
-//   var newCharacter = new Character("Caleb", "Thrond");
-//   newCharacter.charAbilityScores = {str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10}
-//   newCharacter.charRace = halfling;
-//   newCharacter.charClass = ranger;
-//   newCharacter.calculateStats(newCharacter);
-//   newCharacter.charAlignment = "Chaotic-Neutral";
-//   console.log(newCharacter);
-// }
-// submitTest();
 
 //Ability Score Roller
 var rollCharAbilityScores = function(array) {
@@ -313,7 +246,7 @@ var rollCharAbilityScores = function(array) {
   array.sort(function(a, b) {return b-a});
 }
 
-//UI Logic
+//User Interface Logic
 $(document).ready(function() {
   $("#click-wiz-cantrips").click(function(){
     $("#wiz-cantrips").toggle();
@@ -356,7 +289,7 @@ $(document).ready(function() {
 
   $("#character-form").submit(function(){
     event.preventDefault();
-    //debugger;
+    $("#proficiency-bonus-sheet, #strength-sheet, #dexterity-sheet, #constitution-sheet, #intelligence-sheet, #wisdom-sheet, #charisma-sheet, #perception-sheet, #languages-sheet, #ac-sheet, #initiative-sheet, #speed-sheet, #hp-sheet, #hd-sheet, #race-traits-sheet, #class-features-sheet, #spells-sheet, #attacks-sheet, #equipment-sheet").empty();
     var playName = $("#player-name-input").val();
     var characterName = $("#character-name-input").val();
     rollCharAbilityScores(abilityScoreArray);
@@ -403,7 +336,7 @@ $(document).ready(function() {
     newCharacter.calculateStats(newCharacter);
     console.log(newCharacter);
 
-    //output values
+    //Character Sheet
     $("#proficiency-bonus-sheet").text(newCharacter.charProfBonus);
     //Inspiriation needed
     var skillArray = []
@@ -428,8 +361,21 @@ $(document).ready(function() {
     $("#speed-sheet").text(newCharacter.charRace.speed);
     $("#hp-sheet").text(newCharacter.charHp);
     $("#hd-sheet").text(newCharacter.charLevel + newCharacter.charClass.hitDie);
-    $("#race-traits-sheet").text(newCharacter.charRace.raceTraits);
-    $("#class-features-sheet").text(newCharacter.charClass.features);
+    newCharacter.charRace.raceTraits.forEach(function(index){
+      $("#race-traits-sheet").append("<li>" + index + "</li>");
+    });
+    newCharacter.charClass.features.forEach(function(index){
+      $("#class-features-sheet").append("<li>" + index + "</li>");
+    });
+    //Display chosen spells in character sheet
+    var chosenSpells = [];
+    $("input:checkbox[name=spells]:checked").each(function(){
+      chosenSpells.push($(this).val());
+    });
+    chosenSpells.forEach(function(index){
+      $("#spells-sheet").append("<li>" + index + "</li>");
+    });
+    //Display melee and ranged weapon attacks in character sheet
     newCharacter.charClass.weapons.forEach(function(index){
       if (index.type === "simple melee" || index.type === "martial melee") {
         $("#attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.strMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.strMod + "</li>");
@@ -437,9 +383,12 @@ $(document).ready(function() {
         $("#attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.dexMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.dexMod + "<br> Range: " + index.range + " ft.</li>");
       }
     });
+
+    //Display equipment in character sheet
     newCharacter.charClass.weapons.forEach(function(index){
       $("#equipment-sheet").append("<li>" + index.name + "</li>");
     });
     $("#equipment-sheet").append("<li>" + newCharacter.charClass.armor.name + "</li>");
+
   });
 });

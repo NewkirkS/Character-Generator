@@ -22,7 +22,7 @@ var lightHammer = new Weapon("Light hammer", "simple melee", "1d4 bludgeoning", 
 
 var mace = new Weapon("Mace", "simple melee", "1d6 bludgeoning", "5", []);
 
-var quarterstaff = new Weapon("Greatclub", "simple melee", "1d6 bludgeoning", "5", ["versatile (1d8)"]);
+var quarterstaff = new Weapon("Quarterstaff", "simple melee", "1d6 bludgeoning", "5", ["versatile (1d8)"]);
 
 var sickle = new Weapon("Sickle", "simple melee", "1d4 slashing", "5", ["light"]);
 
