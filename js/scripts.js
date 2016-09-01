@@ -1,3 +1,4 @@
+//Business logic
 var abilityScoreArray = [];
 var sumOfRolls = 0;
 
@@ -115,7 +116,7 @@ RACES
 // ELF
 var elf = {
   abilityScoreIncrease: function(character) {
-    character.charAbilityScores.dex += 2 //check return
+    character.charAbilityScores.dex += 2
   },
   size: "medium",
   speed: 30,
@@ -197,7 +198,6 @@ var fighter = {
 }
 
 //Wizard
-
 var wizard = {
   classHp: 6,
   hitDie: "d6",
@@ -226,17 +226,6 @@ var cleric = {
     character.charSavingThrows.chaSave += character.charProfBonus;
   }
 }
-//UI Simulation
-// var submitTest = function(){
-//   var newCharacter = new Character("Caleb", "Thrond");
-//   newCharacter.charAbilityScores = {str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10}
-//   newCharacter.charRace = halfling;
-//   newCharacter.charClass = ranger;
-//   newCharacter.calculateStats(newCharacter);
-//   newCharacter.charAlignment = "Chaotic-Neutral";
-//   console.log(newCharacter);
-// }
-// submitTest();
 
 //Ability Score Roller
 var rollCharAbilityScores = function(array) {
@@ -256,7 +245,7 @@ var rollCharAbilityScores = function(array) {
   array.sort(function(a, b) {return b-a});
 }
 
-//UI Logic
+//User Interface Logic
 $(document).ready(function() {
   $("#click-wiz-cantrips").click(function(){
     $("#wiz-cantrips").toggle();
@@ -299,7 +288,7 @@ $(document).ready(function() {
 
   $("#character-form").submit(function(){
     event.preventDefault();
-    //debugger;
+    $("#proficiency-bonus-sheet, #strength-sheet, #dexterity-sheet, #constitution-sheet, #intelligence-sheet, #wisdom-sheet, #charisma-sheet, #perception-sheet, #languages-sheet, #ac-sheet, #initiative-sheet, #speed-sheet, #hp-sheet, #hd-sheet, #race-traits-sheet, #class-features-sheet, #spells-sheet, #attacks-sheet, #equipment-sheet").empty();
     var playName = $("#player-name-input").val();
     var characterName = $("#character-name-input").val();
     rollCharAbilityScores(abilityScoreArray);
@@ -344,9 +333,9 @@ $(document).ready(function() {
     newCharacter.calculateStats(newCharacter);
     console.log(newCharacter);
 
-    //output values
+    //Character Sheet
     $("#proficiency-bonus-sheet").text(newCharacter.charProfBonus);
-    //Inspiriation needed
+    //Inspiration needed
     $("#strength-sheet").text(newCharacter.charAbilityScores.str);
     $("#dexterity-sheet").text(newCharacter.charAbilityScores.dex);
     $("#constitution-sheet").text(newCharacter.charAbilityScores.con);
@@ -360,10 +349,13 @@ $(document).ready(function() {
     $("#speed-sheet").text(newCharacter.charRace.speed);
     $("#hp-sheet").text(newCharacter.charHp);
     $("#hd-sheet").text(newCharacter.charLevel + newCharacter.charClass.hitDie);
-    $("#race-traits-sheet").text(newCharacter.charRace.raceTraits);
-    // $("#class-features-sheet").text(newCharacter.charClass.classFeatures);
-
-
+    newCharacter.charRace.raceTraits.forEach(function(index){
+      $("#race-traits-sheet").append("<li>" + index + "</li>");
+    });
+    newCharacter.charClass.features.forEach(function(index){
+      $("#class-features-sheet").append("<li>" + index + "</li>");
+    });
+    //Display chosen spells in character sheet
     var chosenSpells = [];
     $("input:checkbox[name=spells]:checked").each(function(){
       chosenSpells.push($(this).val());
@@ -371,9 +363,7 @@ $(document).ready(function() {
     chosenSpells.forEach(function(index){
       $("#spells-sheet").append("<li>" + index + "</li>");
     });
-
-    //Display equipment and attacks in character sheet
-
+    //Display melee and ranged weapon attacks in character sheet
     newCharacter.charClass.weapons.forEach(function(index){
       if (index.type === "simple melee" || index.type === "martial melee") {
         $("#attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.strMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.strMod + "</li>");
@@ -382,6 +372,7 @@ $(document).ready(function() {
       }
     });
 
+    //Display equipment in character sheet
     newCharacter.charClass.weapons.forEach(function(index){
       $("#equipment-sheet").append("<li>" + index.name + "</li>");
     });
