@@ -326,16 +326,17 @@ $(document).ready(function() {
 //Skill Hide/Show Event on Class Dropdown Change
   $("#class-input").change(function(){
     var characterClass = $("#class-input").val();
-    $(".class-skills, #wizard-spells, #cleric-spells, #weapons, #armor, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #cloth-armor, #light-armor, #medium-armor, #shield, #heavy-armor").hide();
+    $(".class-skills, #wizard-spells, #cleric-spells, #weapons, #armor, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #cloth-armor, #light-armor, #medium-armor, #shield-armor, #heavy-armor").hide();
     $("#weapons-show, #armor-show").show();
     if (characterClass === "ranger") {
-      $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #light-armor, #medium-armor, #shield").show();
+      $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #light-armor, #medium-armor, #shield-armor").show();
     } else if (characterClass === "fighter") {
-      $("#acrobatics, #animal-handling, #athletics, #history, #insight, #intimidation, #perception, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #light-armor, #medium-armor, #heavy-armor, #shield").show();
+      $("#acrobatics, #animal-handling, #athletics, #history, #insight, #intimidation, #perception, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #light-armor, #medium-armor, #heavy-armor, #shield-armor").show();
     } else if (characterClass === "wizard") {
-      $("#arcana, #history, #insight, #investigation, #medicine, #religion, #wizard-spells, #simple-melee, #cloth-armor").show();
+      $("#arcana, #history, #insight, #investigation, #medicine, #religion, #wizard-spells, #simple-melee, #simple-ranged, #cloth-armor").show();
+      $("#club, #greatclub, #handaxe, #javelin, #lightHammer, #mace, #sickle, #spear, #shortbow").hide();
     } else if (characterClass === "cleric") {
-      $("#history, #insight, #medicine, #persuasion, #religion, #cleric-spells, #simple-melee, #simple-ranged, #light-armor, #medium-armor, #shield").show();
+      $("#history, #insight, #medicine, #persuasion, #religion, #cleric-spells, #simple-melee, #simple-ranged, #light-armor, #medium-armor, #shield-armor").show();
     }
   });
 //User Form Submit and Results Output
