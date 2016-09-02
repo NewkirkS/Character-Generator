@@ -290,6 +290,8 @@ $(document).ready(function() {
                   scrollTop: $(target).offset().top}, 'slow', 'swing', function() {});
   });
 
+  // $("#character-form-submit").prop("disabled", true);
+
   $("#weapons, #armor, #wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level, #down-arrow").hide();
 
   $("#click-wiz-cantrips").click(function(){
@@ -319,8 +321,8 @@ $(document).ready(function() {
       $("#ability-roll-" + i).text(abilityScoreArray[(i - 1)]);
         sumOfRolls += abilityScoreArray[(i - 1)];
     }
-    $("#ability-roll").prop("disabled", true);
-    $("#character-form-submit").prop("disabled", false);
+    // $("#ability-roll").prop("disabled", true);
+    // $("#character-form-submit").prop("disabled", false);
   });
 
 //Skill Hide/Show Event on Class Dropdown Change
@@ -345,54 +347,25 @@ $(document).ready(function() {
     event.preventDefault();
     $("#proficiency-bonus-sheet, #strength-sheet, #dexterity-sheet, #constitution-sheet, #intelligence-sheet, #wisdom-sheet, #charisma-sheet, #perception-sheet, #languages-sheet, #ac-sheet, #initiative-sheet, #speed-sheet, #hp-sheet, #hd-sheet, #race-traits-sheet, #class-features-sheet, #spells-sheet, #attacks-sheet, #equipment-sheet").empty();
     $("#output-sheet, #down-arrow").show();
-    $("#character-form-submit").prop("disabled", true);
-    $("#ability-roll").prop("disabled", false);
+    // $("#character-form-submit").prop("disabled", true);
+    // $("#ability-roll").prop("disabled", false);
     var playName = $("#player-name-input").val();
     var characterName = $("#character-name-input").val();
-    rollCharAbilityScores(abilityScoreArray);
-    var race = $("#race-input").val();
-    var characterClass = $("#class-input").val();
-    var strength = parseInt($("#strength").val());
-    var dexterity = parseInt($("#dexterity").val());
-    var constitution = parseInt($("#constitution").val());
-    var intelligence = parseInt($("#intelligence").val());
-    var wisdom = parseInt($("#wisdom").val());
-    var charisma = parseInt($("#charisma").val());
-    var level = parseInt($("#level-input").val());
-    var newCharacter = new Character(playName, characterName);
-    newCharacter.charAbilityScores.str = strength;
-    newCharacter.charAbilityScores.dex = dexterity;
-    newCharacter.charAbilityScores.con = constitution;
-    newCharacter.charAbilityScores.int = intelligence;
-    newCharacter.charAbilityScores.wis = wisdom;
-    newCharacter.charAbilityScores.cha = charisma;
-    newCharacter.charLevel = level;
-    // if (sumOfRolls !== (strength + dexterity + constitution + intelligence + wisdom + charisma)) {
-    //   alert("HEY!!! Please enter the exact numbers you were given!  What are you, some kind of CHEATER?!")
-    // }
-    if (race === "elf") {
-      newCharacter.charRace = elf;
-    } else if (race === "human") {
-      newCharacter.charRace = human;
-    } else if (race === "dwarf") {
-      newCharacter.charRace = dwarf;
-    } else if (race === "halfling") {
-      newCharacter.charRace = halfling;
-    } else if (race === "halfOrc") {
-      newCharacter.charRace = halfOrc;
-    } else if (race === "gnome") {
-      newCharacter.charRace = gnome;
-    }
 
-    if (characterClass === "ranger") {
-      newCharacter.charClass = ranger;
-    } else if (characterClass === "fighter") {
-      newCharacter.charClass = fighter;
-    } else if (characterClass === "wizard") {
-      newCharacter.charClass = wizard;
-    } else if (characterClass === "cleric") {
-      newCharacter.charClass = cleric;
-    }
+    rollCharAbilityScores(abilityScoreArray);
+
+    var newCharacter = new Character(playName, characterName);
+
+    newCharacter.charRace = window[$("#race-input").val()];
+    newCharacter.charClass = window[$("#class-input").val()];
+    newCharacter.charAbilityScores.str = parseInt($("#strength").val());
+    newCharacter.charAbilityScores.dex = parseInt($("#dexterity").val());
+    newCharacter.charAbilityScores.con = parseInt($("#constitution").val());
+    newCharacter.charAbilityScores.int = parseInt($("#intelligence").val());
+    newCharacter.charAbilityScores.wis = parseInt($("#wisdom").val());
+    newCharacter.charAbilityScores.cha = parseInt($("#charisma").val());
+    newCharacter.charLevel = parseInt($("#level-input").val());
+
     newCharacter.calculateStats(newCharacter);
 
 //Character Sheet Output
