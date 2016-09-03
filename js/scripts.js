@@ -259,7 +259,7 @@ $(document).ready(function() {
     $("#intelligence-sheet").text(newCharacter.charAbilityScores.int + " (+" + newCharacter.charAbilityScoreModifiers.intMod + ")");
     $("#wisdom-sheet").text(newCharacter.charAbilityScores.wis + " (+" + newCharacter.charAbilityScoreModifiers.wisMod + ")");
     $("#charisma-sheet").text(newCharacter.charAbilityScores.cha + " (+" + newCharacter.charAbilityScoreModifiers.chaMod + ")");
-    $("#perception-sheet").text(newCharacter.charAbilityScoreModifiers.wis); //plus perception
+    $("#passive-perception-sheet").text("+" + newCharacter.charAbilityScoreModifiers.wisMod); //plus perception
     $("#ac-sheet").text(newCharacter.charAc);
     $("#initiative-sheet").text("+" + newCharacter.charAbilityScoreModifiers.dexMod);
     $("#speed-sheet").text(newCharacter.charRace.speed);
