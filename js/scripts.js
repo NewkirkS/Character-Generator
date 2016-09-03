@@ -197,7 +197,7 @@ $(document).ready(function() {
   $("#class-input").change(function(){
     var characterClass = $("#class-input").val();
     $(".class-skills, #wizard-spells, #cleric-spells, #weapons, #armor, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #cloth-armor, #light-armor, #medium-armor, #shield-armor, #heavy-armor").hide();
-    $("#weapons-show, #armor-show").show();
+    $("#weapons-show, #armor-show, #club, #greatclub, #handaxe, #javelin, #lightHammer, #mace, #sickle, #spear, #shortbow").show();
     if (characterClass === "ranger") {
       $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #light-armor, #medium-armor, #shield-armor").show();
     } else if (characterClass === "fighter") {
