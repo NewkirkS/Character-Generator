@@ -39,7 +39,7 @@ function Character(playerName, charName) {
   this.charLevel = 1;
   this.charSpeed = 0;
   this.charHp = 0;
-  this.charAc = 10;
+  this.charAc = 0;
   this.charAbilityScores = charAbilityScores;
   this.charAbilityScoreModifiers = charAbilityScoreModifiers;
   this.charSavingThrows = charSavingThrows;
@@ -56,15 +56,21 @@ Character.prototype.calculateStats = function(character) {
   this.abilityScoreModifier(character.charAbilityScores);
   this.baseSavingThrow(charSavingThrows);
   this.charClass.savingThrowsBonus(character);
-  if (this.charClass.armor.type === "heavy" || this.charClass.armor.type === "shield") {
-    this.charAc += this.charClass.armor.ac;
-  } else {
-    this.charAc += this.charAbilityScoreModifiers.dexMod + this.charClass.armor.ac;
-  }
+  var armorAc = 0;
+  this.charClass.armor.forEach(function(index){
+    if (index.type === "heavy" || index.type === "shield") {
+      armorAc += index.ac;
+    } else {
+      armorAc += this.charAbilityScoreModifiers.dexMod + index.ac;
+    }
+  });
+  this.charAc = 10 + armorAc;
   this.charInit = this.charAbilityScoreModifiers.dexMod;
   this.charHp = this.charClass.classHp + this.charAbilityScoreModifiers.conMod;
   this.charSpeed = character.charRace.speed;
 };
+
+
 
 // var armorAc = 0;
 // this.charClass.armor.forEach(function(){
@@ -235,7 +241,7 @@ $(document).ready(function() {
     $("input:checkbox[name=armor]:checked").each(function(){
       newCharacter.charClass.armor.push(window[($(this).val())]);
     });
-
+//Calculate Stats
     newCharacter.calculateStats(newCharacter);
 
 //Character Sheet Output
