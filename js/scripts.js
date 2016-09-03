@@ -203,7 +203,7 @@ $(document).ready(function() {
       $("#history, #insight, #medicine, #persuasion, #religion, #cleric-spells, #simple-melee, #simple-ranged, #light-armor, #medium-armor, #shield-armor").show();
     }
   });
-  
+
 //User Form Submit and Results Output
   $("#character-form").submit(function(){
     event.preventDefault();
@@ -261,7 +261,7 @@ $(document).ready(function() {
     $("#charisma-sheet").text(newCharacter.charAbilityScores.cha + " (+" + newCharacter.charAbilityScoreModifiers.chaMod + ")");
     $("#perception-sheet").text(newCharacter.charAbilityScoreModifiers.wis); //plus perception
     $("#ac-sheet").text(newCharacter.charAc);
-    $("#initiative-sheet").text(newCharacter.charAbilityScoreModifiers.dex);
+    $("#initiative-sheet").text("+" + newCharacter.charAbilityScoreModifiers.dexMod);
     $("#speed-sheet").text(newCharacter.charRace.speed);
     $("#hp-sheet").text(newCharacter.charHp);
     $("#hd-sheet").text(newCharacter.charLevel + newCharacter.charClass.hitDie);
