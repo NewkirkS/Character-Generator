@@ -5,7 +5,7 @@ RACES
 // ELF
 var elf = {
   abilityScoreIncrease: function(character) {
-    character.charAbilityScores.dex += 2
+    character.charAbilityScores.dex += 2;
   },
   name: "Elf",
   size: "medium",
@@ -17,12 +17,12 @@ var elf = {
 //HUMAN
 var human = {
   abilityScoreIncrease: function(character) {
-    character.charAbilityScores.str += 1
-    character.charAbilityScores.dex += 1
-    character.charAbilityScores.con += 1
-    character.charAbilityScores.int += 1
-    character.charAbilityScores.wis += 1
-    character.charAbilityScores.cha += 1
+    character.charAbilityScores.str += 1;
+    character.charAbilityScores.dex += 1;
+    character.charAbilityScores.con += 1;
+    character.charAbilityScores.int += 1;
+    character.charAbilityScores.wis += 1;
+    character.charAbilityScores.cha += 1;
   },
   name: "Human",
   size: "medium",
@@ -39,7 +39,7 @@ var dwarf = {
   languages: ["Common", "Dwarvish"],
   raceTraits: ["Darkvision", "Dwarven Resilience", "Dwarven Combat Training", "Tool Proficiency", "Stonecunning"],
   abilityScoreIncrease: function(character) {
-    character.charAbilityScores.con += 2
+    character.charAbilityScores.con += 2;
   }
 }
 
@@ -51,7 +51,7 @@ var halfling = {
   languages: ["Common", "Halfling"],
   raceTraits: ["Lucky", "Brave", "Halfling Nimbleness"],
   abilityScoreIncrease: function(character) {
-    character.charAbilityScores.dex += 2
+    character.charAbilityScores.dex += 2;
   }
 }
 
@@ -63,8 +63,8 @@ var halfOrc = {
   languages: ["Common", "Orc"],
   raceTraits: ["Darkvision", "Menacing", "Relentless Endurance", "Savage Attacks"],
   abilityScoreIncrease: function(character) {
-    character.charAbilityScores.str += 2
-    character.charAbilityScores.con += 1
+    character.charAbilityScores.str += 2;
+    character.charAbilityScores.con += 1;
   }
 }
 
@@ -76,7 +76,45 @@ var gnome = {
   languages: ["Common", "Gnomish"],
   raceTraits: ["Darkvision", "Gnome Cunning"],
   abilityScoreIncrease: function(character) {
-    character.charAbilityScores.int += 2
+    character.charAbilityScores.int += 2;
+  }
+}
+
+//HALF-ELF
+var halfElf = {
+  name: "Half-Elf",
+  size: "medium",
+  speed: 30,
+  languages: ["Common", "Elvish"],
+  raceTraits: ["Darkvision", "Fey Ancestry", "Skill Versatility", "Extra Ability Point"],
+  abilityScoreIncrease: function(character) {
+    character.charAbilityScores.cha += 2;
+  }
+}
+
+//DRAGONBORN
+var dragonborn = {
+  name: "Dragonborn",
+  size: "medium",
+  speed: 30,
+  languages: ["Common", "Draconic"],
+  raceTraits: ["Draconic Ancestry", "Breath Weapon", "Damage Resistance"],
+  abilityScoreIncrease: function(character) {
+    character.charAbilityScores.str += 2;
+    character.charAbilityScores.cha += 1;
+  }
+}
+
+//TIEFLING
+var tiefling = {
+  name: "Tiefling",
+  size: "medium",
+  speed: 30,
+  languages: ["Common", "Infernal"],
+  raceTraits: ["Darkvision", "Hellish Resistance", "Infernal Legacy"],
+  abilityScoreIncrease: function(character) {
+    character.charAbilityScores.cha += 2;
+    character.charAbilityScores.int += 1;
   }
 }
 

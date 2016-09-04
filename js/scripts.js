@@ -70,19 +70,6 @@ Character.prototype.calculateStats = function(character) {
   this.charSpeed = character.charRace.speed;
 };
 
-
-
-// var armorAc = 0;
-// this.charClass.armor.forEach(function(){
-//   debugger;
-//   if (this.charClass.armor.type === "heavy" || this.charClass.armor.type === "shield"){
-//     armorAc += this.charClass.armor.ac;
-//   } else {
-//     armorAc += (this.charClass.armor.ac + this.charAbilityScoreModifiers.dexMod);
-//   }
-// });
-// this.charAc = 10 + armorAc;
-
 Character.prototype.baseSavingThrow = function(obj) {
   for (var score in obj) {
     obj[score] += this.charAbilityScoreModifiers[score.replace("Save", "Mod")];
@@ -251,7 +238,7 @@ $(document).ready(function() {
     $("#proficiency-bonus-sheet").text(newCharacter.charProfBonus);
     //Inspiriation needed
     var skillArray = []
-    $("input:checkbox[name=skills]:checked").each (function() {
+    $("input:checkbox[name=skills]:checked").each(function() {
       skillArray.push($(this).val());
     });
     skillArray.forEach(function(skill) {
