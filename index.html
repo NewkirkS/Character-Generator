@@ -4,6 +4,7 @@
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-3.1.0.js"></script>
+    <script src="js/racesandclasses.js"></script>
     <script src="js/weapons.js"></script>
     <script src="js/scripts.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Marcellus+SC" rel="stylesheet">
@@ -19,7 +20,7 @@
       <br>
 <!-- First Form: Names, Race, Class, and Ability Scores -->
       <form class="form-group" id="character-form">
-        <div class="row form-inline">
+        <div class="row">
           <div class="col-sm-4 col-sm-offset-2">
             <label for="player-name">Player name:</label>
             <input type="text" class="form-control" id="player-name-input"><br>
@@ -37,10 +38,13 @@
                 <option disabled selected>Choose Race</option>
                 <option value="human">Human</option>
                 <option value="elf">Elf</option>
+                <option value="halfElf">Half-Elf</option>
                 <option value="dwarf">Dwarf</option>
                 <option value="halfling">Halfling</option>
                 <option value="gnome">Gnome</option>
                 <option value="halfOrc">Half-Orc</option>
+                <option value="dragonborn">Dragonborn</option>
+                <option value="tiefling">Tiefling</option>
               </select>
             </div>
           </div>
@@ -65,7 +69,7 @@
             </div>
           </div>
         </div>
-        <hr>
+        <br>
         <button type="button" class="btn btn-lg btn-secondary btn-block" id="ability-roll">Roll for your ability scores!</button><br>
 <!-- Ability Scores Output for user to arange into the appropriate user fields -->
         <h3 id="ability-scores-title">Ability scores:</h3>
@@ -84,20 +88,20 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-4 col-sm-offset-2 form-inline">
-            <input type="number" id="strength" class="form-control">
+          <div class="col-sm-4 col-sm-offset-2 form-inline ">
+            <input type="number" id="strength" class="form-control ability-score-form">
             <label for="strength">Strength</label><br>
-            <input type="number" id="dexterity" class="form-control">
+            <input type="number" id="dexterity" class="form-control ability-score-form">
             <label for="dexterity">Dexterity</label><br>
-            <input type="number" id="constitution" class="form-control">
+            <input type="number" id="constitution" class="form-control ability-score-form">
             <label for="constitution">Constitution</label>
           </div>
           <div class="col-sm-4 form-inline">
-            <input type="number" id="intelligence" class="form-control">
+            <input type="number" id="intelligence" class="form-control ability-score-form">
             <label for="intelligence">Intelligence</label><br>
-            <input type="number" id="wisdom" class="form-control">
+            <input type="number" id="wisdom" class="form-control ability-score-form">
             <label for="wisdom">Wisdom</label><br>
-            <input type="number" id="charisma" class="form-control">
+            <input type="number" id="charisma" class="form-control ability-score-form">
             <label for="charisma">Charisma</label>
           </div>
         </div>
@@ -204,88 +208,88 @@
               <div id="wizard-spells">
                 <h5 id="click-wiz-cantrips">Cantrips: (Pick Four)</h5>
                 <div id="wiz-cantrips">
-                    <label> <input type="checkbox" name="spells" value="Acid Splash">Acid Splash</label><br>
-                    <label> <input type="checkbox" name="spells" value="Blade Ward">Blade Ward</label><br>
-                    <label> <input type="checkbox" name="spells" value="Chill Touch">Chill Touch</label><br>
-                    <label> <input type="checkbox" name="spells" value="Dancing Lights">Dancing Lights</label><br>
-                    <label> <input type="checkbox" name="spells" value="Fire Bolt">Fire Bolt</label><br>
-                    <label> <input type="checkbox" name="spells" value="Friends">Friends</label><br>
-                    <label> <input type="checkbox" name="spells" value="Light">Light</label><br>
-                    <label> <input type="checkbox" name="spells" value="Mage Hand">Mage Hand</label><br>
-                    <label> <input type="checkbox" name="spells" value="Mending">Mending</label><br>
-                    <label> <input type="checkbox" name="spells" value="Message">Message</label><br>
-                    <label> <input type="checkbox" name="spells" value="Minor Illusion">Minor Illusion</label><br>
-                    <label> <input type="checkbox" name="spells" value="Poison Spray">Poison Spray</label><br>
-                    <label> <input type="checkbox" name="spells" value="Prestidigitation">Prestidigitation</label><br>
-                    <label> <input type="checkbox" name="spells" value="Ray of Frost">Ray of Frost</label><br>
-                    <label> <input type="checkbox" name="spells" value="Shocking Grasp">Shocking Grasp</label><br>
-                    <label> <input type="checkbox" name="spells" value="True Strike">True Strike</label><br>
+                    <label> <input type="checkbox" name="spells" value="Acid Splash"> Acid Splash</label><br>
+                    <label> <input type="checkbox" name="spells" value="Blade Ward"> Blade Ward</label><br>
+                    <label> <input type="checkbox" name="spells" value="Chill Touch"> Chill Touch</label><br>
+                    <label> <input type="checkbox" name="spells" value="Dancing Lights"> Dancing Lights</label><br>
+                    <label> <input type="checkbox" name="spells" value="Fire Bolt"> Fire Bolt</label><br>
+                    <label> <input type="checkbox" name="spells" value="Friends"> Friends</label><br>
+                    <label> <input type="checkbox" name="spells" value="Light"> Light</label><br>
+                    <label> <input type="checkbox" name="spells" value="Mage Hand"> Mage Hand</label><br>
+                    <label> <input type="checkbox" name="spells" value="Mending"> Mending</label><br>
+                    <label> <input type="checkbox" name="spells" value="Message"> Message</label><br>
+                    <label> <input type="checkbox" name="spells" value="Minor Illusion"> Minor Illusion</label><br>
+                    <label> <input type="checkbox" name="spells" value="Poison Spray"> Poison Spray</label><br>
+                    <label> <input type="checkbox" name="spells" value="Prestidigitation"> Prestidigitation</label><br>
+                    <label> <input type="checkbox" name="spells" value="Ray of Frost"> Ray of Frost</label><br>
+                    <label> <input type="checkbox" name="spells" value="Shocking Grasp"> Shocking Grasp</label><br>
+                    <label> <input type="checkbox" name="spells" value="True Strike"> True Strike</label><br>
                   </select>
                 </div>
                 <h5 id="click-wiz-1st">1st Level Spells: (Pick Two)</h5>
                 <div id="wiz-1st-level">
-                    <label> <input type="checkbox" name="spells" value="Alarm">Alarm</label><br>
-                    <label> <input type="checkbox" name="spells" value="Burning Hands">Burning Hands</label><br>
-                    <label> <input type="checkbox" name="spells" value="Charm Person">Charm Person</label><br>
-                    <label> <input type="checkbox" name="spells" value="Chromatic Orb">Chromatic Orb</label><br>
-                    <label> <input type="checkbox" name="spells" value="Color Spray">Color Spray</label><br>
-                    <label> <input type="checkbox" name="spells" value="Comprehend Languages">Comprehend Languages</label><br>
-                    <label> <input type="checkbox" name="spells" value="Detect Magic">Detect Magic</label><br>
-                    <label> <input type="checkbox" name="spells" value="Disguise Self">Disguise Self</label><br>
-                    <label> <input type="checkbox" name="spells" value="Expeditious Retreat">Expeditious Retreat</label><br>
-                    <label> <input type="checkbox" name="spells" value="False Life">False Life</label><br>
-                    <label> <input type="checkbox" name="spells" value="Feather Fall">Feather Fall</label><br>
-                    <label> <input type="checkbox" name="spells" value="Find Familiar">Find Familiar</label><br>
-                    <label> <input type="checkbox" name="spells" value="Fog Cloud">Fog Cloud</label><br>
-                    <label> <input type="checkbox" name="spells" value="Grease">Grease</label><br>
-                    <label> <input type="checkbox" name="spells" value="Identify">Identify</label><br>
-                    <label> <input type="checkbox" name="spells" value="Illusory Script">Illusory Script</label><br>
-                    <label> <input type="checkbox" name="spells" value="Jump">Jump</label><br>
-                    <label> <input type="checkbox" name="spells" value="Longstrider">Longstrider</label><br>
-                    <label> <input type="checkbox" name="spells" value="Mage Armor">Mage Armor</label><br>
-                    <label> <input type="checkbox" name="spells" value="Magic Missle">Magic Missle</label><br>
-                    <label> <input type="checkbox" name="spells" value="Protection From Evil/Good">Protection From Evil/Good</label><br>
-                    <label> <input type="checkbox" name="spells" value="Ray of Sickness">Ray of Sickness</label><br>
-                    <label> <input type="checkbox" name="spells" value="Shield">Shield</label><br>
-                    <label> <input type="checkbox" name="spells" value="Silent Image">Silent Image</label><br>
-                    <label> <input type="checkbox" name="spells" value="Sleep">Sleep</label><br>
-                    <label> <input type="checkbox" name="spells" value="Tasha's Hideous Laughter">Tasha's Hideous Laughter</label><br>
-                    <label> <input type="checkbox" name="spells" value="Tenser's Floating Disc">Tenser's Floating Disc</label><br>
-                    <label> <input type="checkbox" name="spells" value="Thunder Wave">Thunder Wave</label><br>
-                    <label> <input type="checkbox" name="spells" value="Unseen Servant">Unseen Servant</label><br>
-                    <label> <input type="checkbox" name="spells" value="Witch Bolt">Witch Bolt</label><br>
+                    <label> <input type="checkbox" name="spells" value="Alarm"> Alarm</label><br>
+                    <label> <input type="checkbox" name="spells" value="Burning Hands"> Burning Hands</label><br>
+                    <label> <input type="checkbox" name="spells" value="Charm Person"> Charm Person</label><br>
+                    <label> <input type="checkbox" name="spells" value="Chromatic Orb"> Chromatic Orb</label><br>
+                    <label> <input type="checkbox" name="spells" value="Color Spray"> Color Spray</label><br>
+                    <label> <input type="checkbox" name="spells" value="Comprehend Languages"> Comprehend Languages</label><br>
+                    <label> <input type="checkbox" name="spells" value="Detect Magic"> Detect Magic</label><br>
+                    <label> <input type="checkbox" name="spells" value="Disguise Self"> Disguise Self</label><br>
+                    <label> <input type="checkbox" name="spells" value="Expeditious Retreat"> Expeditious Retreat</label><br>
+                    <label> <input type="checkbox" name="spells" value="False Life"> False Life</label><br>
+                    <label> <input type="checkbox" name="spells" value="Feather Fall"> Feather Fall</label><br>
+                    <label> <input type="checkbox" name="spells" value="Find Familiar"> Find Familiar</label><br>
+                    <label> <input type="checkbox" name="spells" value="Fog Cloud"> Fog Cloud</label><br>
+                    <label> <input type="checkbox" name="spells" value="Grease"> Grease</label><br>
+                    <label> <input type="checkbox" name="spells" value="Identify"> Identify</label><br>
+                    <label> <input type="checkbox" name="spells" value="Illusory Script"> Illusory Script</label><br>
+                    <label> <input type="checkbox" name="spells" value="Jump"> Jump</label><br>
+                    <label> <input type="checkbox" name="spells" value="Longstrider"> Longstrider</label><br>
+                    <label> <input type="checkbox" name="spells" value="Mage Armor"> Mage Armor</label><br>
+                    <label> <input type="checkbox" name="spells" value="Magic Missle"> Magic Missle</label><br>
+                    <label> <input type="checkbox" name="spells" value="Protection From Evil/Good"> Protection From Evil/Good</label><br>
+                    <label> <input type="checkbox" name="spells" value="Ray of Sickness"> Ray of Sickness</label><br>
+                    <label> <input type="checkbox" name="spells" value="Shield"> Shield</label><br>
+                    <label> <input type="checkbox" name="spells" value="Silent Image"> Silent Image</label><br>
+                    <label> <input type="checkbox" name="spells" value="Sleep"> Sleep</label><br>
+                    <label> <input type="checkbox" name="spells" value="Tasha's Hideous Laughter"> Tasha's Hideous Laughter</label><br>
+                    <label> <input type="checkbox" name="spells" value="Tenser's Floating Disc"> Tenser's Floating Disc</label><br>
+                    <label> <input type="checkbox" name="spells" value="Thunder Wave"> Thunder Wave</label><br>
+                    <label> <input type="checkbox" name="spells" value="Unseen Servant"> Unseen Servant</label><br>
+                    <label> <input type="checkbox" name="spells" value="Witch Bolt"> Witch Bolt</label><br>
                   </select>
                 </div>
               </div>
               <div id="cleric-spells">
                 <h5 id="click-cleric-cantrips">Cantrips: (Pick Three)</h5>
                 <div id="cleric-cantrips">
-                    <label> <input type="checkbox" name="spells" value="Guidance">Guidance</label><br>
-                    <label> <input type="checkbox" name="spells" value="Light">Light</label><br>
-                    <label> <input type="checkbox" name="spells" value="Mending">Mending</label><br>
-                    <label> <input type="checkbox" name="spells" value="Resistance">Resistance</label><br>
-                    <label> <input type="checkbox" name="spells" value="Sacred Flame">Sacred Flame</label><br>
-                    <label> <input type="checkbox" name="spells" value="Spare the Dying">Spare the Dying</label><br>
-                    <label> <input type="checkbox" name="spells" value="Thaumaturgy">Thaumaturgy</label>
+                    <label> <input type="checkbox" name="spells" value="Guidance"> Guidance</label><br>
+                    <label> <input type="checkbox" name="spells" value="Light"> Light</label><br>
+                    <label> <input type="checkbox" name="spells" value="Mending"> Mending</label><br>
+                    <label> <input type="checkbox" name="spells" value="Resistance"> Resistance</label><br>
+                    <label> <input type="checkbox" name="spells" value="Sacred Flame"> Sacred Flame</label><br>
+                    <label> <input type="checkbox" name="spells" value="Spare the Dying"> Spare the Dying</label><br>
+                    <label> <input type="checkbox" name="spells" value="Thaumaturgy"> Thaumaturgy</label>
                   </select>
                 </div>
                 <h5 id="click-cleric-1st">1st Level Spells: (Pick Two)</h5>
                 <div id="cleric-1st-level">
-                  <label> <input type="checkbox"name="spells" value="Bane">Bane</label><br>
-                  <label> <input type="checkbox"name="spells" value="Bless">Bless</label><br>
-                  <label> <input type="checkbox"name="spells" value="Command">Command</label><br>
-                  <label> <input type="checkbox"name="spells" value="Create/Destroy Water">Create/Destroy Water</label><br>
-                  <label> <input type="checkbox"name="spells" value="Cure Wounds">Cure Wounds</label><br>
-                  <label> <input type="checkbox"name="spells" value="Detect Evil/Good">Detect Evil/Good</label><br>
-                  <label> <input type="checkbox"name="spells" value="Detect Magic">Detect Magic</label><br>
-                  <label> <input type="checkbox"name="spells" value="Detect Poison/Disease">Detect Poison/Disease</label><br>
-                  <label> <input type="checkbox"name="spells" value="Guiding Bolt">Guiding Bolt</label><br>
-                  <label> <input type="checkbox"name="spells" value="Healing Word">Healing Word</label><br>
-                  <label> <input type="checkbox"name="spells" value="Inflict Wound">Inflict Wound</label><br>
-                  <label> <input type="checkbox"name="spells" value="Protection from Evil/Good">Protection from Evil/Good</label><br>
-                  <label> <input type="checkbox"name="spells" value="Purify Food/Drink">Purify Food/Drink</label><br>
-                  <label> <input type="checkbox"name="spells" value="Sanctuary">Sanctuary</label><br>
-                  <label> <input type="checkbox"name="spells" value="Shield of Faith">Shield of Faith</label><br>
+                  <label> <input type="checkbox"name="spells" value="Bane"> Bane</label><br>
+                  <label> <input type="checkbox"name="spells" value="Bless"> Bless</label><br>
+                  <label> <input type="checkbox"name="spells" value="Command"> Command</label><br>
+                  <label> <input type="checkbox"name="spells" value="Create/Destroy Water"> Create/Destroy Water</label><br>
+                  <label> <input type="checkbox"name="spells" value="Cure Wounds"> Cure Wounds</label><br>
+                  <label> <input type="checkbox"name="spells" value="Detect Evil/Good"> Detect Evil/Good</label><br>
+                  <label> <input type="checkbox"name="spells" value="Detect Magic"> Detect Magic</label><br>
+                  <label> <input type="checkbox"name="spells" value="Detect Poison/Disease"> Detect Poison/Disease</label><br>
+                  <label> <input type="checkbox"name="spells" value="Guiding Bolt"> Guiding Bolt</label><br>
+                  <label> <input type="checkbox"name="spells" value="Healing Word"> Healing Word</label><br>
+                  <label> <input type="checkbox"name="spells" value="Inflict Wound"> Inflict Wound</label><br>
+                  <label> <input type="checkbox"name="spells" value="Protection from Evil/Good"> Protection from Evil/Good</label><br>
+                  <label> <input type="checkbox"name="spells" value="Purify Food/Drink"> Purify Food/Drink</label><br>
+                  <label> <input type="checkbox"name="spells" value="Sanctuary"> Sanctuary</label><br>
+                  <label> <input type="checkbox"name="spells" value="Shield of Faith"> Shield of Faith</label><br>
                 </select>
                 </div>
               </div>
@@ -297,82 +301,171 @@
             <div id="weapons">
               <div id="simple-melee">
                 <h6>Simple melee</h6>
-                <label> <input type="checkbox" name="weapons" value="club">Club</label><br>
-                <label > <input type="checkbox" name="weapons" value="dagger">Dagger</label><br>
-                <label> <input type="checkbox" name="weapons" value="greatclub">Greatclub</label><br>
-                <label> <input type="checkbox" name="weapons" value="handaxe">Handaxe</label><br>
-                <label> <input type="checkbox" name="weapons" value="javelin">Javelin</label><br>
-                <label> <input type="checkbox" name="weapons" value="lightHammer">Light hammer</label><br>
-                <label> <input type="checkbox" name="weapons" value="mace">Mace</label><br>
-                <label> <input type="checkbox" name="weapons" value="quarterstaff">Quarterstaff</label><br>
-                <label> <input type="checkbox" name="weapons" value="sickle">Sickle</label><br>
-                <label> <input type="checkbox" name="weapons" value="spear">Spear</label><br>
+                <div id="club">
+                  <label> <input type="checkbox" name="weapons" value="club"> Club</label><br>
+                </div>
+                <div id="dagger">
+                  <label > <input type="checkbox" name="weapons" value="dagger"> Dagger</label><br>
+                </div>
+                <div id="greatclub">
+                  <label> <input type="checkbox" name="weapons" value="greatclub"> Greatclub</label><br>
+                </div>
+                <div id="handaxe">
+                  <label> <input type="checkbox" name="weapons" value="handaxe"> Handaxe</label><br>
+                </div>
+                <div id="javelin">
+                  <label> <input type="checkbox" name="weapons" value="javelin"> Javelin</label><br>
+                </div>
+                <div id="lightHammer">
+                  <label> <input type="checkbox" name="weapons" value="lightHammer"> Light hammer</label><br>
+                </div>
+                <div id="mace">
+                  <label> <input type="checkbox" name="weapons" value="mace"> Mace</label><br>
+                </div>
+                <div id="quarterstaff">
+                  <label> <input type="checkbox" name="weapons" value="quarterstaff"> Quarterstaff</label><br>
+                </div>
+                <div id="sickle">
+                  <label> <input type="checkbox" name="weapons" value="sickle"> Sickle</label><br>
+                </div>
+                <div id="spear">
+                  <label> <input type="checkbox" name="weapons" value="spear"> Spear</label><br>
+                </div>
               </div>
               <div id="simple-ranged">
                 <h6>Simple ranged</h6>
-                <label> <input type="checkbox" name="weapons" value="lightCrossbow">Light crossbow</label><br>
-                <label> <input type="checkbox" name="weapons" value="dart">Dart</label><br>
-                <label> <input type="checkbox" name="weapons" value="shortbow">Shortbow</label><br>
-                <label> <input type="checkbox" name="weapons" value="sling">Sling</label><br>
+                <div id="lightCrossbow">
+                  <label> <input type="checkbox" name="weapons" value="lightCrossbow"> Light crossbow</label><br>
+                </div>
+                <div id="dart">
+                  <label> <input type="checkbox" name="weapons" value="dart"> Dart</label><br>
+                </div>
+                <div id="shortbow">
+                  <label> <input type="checkbox" name="weapons" value="shortbow"> Shortbow</label><br>
+                </div>
+                <div id="sling">
+                  <label> <input type="checkbox" name="weapons" value="sling"> Sling</label><br>
+                </div>
               </div>
               <div id="martial-melee">
                 <h6>Martial melee</h6>
-                <label> <input type="checkbox" name="weapons" value="battleaxe">Battleaxe</label><br>
-                <label> <input type="checkbox" name="weapons" value="flail">Flail</label><br>
-                <label> <input type="checkbox" name="weapons" value="glaive">Glaive</label><br>
-                <label> <input type="checkbox" name="weapons" value="greataxe">Greataxe</label><br>
-                <label> <input type="checkbox" name="weapons" value="greatsword">Greatsword</label><br>
-                <label> <input type="checkbox" name="weapons" value="halberd">Halberd</label><br>
-                <label> <input type="checkbox" name="weapons" value="longsword">Longsword</label><br>
-                <label> <input type="checkbox" name="weapons" value="maul">Maul</label><br>
-                <label> <input type="checkbox" name="weapons" value="morningstar">Morningstar</label><br>
-                <label> <input type="checkbox" name="weapons" value="pike">Pike</label><br>
-                <label> <input type="checkbox" name="weapons" value="rapier">Rapier</label><br>
-                <label> <input type="checkbox" name="weapons" value="scimitar">Scimitar</label><br>
-                <label> <input type="checkbox" name="weapons" value="shortsword">Shortsword</label><br>
-                <label> <input type="checkbox" name="weapons" value="trident">Trident</label><br>
-                <label> <input type="checkbox" name="weapons" value="warPick">War pick</label><br>
-                <label> <input type="checkbox" name="weapons" value="warhammer">Warhammer</label><br>
-                <label> <input type="checkbox" name="weapons" value="whip">Whip</label><br>
+                <div id="battlaxe">
+                  <label> <input type="checkbox" name="weapons" value="battleaxe"> Battleaxe</label><br>
+                </div>
+                <div id="flail">
+                  <label> <input type="checkbox" name="weapons" value="flail"> Flail</label><br>
+                </div>
+                <div id="glaive">
+                  <label> <input type="checkbox" name="weapons" value="glaive"> Glaive</label><br>
+                </div>
+                <div id="greataxe">
+                  <label> <input type="checkbox" name="weapons" value="greataxe"> Greataxe</label><br>
+                </div>
+                <div id="greatsword">
+                  <label> <input type="checkbox" name="weapons" value="greatsword"> Greatsword</label><br>
+                </div>
+                <div id="halberd">
+                  <label> <input type="checkbox" name="weapons" value="halberd"> Halberd</label><br>
+                </div>
+                <div id="longsword">
+                  <label> <input type="checkbox" name="weapons" value="longsword"> Longsword</label><br>
+                </div>
+                <div id="Maul">
+                  <label> <input type="checkbox" name="weapons" value="maul"> Maul</label><br>
+                </div>
+                <div id="morningstar">
+                  <label> <input type="checkbox" name="weapons" value="morningstar"> Morningstar</label><br>
+                </div>
+                <div id="pike">
+                  <label> <input type="checkbox" name="weapons" value="pike"> Pike</label><br>
+                </div>
+                <div id="rapier">
+                  <label> <input type="checkbox" name="weapons" value="rapier"> Rapier</label><br>
+                </div>
+                <div id="scimitar">
+                  <label> <input type="checkbox" name="weapons" value="scimitar"> Scimitar</label><br>
+                </div>
+                <div id="shortsword">
+                  <label> <input type="checkbox" name="weapons" value="shortsword"> Shortsword</label><br>
+                </div>
+                <div id="trident">
+                  <label> <input type="checkbox" name="weapons" value="trident"> Trident</label><br>
+                </div>
+                <div id="warPick">
+                  <label> <input type="checkbox" name="weapons" value="warPick"> War pick</label><br>
+                </div>
+                <div id="">
+                  <label> <input type="checkbox" name="weapons" value="warhammer"> Warhammer</label><br>
+                </div>
+                <div id="warhammer">
+                  <label> <input type="checkbox" name="weapons" value="whip"> Whip</label><br>
+                </div>
               </div>
               <div id="martial-ranged">
                 <h6>Martial ranged</h6>
-                <label> <input type="checkbox" name="weapons" value="blowgun">Blowgun</label><br>
-                <label> <input type="checkbox" name="weapons" value="handCrossbow">Hand crossbow</label><br>
-                <label> <input type="checkbox" name="weapons" value="heavyCrossbow">Heavy crossbow</label><br>
-                <label> <input type="checkbox" name="weapons" value="longbow">Longbow</label><br>
-                <label> <input type="checkbox" name="weapons" value="net">Net</label><br>
+                <label> <input type="checkbox" name="weapons" value="blowgun"> Blowgun</label><br>
+                <label> <input type="checkbox" name="weapons" value="handCrossbow"> Hand crossbow</label><br>
+                <label> <input type="checkbox" name="weapons" value="heavyCrossbow"> Heavy crossbow</label><br>
+                <label> <input type="checkbox" name="weapons" value="longbow"> Longbow</label><br>
+                <label> <input type="checkbox" name="weapons" value="net"> Net</label><br>
+
               </div>
             </div>
             <h5 id="armor-show">Armor:</h5>
             <div id="armor">
               <div id="cloth-armor">
-                <label> <input type="checkbox" name="armor">Cloth </label><br>
+                <label> <input type="checkbox" name="armor" value="cloth"> Cloth</label><br>
               </div>
               <div id="light-armor">
                 <h6>Light armor</h6>
-                <label> <input type="checkbox" name="armor">Leather </label><br>
-                <label> <input type="checkbox" name="armor">Padded </label><br>
-                <label> <input type="checkbox" name="armor">Studded leather </label><br>
+                <div id="leatherArmor">
+                  <label> <input type="checkbox" name="armor" value="leather"> Leather</label><br>
+                </div>
+                <div id="paddedArmor">
+                  <label> <input type="checkbox" name="armor" value="padded"> Padded</label><br>
+                </div>
+                <div id="studdedLeatherArmor">
+                  <label> <input type="checkbox" name="armor" value="studdedLeather"> Studded leather</label><br>
+                </div>
               </div>
               <div id="medium-armor">
                 <h6>Medium armor</h6>
-                  <label> <input type="checkbox" name="armor">Hide </label><br>
-                  <label> <input type="checkbox" name="armor">Chain shirt </label><br>
-                  <label> <input type="checkbox" name="armor">Scale mail </label><br>
-                  <label> <input type="checkbox" name="armor">Breatplate </label><br>
-                  <label> <input type="checkbox" name="armor">Half plate </label><br>
+                <div id="hideArmor">
+                  <label> <input type="checkbox" name="armor" value="hide"> Hide</label><br>
+                </div>
+                <div id="chainShirtArmor">
+                  <label> <input type="checkbox" name="armor" value="chainShirt"> Chain shirt</label><br>
+                </div>
+                <div id="scaleMailArmor">
+                  <label> <input type="checkbox" name="armor" value="scaleMail"> Scale mail</label><br>
+                </div>
+                <div id="breastplateArmor">
+                  <label> <input type="checkbox" name="armor" value="breastplate"> Breatplate</label><br>
+                </div>
+                <div id="halfPlateArmor">
+                  <label> <input type="checkbox" name="armor" value="halfPlate"> Half plate</label><br>
+                </div>
               </div>
               <div id="heavy-armor">
                 <h6>Heavy armor</h6>
-                <label> <input type="checkbox" name="armor">Ring mail </label><br>
-                <label> <input type="checkbox" name="armor">Chain mail </label><br>
-                <label> <input type="checkbox" name="armor">Splint </label><br>
-                <label> <input type="checkbox" name="armor">Plate </label><br>
+                <div id="ringMailArmor">
+                  <label> <input type="checkbox" name="armor" value="ringMail"> Ring mail</label><br>
+                </div>
+                <div id="chainMailArmor">
+                  <label> <input type="checkbox" name="armor" value="chainMail"> Chain mail</label><br>
+                </div>
+                <div id="splintArmor">
+                  <label> <input type="checkbox" name="armor" value="splint"> Splint</label><br>
+                </div>
+                <div id="plateArmor">
+                  <label> <input type="checkbox" name="armor" value="plate"> Plate</label><br>
+                </div>
               </div>
-              <div id="shield">
+              <div id="shield-armor">
                 <h6>Shield</h6>
-                  <label> <input type="checkbox" name="armor">Shield</label><br>
+                <div id="shield">
+                  <label> <input type="checkbox" name="armor" value="shield"> Shield</label><br>
+                </div>
               </div>
             </div>
           </div>
@@ -384,7 +477,7 @@
     </div>
 
 <!-- Character Sheet Output -->
-    <div class=container>
+    <div class="container">
       <div id="character-sheet">
         <div id="sheet-header">
           <h4 id="character-name-sheet"></h4>

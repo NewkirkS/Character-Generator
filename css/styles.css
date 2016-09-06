@@ -62,6 +62,11 @@ p, li {
 
 label {
   font-size: 18px;
+  margin-left: 20px;
+}
+
+select {
+  margin: 10px;
 }
 
 input {
@@ -70,9 +75,17 @@ input {
 
 .container{
   height: 100vh;
+  display: block;
+  clear: both;
+  padding-top: 20px;
+  padding-bottom: 100px;
+  position: relative;
 }
 
-/*Class Selectors*/
+.container #character-sheet {
+  margin-top: 200px;
+}
+
 .btn {
     outline: none !important;
     border-radius: 4px;
@@ -91,10 +104,6 @@ input {
   display: none;
 }
 
-.second-row {
-  min-height: 200px;
-}
-
 .ability-scores-display {
   font-size: 16px;
   font-weight: bolder;
@@ -108,6 +117,9 @@ input {
 
 #character-form-submit {
   background-color: black;
+  margin-top: 75px;
+  position: relative;
+  z-index: 99;
 }
 
 #ability-roll {
@@ -130,13 +142,8 @@ input {
   margin-top: 40px;
 }
 
-
-#click-wiz-cantrips, #click-wiz-1st, #click-cleric-cantrips, #click-cleric-1st, #weapons-show, #armor-show {
+#click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover, #weapons-show:hover, #armor-show:hover {
   color: firebrick;
-}
-
-#click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover, #weapons-show:hover {
-  color: black;
 }
 
 #click-description {
@@ -151,12 +158,13 @@ input {
   display: none;
 }
 
-#simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #light-armor, #medium-armor, #heavy-armor, #shield, #cloth-armor {
+#simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #light-armor, #medium-armor, #heavy-armor, #shield-armor, #cloth-armor {
   display: none;
 }
 
 #output-sheet {
   display: none;
+  clear: both;
 }
 
 #down-arrow {

@@ -246,6 +246,12 @@ var net = {
 
 //Armor
 
+var cloth = {
+  name: "Cloth armor",
+  armorType: "cloth",
+  ac: 0
+}
+
 var leather = {
   name: "Leather armor",
   type: "light",
@@ -322,10 +328,4 @@ var shield = {
   name: "Shield",
   type: "shield",
   ac: 2,
-}
-
-var cloth = {
-  name: "Cloth armor",
-  armorType: "cloth",
-  ac: 0
 }
