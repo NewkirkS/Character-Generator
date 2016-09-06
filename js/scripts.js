@@ -175,6 +175,7 @@ $(document).ready(function() {
       $("#ability-roll-" + i).text(abilityScoreArray[(i - 1)]);
         sumOfRolls += abilityScoreArray[(i - 1)];
     }
+    $("#ability-roll-instructions").show();
     // $("#ability-roll").prop("disabled", true);
     // $("#character-form-submit").prop("disabled", false);
   });

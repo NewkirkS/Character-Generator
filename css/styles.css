@@ -110,6 +110,10 @@ input {
   margin: 10px;
 }
 
+h4#ability-roll-instructions {
+  display: none;
+}
+
 /*ID Selectors*/
 #wizard-spells, #cleric-spells {
   display: none;
@@ -134,6 +138,12 @@ input {
 #ability-scores-title {
   float: left;
   margin-right: 10vw;
+}
+
+#ability-roll-instructions {
+  display: block;
+  text-align: center;
+  break: both;
 }
 
 #click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover, #weapons-show:hover, #armor-show:hover {
