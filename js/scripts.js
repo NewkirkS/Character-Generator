@@ -1,5 +1,4 @@
 //Business logic
-//Global variable and Objects
 var abilityScoreArray = [];
 var sumOfRolls = 0;
 
@@ -133,7 +132,6 @@ var rollCharAbilityScores = function(array) {
 }
 
 //User Interface Logic
-//Spell Toggle Hover Buttons
 $(document).ready(function() {
 
   $(this).scrollTop(0);
@@ -149,6 +147,7 @@ $(document).ready(function() {
 
   $("#weapons, #armor, #wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level, #down-arrow").hide();
 
+  //Spell and equipment toggle hover buttons
   $("#click-wiz-cantrips").click(function(){
     $("#wiz-cantrips").toggle();
   });

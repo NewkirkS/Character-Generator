@@ -86,7 +86,7 @@ var halfElf = {
   size: "medium",
   speed: 30,
   languages: ["Common", "Elvish"],
-  raceTraits: ["Darkvision", "Fey Ancestry", "Skill Versatility", "Extra Ability Point"],
+  raceTraits: ["Darkvision", "Fey Ancestry", "Skill Versatility", "Extra Ability Point", "Extra Language"],
   abilityScoreIncrease: function(character) {
     character.charAbilityScores.cha += 2;
   }
