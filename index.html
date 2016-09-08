@@ -32,7 +32,7 @@
         </div>
         <div class="row form-inline">
           <div class="col-sm-3 col-sm-offset-1">
-            <div class="centered">
+            <div id="centered">
               <label for="player-race">Race:</label>
               <select class="form-control" id="race-input">
                 <option disabled selected>Choose Race</option>
@@ -46,6 +46,19 @@
                 <option value="dragonborn">Dragonborn</option>
                 <option value="tiefling">Tiefling</option>
               </select>
+              <label for="subrace" id="subrace-label">Subrace:</label>
+              <div id="subrace-disabled">
+                <select class="form-control">
+                  <option disabled selected>None</option>
+                </select>
+              </div>
+              <div id="gnome-subraces">
+                <select class="form-control" id="gnome-subrace-input">
+                  <option disabled selected>None</option>
+                  <option value="forest">Forest</option>
+                  <option value="rock">Rock</option>
+                </select>
+              </div>
             </div>
           </div>
           <div class="col-sm-3">

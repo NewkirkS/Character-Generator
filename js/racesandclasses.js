@@ -77,7 +77,21 @@ var gnome = {
   raceTraits: ["Darkvision", "Gnome Cunning"],
   abilityScoreIncrease: function(character) {
     character.charAbilityScores.int += 2;
+    if ($("#gnome-subrace-input").val() === "forest") {
+      character.charAbilityScores.dex += 1;
+      character.charRace.raceTraits.push("Natural Illusionist");
+      character.charRace.raceTraits.push("Speak with Small Beasts");
+    } else if ($("#gnome-subrace-input").val() === "rock") {
+      character.charAbilityScores.con += 1;
+      character.charRace.raceTraits.push("Artificer\'s Lore");
+      character.charRace.raceTraits.push("Tinker");
+    }
   }
+  // subrace: function() {
+  //   if ($("#gnome-subrace-input").val() === "forest") {
+  //     character.charAbilityScores.dex += 1;
+  //   }
+  // }
 }
 
 //HALF-ELF

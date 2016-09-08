@@ -180,6 +180,16 @@ $(document).ready(function() {
     // $("#character-form-submit").prop("disabled", false);
   });
 
+//Subrace Hide/show
+  $("#race-input").change(function(){
+    $("#gnome-subraces").hide();
+    var characterRace = $("#race-input").val();
+    if (characterRace === "gnome") {
+      $("#subrace-disabled").hide();
+      $("#gnome-subraces").show();
+    }
+  });
+
 //Skill Hide/Show Event on Class Dropdown Change
   $("#class-input").change(function(){
     var characterClass = $("#class-input").val();
@@ -200,7 +210,9 @@ $(document).ready(function() {
 //User Form Submit and Results Output
   $("#character-form").submit(function(){
     event.preventDefault();
+
     $("#proficiency-bonus-sheet, #strength-sheet, #dexterity-sheet, #constitution-sheet, #intelligence-sheet, #wisdom-sheet, #charisma-sheet, #perception-sheet, #languages-sheet, #ac-sheet, #initiative-sheet, #speed-sheet, #hp-sheet, #hd-sheet, #race-traits-sheet, #class-features-sheet, #spells-sheet, #attacks-sheet, #equipment-sheet").empty();
+
     $("#output-sheet, #down-arrow").show();
     // $("#character-form-submit").prop("disabled", true);
     // $("#ability-roll").prop("disabled", false);

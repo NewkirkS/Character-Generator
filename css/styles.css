@@ -110,6 +110,15 @@ input {
   margin: 10px;
 }
 
+#subrace-label {
+  float: left;
+  margin-top: 12px;
+}
+
+#gnome-subraces {
+  display: none;
+}
+
 h4#ability-roll-instructions {
   display: none;
 }
