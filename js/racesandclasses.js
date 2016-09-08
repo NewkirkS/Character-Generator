@@ -87,11 +87,6 @@ var gnome = {
       character.charRace.raceTraits.push("Tinker");
     }
   }
-  // subrace: function() {
-  //   if ($("#gnome-subrace-input").val() === "forest") {
-  //     character.charAbilityScores.dex += 1;
-  //   }
-  // }
 }
 
 //HALF-ELF
