@@ -246,8 +246,7 @@ $(document).ready(function() {
 //Character Sheet Output
     $("#character-name-sheet").text(newCharacter.charName);
     $("#race-class-sheet").text(newCharacter.charRace.name + " " + newCharacter.charClass.name);
-    $("#proficiency-bonus-sheet").text(newCharacter.charProfBonus);
-    $("#proficiency-bonus-sheet").text(newCharacter.charProfBonus);
+    $("#proficiency-bonus-sheet").text("+" + newCharacter.charProfBonus);
     //Inspiriation needed
     var skillArray = []
     $("input:checkbox[name=skills]:checked").each(function() {
