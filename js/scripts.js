@@ -145,7 +145,7 @@ $(document).ready(function() {
 
   // $("#character-form-submit").prop("disabled", true);
 
-  $("#weapons, #armor, #wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level, #down-arrow").hide();
+  $("#weapons, #armor, #wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level, #down-arrow, #gnome-subraces, #dwarf-subraces, #halfling-subraces, #subrace-disabled").hide();
 
   //Spell and equipment toggle hover buttons
   $("#click-wiz-cantrips").click(function(){
@@ -182,11 +182,17 @@ $(document).ready(function() {
 
 //Subrace Hide/show
   $("#race-input").change(function(){
-    $("#gnome-subraces").hide();
+    $("#gnome-subraces, #dwarf-subraces").hide();
     var characterRace = $("#race-input").val();
     if (characterRace === "gnome") {
-      $("#subrace-disabled").hide();
+      $("#subrace-disabled, #dwarf-subraces, #halfling-subraces").hide();
       $("#gnome-subraces").show();
+    } else if (characterRace === "dwarf") {
+      $("#subrace-disabled, #gnome-subraces, #halfling-subraces").hide();
+      $("#dwarf-subraces").show();
+    } else if (characterRace === "halfling") {
+      $("#subrace-disabled, #dwarf-subraces, #gnome-subraces").hide();
+      $("#halfling-subraces").show();
     }
   });
 

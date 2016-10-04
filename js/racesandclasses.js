@@ -40,6 +40,13 @@ var dwarf = {
   raceTraits: ["Darkvision", "Dwarven Resilience", "Dwarven Combat Training", "Tool Proficiency", "Stonecunning"],
   abilityScoreIncrease: function(character) {
     character.charAbilityScores.con += 2;
+    if ($("#dwarf-subrace-input").val() === "Hill"){
+      character.charAbilityScores.wis += 1;
+      character.charRace.raceTraits.push("Dwarven Toughness");
+    } else if ($("#dwarf-subrace-input").val() === "Mountain"); {
+      character.charAbilityScores.str += 2;
+      character.charRace.raceTraits.push("Dwarven Armor Training");
+    }
   }
 }
 
@@ -52,6 +59,13 @@ var halfling = {
   raceTraits: ["Lucky", "Brave", "Halfling Nimbleness"],
   abilityScoreIncrease: function(character) {
     character.charAbilityScores.dex += 2;
+    if ($("#halfling-subrace-input").val() === "Lightfoot") {
+      character.charAbilityScores.cha += 1;
+      character.charRace.raceTraits.push("Naturally Stealthy");
+    } else if ($("#halfling-subrace-input").val() === "Stout") {
+      character.charAbilityScores.con += 1;
+      character.charRace.raceTraits.push("Stout Resilience");
+    }
   }
 }
 
