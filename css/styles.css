@@ -100,6 +100,10 @@ select {
   margin: 10px;
 }
 
+select#level-input {
+  width: 110px;
+}
+
 input {
   margin: 5px;
 }
@@ -108,13 +112,13 @@ input {
   display: block;
   clear: both;
   padding-top: 20px;
-  padding-bottom: 100px;
+  padding-bottom: 20px;
   position: relative;
 }
 
 
 #character-sheet {
-  
+
 }
 
 .btn {
@@ -169,7 +173,7 @@ h4#ability-roll-instructions {
 #ability-roll {
  background-color: black;
  color: white;
- width: 40%;
+ width: 300px;
  margin: 0 auto;
  border: 3px solid black;
  transition: all .3s;
