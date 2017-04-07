@@ -250,40 +250,40 @@ $(document).ready(function() {
     newCharacter.calculateStats(newCharacter);
 
 //Character Sheet Output
-    $("#character-name-sheet").text(newCharacter.charName);
-    $("#race-class-sheet").text(newCharacter.charRace.name + " " + newCharacter.charClass.name);
-    $("#proficiency-bonus-sheet").text(newCharacter.charProfBonus);
-    $("#proficiency-bonus-sheet").text(newCharacter.charProfBonus);
+    $(".character-name-sheet").text(newCharacter.charName);
+    $(".race-class-sheet").text(newCharacter.charRace.name + " " + newCharacter.charClass.name);
+    $(".proficiency-bonus-sheet").text(newCharacter.charProfBonus);
+    $(".proficiency-bonus-sheet").text(newCharacter.charProfBonus);
     //Inspiriation needed
     var skillArray = []
     $("input:checkbox[name=skills]:checked").each(function() {
       skillArray.push($(this).val());
     });
     skillArray.forEach(function(skill) {
-      $("#skills").append("<li>" + skill + "</li>")
+      $(".skills").append("<li>" + skill + "</li>")
     });
-    $("#skills").show();
+    $(".skills").show();
 
-    $("#strength-sheet").text(newCharacter.charAbilityScores.str + " (+" + newCharacter.charAbilityScoreModifiers.strMod + ")");
-    $("#dexterity-sheet").text(newCharacter.charAbilityScores.dex + " (+" + newCharacter.charAbilityScoreModifiers.dexMod + ")");
-    $("#constitution-sheet").text(newCharacter.charAbilityScores.con + " (+" + newCharacter.charAbilityScoreModifiers.conMod + ")");
-    $("#intelligence-sheet").text(newCharacter.charAbilityScores.int + " (+" + newCharacter.charAbilityScoreModifiers.intMod + ")");
-    $("#wisdom-sheet").text(newCharacter.charAbilityScores.wis + " (+" + newCharacter.charAbilityScoreModifiers.wisMod + ")");
-    $("#charisma-sheet").text(newCharacter.charAbilityScores.cha + " (+" + newCharacter.charAbilityScoreModifiers.chaMod + ")");
-    $("#passive-perception-sheet").text("+" + newCharacter.charAbilityScoreModifiers.wisMod); //plus perception
-    $("#ac-sheet").text(newCharacter.charAc);
-    $("#initiative-sheet").text("+" + newCharacter.charAbilityScoreModifiers.dexMod);
-    $("#speed-sheet").text(newCharacter.charRace.speed);
-    $("#hp-sheet").text(newCharacter.charHp);
-    $("#hd-sheet").text(newCharacter.charLevel + newCharacter.charClass.hitDie);
+    $(".strength-sheet").text(newCharacter.charAbilityScores.str + " (+" + newCharacter.charAbilityScoreModifiers.strMod + ")");
+    $(".dexterity-sheet").text(newCharacter.charAbilityScores.dex + " (+" + newCharacter.charAbilityScoreModifiers.dexMod + ")");
+    $(".constitution-sheet").text(newCharacter.charAbilityScores.con + " (+" + newCharacter.charAbilityScoreModifiers.conMod + ")");
+    $(".intelligence-sheet").text(newCharacter.charAbilityScores.int + " (+" + newCharacter.charAbilityScoreModifiers.intMod + ")");
+    $(".wisdom-sheet").text(newCharacter.charAbilityScores.wis + " (+" + newCharacter.charAbilityScoreModifiers.wisMod + ")");
+    $(".charisma-sheet").text(newCharacter.charAbilityScores.cha + " (+" + newCharacter.charAbilityScoreModifiers.chaMod + ")");
+    $(".passive-perception-sheet").text("+" + newCharacter.charAbilityScoreModifiers.wisMod); //plus perception
+    $(".ac-sheet").text(newCharacter.charAc);
+    $(".initiative-sheet").text("+" + newCharacter.charAbilityScoreModifiers.dexMod);
+    $(".speed-sheet").text(newCharacter.charRace.speed);
+    $(".hp-sheet").text(newCharacter.charHp);
+    $(".hd-sheet").text(newCharacter.charLevel + newCharacter.charClass.hitDie);
     newCharacter.charRace.raceTraits.forEach(function(index){
-      $("#race-traits-sheet").append("<li>" + index + "</li>");
+      $(".race-traits-sheet").append("<li>" + index + "</li>");
     });
     newCharacter.charClass.features.forEach(function(index){
-      $("#class-features-sheet").append("<li>" + index + "</li>");
+      $(".class-features-sheet").append("<li>" + index + "</li>");
     });
     newCharacter.charRace.languages.forEach(function(index){
-      $("#languages-sheet").append("<li>" + index + "</li>");
+      $(".languages-sheet").append("<li>" + index + "</li>");
     });
 
 //Display Chosen Spells in Character Sheet
@@ -292,24 +292,24 @@ $(document).ready(function() {
       chosenSpells.push($(this).val());
     });
     chosenSpells.forEach(function(index){
-      $("#spells-sheet").append("<li>" + index + "</li>");
+      $(".spells-sheet").append("<li>" + index + "</li>");
     });
 
 //Display Melee and Ranged Weapon Attacks in Character Sheet
   newCharacter.charClass.weapons.forEach(function(index){
     if (index.type === "simple melee" || index.type === "martial melee") {
-      $("#attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.strMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.strMod + "</li>");
+      $(".attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.strMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.strMod + "</li>");
     } else {
-      $("#attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.dexMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.dexMod + "<br> Range: " + index.range + " ft.</li>");
+      $(".attacks-sheet").append("<li>" + index.name + " -- <br> Attack bonus: +" + (newCharacter.charAbilityScoreModifiers.dexMod + newCharacter.charProfBonus) + "<br> Damage: " + index.damage + " + " + newCharacter.charAbilityScoreModifiers.dexMod + "<br> Range: " + index.range + " ft.</li>");
     }
   });
 
 //Display Equipment in Character Sheet
     newCharacter.charClass.weapons.forEach(function(index){
-      $("#equipment-sheet").append("<li>" + index.name + "</li>");
+      $(".equipment-sheet").append("<li>" + index.name + "</li>");
     });
     newCharacter.charClass.armor.forEach(function(index){
-      $("#equipment-sheet").append("<li>" + index.name + "</li>");
+      $(".equipment-sheet").append("<li>" + index.name + "</li>");
     });
 
     console.log(newCharacter);

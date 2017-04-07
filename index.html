@@ -3,6 +3,7 @@
   <head>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="css/sheet.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-3.1.0.js"></script>
     <script src="js/racesandclasses.js"></script>
     <script src="js/weapons.js"></script>
@@ -508,49 +509,49 @@
 
 <!-- Character Sheet Output -->
     <div class="container">
-      <div id="character-sheet">
-        <div id="sheet-header">
-          <h4 id="character-name-sheet"></h4>
-          <h4 id="race-class-sheet"></h4>
+      <div class="character-sheet">
+        <div class="sheet-header">
+          <h4 class="character-name-sheet"></h4>
+          <h4 class="race-class-sheet"></h4>
           <div class="row">
             <div class="col-sm-4">
             </div>
             <div class="col-sm-4">
-              <p id="background-sheet"></p>
-              <p id="alignment-sheet"></p>
+              <p class="background-sheet"></p>
+              <p class="alignment-sheet"></p>
             </div>
             <div class="col-sm-4">
-              <p id="player-name-sheet"></p>
-              <p id="xp-sheet"></p>
+              <p class="player-name-sheet"></p>
+              <p class="xp-sheet"></p>
             </div>
           </div>
         </div>
-        <div class="row" id="output-sheet">
+        <div class="row" class="output-sheet">
         <a href="#output-sheet"></a>
           <div class="col-sm-4">
-            <p>Proficiency Bonus: <span id="proficiency-bonus-sheet"></span></p>
-            <p>Strength: <span id="strength-sheet"></span></p>
-            <p>Dexterity: <span id="dexterity-sheet"></span></p>
-            <p>Constitution: <span id="constitution-sheet"></span></p>
-            <p>Intelligence: <span id="intelligence-sheet"></span></p>
-            <p>Wisdom: <span id="wisdom-sheet"></span></p>
-            <p>Charisma: <span id="charisma-sheet"></span></p>
-            <p>Passive Perception (Wisdom): <span id="passive-perception-sheet"></span></p>
+            <p>Proficiency Bonus: <span class="proficiency-bonus-sheet"></span></p>
+            <p>Strength: <span class="strength-sheet"></span></p>
+            <p>Dexterity: <span class="dexterity-sheet"></span></p>
+            <p>Constitution: <span class="constitution-sheet"></span></p>
+            <p>Intelligence: <span class="intelligence-sheet"></span></p>
+            <p>Wisdom: <span class="wisdom-sheet"></span></p>
+            <p>Charisma: <span class="charisma-sheet"></span></p>
+            <p>Passive Perception (Wisdom): <span class="passive-perception-sheet"></span></p>
             <p>Languages:</p>
-            <ul id="languages-sheet">
+            <ul class="languages-sheet">
             </ul>
           </div>
           <div class="col-sm-4">
-            <p>AC: <span id="ac-sheet"></span></p>
-            <p>Initiative: <span id="initiative-sheet"></span></p>
-            <p>Speed: <span id="speed-sheet"></span></p>
-            <p>HP: <span id="hp-sheet"></span></p>
-            <p>Hit Dice: <span id="hd-sheet"></span></p>
+            <p>AC: <span class="ac-sheet"></span></p>
+            <p>Initiative: <span class="initiative-sheet"></span></p>
+            <p>Speed: <span class="speed-sheet"></span></p>
+            <p>HP: <span class="hp-sheet"></span></p>
+            <p>Hit Dice: <span class="hd-sheet"></span></p>
             <p>Attacks:</p>
-            <ul id="attacks-sheet">
+            <ul class="attacks-sheet">
             </ul>
             <p>Equipment:</p>
-            <ul id="equipment-sheet">
+            <ul class="equipment-sheet">
             </ul>
           </div>
           <div class="col-sm-4">
@@ -578,5 +579,65 @@
         </div>
       </div>
     </div>
+
+    <div class="printable">
+      <div class="character-sheet">
+        <img src="img/Character-Sheet.png">
+        <div class="sheet-header">
+          <h4 class="character-name-sheet"></h4>
+          <h4 class="race-class-sheet"></h4>
+          <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
+              <p class="background-sheet"></p>
+              <p class="alignment-sheet"></p>
+            </div>
+            <div class="col-sm-4">
+              <p class="player-name-sheet"></p>
+              <p class="xp-sheet"></p>
+            </div>
+          </div>
+        </div>
+        <div class="row" class="output-sheet">
+        <a href="#output-sheet"></a>
+          <div id=ability-stats>
+            <p><span class="proficiency-bonus-sheet"></span></p>
+            <p><span class="strength-sheet"></span></p>
+            <p><span class="dexterity-sheet"></span></p>
+            <p><span class="constitution-sheet"></span></p>
+            <p><span class="intelligence-sheet"></span></p>
+            <p><span class="wisdom-sheet"></span></p>
+            <p><span class="charisma-sheet"></span></p>
+          </div>
+          <p><span class="passive-perception-sheet"></span></p>
+          <ul class="languages-sheet">
+          </ul>
+          <div id="ac-row" >
+            <p><span class="ac-sheet">10</span></p>
+            <p><span class="initiative-sheet">2</span></p>
+            <p><span class="speed-sheet">30</span></p>
+            <p><span class="hp-sheet"></span></p>
+            <p><span class="hd-sheet"></span></p>
+          </div>
+          <div class="weapons-box">
+            <ul class="attacks-sheet">
+            </ul>
+          </div>
+          <div class="features-feats-equipment">
+            <ul class="equipment-sheet">
+            </ul>
+          </div>
+          <div id="skills-column">
+            <ul id="skills">
+            </ul>
+            <ul id="spells-sheet">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </body>
 </html>

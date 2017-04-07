@@ -1,0 +1,45 @@
+.printable {
+  position: relative;
+  width: 100%;
+}
+
+.character-sheet {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1185px;
+  width: 916px;
+}
+
+.character-sheet img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+#ability-stats {
+  position: absolute;
+  top: 200px;
+  bottom: 0;
+  left: 40px;
+  height: 650px;
+  width: 90px;
+  border: 1px solid blue;
+}
+
+#ability-stats p {
+  text-align: center;
+  line-height: 98.5px;
+}
+
+#skills-column {
+  position: absolute;
+  top: 300px;
+  left: 140px;
+  width: 165px;
+  height: 570px;
+  border: 1px solid yellow;
+}

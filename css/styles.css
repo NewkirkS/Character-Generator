@@ -19,12 +19,13 @@ body::-webkit-scrollbar {
 }
 
 a#begin {
-  width: 10vw;
+  position: relative;
+  top: 10px;
   text-transform: uppercase;
   background: transparent;
   border: 2px solid white;
   letter-spacing: 2px;
-  padding: 10px 20px;
+  padding: 10px 30px;
   color: white;
 }
 
@@ -184,6 +185,11 @@ h4#ability-roll-instructions {
   display: none;
   text-align: center;
   font-size: 15px;
+}
+
+.printable-character-sheet {
+  position: relative;
+  margin: 0 auto;
 }
 
 /*Media Queries*/
