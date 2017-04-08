@@ -1,5 +1,4 @@
 //Business logic
-//Global variable and Objects
 var abilityScoreArray = [];
 var sumOfRolls = 0;
 
@@ -133,7 +132,6 @@ var rollCharAbilityScores = function(array) {
 }
 
 //User Interface Logic
-//Spell Toggle Hover Buttons
 $(document).ready(function() {
 
   $(this).scrollTop(0);
@@ -147,8 +145,9 @@ $(document).ready(function() {
 
   // $("#character-form-submit").prop("disabled", true);
 
-  $("#weapons, #armor, #wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level, #down-arrow").hide();
+  $("#weapons, #armor, #wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level, #down-arrow, #gnome-subraces, #dwarf-subraces, #halfling-subraces, #subrace-disabled").hide();
 
+  //Spell and equipment toggle hover buttons
   $("#click-wiz-cantrips").click(function(){
     $("#wiz-cantrips").toggle();
   });
@@ -176,8 +175,25 @@ $(document).ready(function() {
       $("#ability-roll-" + i).text(abilityScoreArray[(i - 1)]);
         sumOfRolls += abilityScoreArray[(i - 1)];
     }
+    $("#ability-roll-instructions").css('opacity', '1');
     // $("#ability-roll").prop("disabled", true);
     // $("#character-form-submit").prop("disabled", false);
+  });
+
+//Subrace Hide/show
+  $("#race-input").change(function(){
+    $("#gnome-subraces, #dwarf-subraces").hide();
+    var characterRace = $("#race-input").val();
+    if (characterRace === "gnome") {
+      $("#subrace-disabled, #dwarf-subraces, #halfling-subraces").hide();
+      $("#gnome-subraces").show();
+    } else if (characterRace === "dwarf") {
+      $("#subrace-disabled, #gnome-subraces, #halfling-subraces").hide();
+      $("#dwarf-subraces").show();
+    } else if (characterRace === "halfling") {
+      $("#subrace-disabled, #dwarf-subraces, #gnome-subraces").hide();
+      $("#halfling-subraces").show();
+    }
   });
 
 //Skill Hide/Show Event on Class Dropdown Change
@@ -198,9 +214,14 @@ $(document).ready(function() {
   });
 
 //User Form Submit and Results Output
-  $("#character-form").submit(function(){
+  $("#character-form").submit(function(event){
     event.preventDefault();
+
+    $('#character-form-submit').attr('disabled',true);
+
+
     $("#proficiency-bonus-sheet, #strength-sheet, #dexterity-sheet, #constitution-sheet, #intelligence-sheet, #wisdom-sheet, #charisma-sheet, #perception-sheet, #languages-sheet, #ac-sheet, #initiative-sheet, #speed-sheet, #hp-sheet, #hd-sheet, #race-traits-sheet, #class-features-sheet, #spells-sheet, #attacks-sheet, #equipment-sheet").empty();
+
     $("#output-sheet, #down-arrow").show();
     // $("#character-form-submit").prop("disabled", true);
     // $("#ability-roll").prop("disabled", false);

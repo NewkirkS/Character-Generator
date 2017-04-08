@@ -40,6 +40,13 @@ var dwarf = {
   raceTraits: ["Darkvision", "Dwarven Resilience", "Dwarven Combat Training", "Tool Proficiency", "Stonecunning"],
   abilityScoreIncrease: function(character) {
     character.charAbilityScores.con += 2;
+    if ($("#dwarf-subrace-input").val() === "Hill"){
+      character.charAbilityScores.wis += 1;
+      character.charRace.raceTraits.push("Dwarven Toughness");
+    } else if ($("#dwarf-subrace-input").val() === "Mountain"); {
+      character.charAbilityScores.str += 2;
+      character.charRace.raceTraits.push("Dwarven Armor Training");
+    }
   }
 }
 
@@ -52,6 +59,13 @@ var halfling = {
   raceTraits: ["Lucky", "Brave", "Halfling Nimbleness"],
   abilityScoreIncrease: function(character) {
     character.charAbilityScores.dex += 2;
+    if ($("#halfling-subrace-input").val() === "Lightfoot") {
+      character.charAbilityScores.cha += 1;
+      character.charRace.raceTraits.push("Naturally Stealthy");
+    } else if ($("#halfling-subrace-input").val() === "Stout") {
+      character.charAbilityScores.con += 1;
+      character.charRace.raceTraits.push("Stout Resilience");
+    }
   }
 }
 
@@ -77,6 +91,15 @@ var gnome = {
   raceTraits: ["Darkvision", "Gnome Cunning"],
   abilityScoreIncrease: function(character) {
     character.charAbilityScores.int += 2;
+    if ($("#gnome-subrace-input").val() === "forest") {
+      character.charAbilityScores.dex += 1;
+      character.charRace.raceTraits.push("Natural Illusionist");
+      character.charRace.raceTraits.push("Speak with Small Beasts");
+    } else if ($("#gnome-subrace-input").val() === "rock") {
+      character.charAbilityScores.con += 1;
+      character.charRace.raceTraits.push("Artificer\'s Lore");
+      character.charRace.raceTraits.push("Tinker");
+    }
   }
 }
 
@@ -86,7 +109,7 @@ var halfElf = {
   size: "medium",
   speed: 30,
   languages: ["Common", "Elvish"],
-  raceTraits: ["Darkvision", "Fey Ancestry", "Skill Versatility", "Extra Ability Point"],
+  raceTraits: ["Darkvision", "Fey Ancestry", "Skill Versatility", "Extra Ability Point", "Extra Language"],
   abilityScoreIncrease: function(character) {
     character.charAbilityScores.cha += 2;
   }

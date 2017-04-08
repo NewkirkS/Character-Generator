@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-3.1.0.js"></script>
@@ -8,30 +10,34 @@
     <script src="js/weapons.js"></script>
     <script src="js/scripts.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Marcellus+SC" rel="stylesheet">
-    <title>5e Generator</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" sizes="16x16">
+    <title>5e Character Generator</title>
   </head>
   <body>
     <div class="hero">
-      <h1>&#9532; Dungeons &amp; Dragons &#9532;</h1>
-      <h2>5e Character Generator</h2>
-      <a href="#container" id="begin">Begin</a>
+      <!-- <img class="logo" src="img/logo-dark.png" alt="generator logo"> -->
+      <div class="hero-title">
+        <h1>Dungeons &amp; Dragons</h1>
+        <h2>5e Character Generator</h2>
+        <a href="#container" id="begin">Begin</a>
+      </div>
     </div>
     <div id="container" class="container">
       <br>
 <!-- First Form: Names, Race, Class, and Ability Scores -->
       <form class="form-group" id="character-form">
         <div class="row">
-          <div class="col-sm-4 col-sm-offset-2">
+          <div class="col-sm-4 col-sm-offset-2 col-xs-8 col-xs-offset-2">
             <label for="player-name">Player name:</label>
             <input type="text" class="form-control" id="player-name-input"><br>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4 col-sm-offset-1 col-xs-8 col-xs-offset-2">
             <label for="character-name">Character name:</label>
             <input type="text" class="form-control" id="character-name-input"><br>
           </div>
         </div>
-        <div class="row form-inline">
-          <div class="col-sm-3 col-sm-offset-1">
+        <div class="row form-inline" id="character-race-class-level">
+          <div class="col-sm-3 col-xs-8 col-xs-offset-2">
             <div class="centered">
               <label for="player-race">Race:</label>
               <select class="form-control" id="race-input">
@@ -46,9 +52,36 @@
                 <option value="dragonborn">Dragonborn</option>
                 <option value="tiefling">Tiefling</option>
               </select>
+              <!-- <label for="subrace" id="subrace-label">Subrace:</label>
+              <div id="subrace-disabled">
+                <select class="form-control">
+                  <option disabled selected>None</option>
+                </select>
+              </div>
+              <div id="gnome-subraces">
+                <select class="form-control" id="gnome-subrace-input">
+                  <option disabled selected>None</option>
+                  <option value="forest">Forest</option>
+                  <option value="rock">Rock</option>
+                </select>
+              </div>
+              <div id="dwarf-subraces">
+                <select class="form-control" id="dwarf-subrace-input">
+                  <option disabled selected>None</option>
+                  <option value="Hill">Hill</option>
+                  <option value="Rock">Mountain</option>
+                </select>
+              </div>
+              <div id="halfling-subraces">
+                <select class="form-control" id="halfling-subrace-input">
+                  <option disabled selected>None</option>
+                  <option value="Lightfoot">Lightfoot</option>
+                  <option value="Stout">Stout</option>
+                </select>
+              </div> -->
             </div>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-3  col-sm-offset-0 col-xs-8 col-xs-offset-2">
             <div class="centered">
               <label for="player-class">Class:</label>
               <select class="form-control" id="class-input">
@@ -60,7 +93,7 @@
               </select>
             </div>
           </div>
-          <div class="col-sm-3">
+          <div class="col-xs-8 col-xs-offset-2 col-sm-3 col-sm-offset-0">
             <div class="centered">
               <label for="player-level">Level:</label>
               <select class="form-control" id="level-input">
@@ -72,23 +105,26 @@
         <br>
         <button type="button" class="btn btn-lg btn-secondary btn-block" id="ability-roll">Roll for your ability scores!</button><br>
 <!-- Ability Scores Output for user to arange into the appropriate user fields -->
-        <h3 id="ability-scores-title">Ability scores:</h3>
         <div class="row ability-scores-display">
-          <div class="col-sm-1 centered" id="ability-roll-1">
+          <div class="col-sm-4 col-sm-offset-1" >
+            <h3 class="centered" id="ability-scores-title">Ability scores:</h3>
           </div>
-          <div class="col-sm-1 centered" id="ability-roll-2">
+          <div class="col-xs-2 col-xs-offset-3 col-sm-1 col-sm-offset-0" id="ability-roll-1">
           </div>
-          <div class="col-sm-1 centered" id="ability-roll-3">
+          <div class="col-xs-2  col-sm-1 col-sm-offset-0" id="ability-roll-2">
           </div>
-          <div class="col-sm-1 centered" id="ability-roll-4">
+          <div class="col-xs-2 col-sm-1 col-sm-offset-0" id="ability-roll-3">
           </div>
-          <div class="col-sm-1 centered" id="ability-roll-5">
+          <div class="col-xs-2 col-xs-offset-3 col-sm-1 col-sm-offset-0" id="ability-roll-4">
           </div>
-          <div class="col-sm-1 centered" id="ability-roll-6">
+          <div class="col-xs-2 col-sm-1 col-sm-offset-0" id="ability-roll-5">
+          </div>
+          <div class="col-xs-2  col-sm-1 col-sm-offset-0" id="ability-roll-6">
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-4 col-sm-offset-2 form-inline ">
+        <h4 id="ability-roll-instructions">Enter each ability score roll into the desired ability below.</h4>
+        <div class="row" id="ability-score-inputs">
+          <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-2 form-inline ">
             <input type="number" id="strength" class="form-control ability-score-form">
             <label for="strength">Strength</label><br>
             <input type="number" id="dexterity" class="form-control ability-score-form">
@@ -96,11 +132,11 @@
             <input type="number" id="constitution" class="form-control ability-score-form">
             <label for="constitution">Constitution</label>
           </div>
-          <div class="col-sm-4 form-inline">
+          <div class="col-xs-8 col-xs-offset-2 col-sm-4 form-inline">
             <input type="number" id="intelligence" class="form-control ability-score-form">
             <label for="intelligence">Intelligence</label><br>
             <input type="number" id="wisdom" class="form-control ability-score-form">
-            <label for="wisdom">Wisdom</label><br>
+            <label for="wisdom">Wisdom &nbsp;</label><br>
             <input type="number" id="charisma" class="form-control ability-score-form">
             <label for="charisma">Charisma</label>
           </div>
