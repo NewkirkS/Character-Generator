@@ -175,7 +175,7 @@ $(document).ready(function() {
       $("#ability-roll-" + i).text(abilityScoreArray[(i - 1)]);
         sumOfRolls += abilityScoreArray[(i - 1)];
     }
-    $("#ability-roll-instructions").show();
+    $("#ability-roll-instructions").css('opacity', '1');
     // $("#ability-roll").prop("disabled", true);
     // $("#character-form-submit").prop("disabled", false);
   });
@@ -214,8 +214,11 @@ $(document).ready(function() {
   });
 
 //User Form Submit and Results Output
-  $("#character-form").submit(function(){
+  $("#character-form").submit(function(event){
     event.preventDefault();
+
+    $('#character-form-submit').attr('disabled',true);
+
 
     $("#proficiency-bonus-sheet, #strength-sheet, #dexterity-sheet, #constitution-sheet, #intelligence-sheet, #wisdom-sheet, #charisma-sheet, #perception-sheet, #languages-sheet, #ac-sheet, #initiative-sheet, #speed-sheet, #hp-sheet, #hd-sheet, #race-traits-sheet, #class-features-sheet, #spells-sheet, #attacks-sheet, #equipment-sheet").empty();
 

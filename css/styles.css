@@ -93,7 +93,6 @@ p, li {
 
 label {
   font-size: 18px;
-  margin-left: 20px;
 }
 
 select {
@@ -101,24 +100,19 @@ select {
 }
 
 select#level-input {
-  width: 110px;
+  min-width: 110px;
 }
 
 input {
   margin: 5px;
 }
 
-.container{
+.container {
   display: block;
   clear: both;
   padding-top: 20px;
   padding-bottom: 20px;
   position: relative;
-}
-
-
-#character-sheet {
-
 }
 
 .btn {
@@ -139,10 +133,33 @@ input {
   display: none;
 }
 
-.ability-scores-display {
+.ability-scores-display div {
   font-size: 16px;
   font-weight: bolder;
-  margin: 10px;
+  margin-top: 7px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ability-scores-display div:first-child {
+  margin-top: 0;
+}
+
+#player-name-input, #character-name-input {
+  position: relative;
+  right: 10px;
+  margin-left: 0;
+}
+
+@media screen and (max-width: 767px) {
+  #character-race-class-level .centered {
+    text-align: left;
+  }
+}
+
+#ability-score-inputs label {
+  margin-bottom: 20px;
+  width: 100px;
 }
 
 #subrace-label {
@@ -151,10 +168,6 @@ input {
 }
 
 #gnome-subraces {
-  display: none;
-}
-
-h4#ability-roll-instructions {
   display: none;
 }
 
@@ -183,16 +196,12 @@ h4#ability-roll-instructions {
   color: black;
 }
 
-
-#ability-scores-title {
-  float: left;
-  margin-right: 10vw;
-}
-
 #ability-roll-instructions {
   display: block;
   text-align: center;
-  break: both;
+  opacity: 0;
+  transition: opacity .8s;
+  margin-bottom: 20px;
 }
 
 #click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover, #weapons-show:hover, #armor-show:hover {
