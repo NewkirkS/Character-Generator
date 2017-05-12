@@ -99,7 +99,7 @@ select {
   margin: 10px;
 }
 
-select#level-input {
+select#level-input, select.subrace-input {
   min-width: 110px;
 }
 
@@ -145,6 +145,10 @@ input {
   margin-top: 0;
 }
 
+.subraces div {
+  display: inline-block;
+}
+
 #player-name-input, #character-name-input {
   position: relative;
   right: 10px;
@@ -160,11 +164,6 @@ input {
 #ability-score-inputs label {
   margin-bottom: 20px;
   width: 100px;
-}
-
-#subrace-label {
-  float: left;
-  margin-top: 12px;
 }
 
 #gnome-subraces {
@@ -186,7 +185,7 @@ input {
 #ability-roll {
  background-color: black;
  color: white;
- width: 300px;
+ width: 350px;
  margin: 0 auto;
  border: 3px solid black;
  transition: all .3s;
@@ -202,6 +201,12 @@ input {
   opacity: 0;
   transition: opacity .8s;
   margin-bottom: 20px;
+}
+
+#ability-form-submit {
+  display: block;
+  margin: auto;
+  margin-top: 40px;
 }
 
 #click-wiz-cantrips:hover, #click-wiz-1st:hover, #click-cleric-cantrips:hover, #click-cleric-1st:hover, #weapons-show:hover, #armor-show:hover {
@@ -235,6 +240,11 @@ input {
   font-size: 15px;
 }
 
+#character-sheet {
+  display: block;
+  margin-top: 20px;
+}
+
 /*Media Queries*/
 @media only screen and (max-width:1195px) {
   #player-name-input {
@@ -242,8 +252,11 @@ input {
   }
 }
 
-@media only screen and (max-width:1000px) {
-  #race-input, #class-input, #level-input {
-    float:right;
+@media only screen and (max-width:767px) {
+  #race-input, #class-input, #level-input, .subrace-input {
+    float: right;
+  }
+  .subraces div {
+    display: block;
   }
 }

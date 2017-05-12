@@ -145,7 +145,7 @@ $(document).ready(function() {
 
   // $("#character-form-submit").prop("disabled", true);
 
-  $("#weapons, #armor, #wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level, #down-arrow, #gnome-subraces, #dwarf-subraces, #halfling-subraces, #subrace-disabled").hide();
+  $("#weapons, #armor, #wiz-cantrips, #wiz-1st-level, #cleric-cantrips, #cleric-1st-level, #down-arrow, #gnome-subraces, #dwarf-subraces, #halfling-subraces").hide();
 
   //Spell and equipment toggle hover buttons
   $("#click-wiz-cantrips").click(function(){
@@ -193,6 +193,9 @@ $(document).ready(function() {
     } else if (characterRace === "halfling") {
       $("#subrace-disabled, #dwarf-subraces, #gnome-subraces").hide();
       $("#halfling-subraces").show();
+    } else {
+      $("#subrace-disabled").show();
+      $('.subrace').hide();
     }
   });
 
