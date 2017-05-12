@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="row form-inline" id="character-race-class-level">
-          <div class="col-sm-3 col-xs-8 col-xs-offset-2">
+          <div class="col-sm-3 col-sm-offset-0 col-xs-8 col-xs-offset-2">
             <div class="centered">
               <label for="player-race">Race:</label>
               <select class="form-control" id="race-input">
@@ -52,33 +52,37 @@
                 <option value="dragonborn">Dragonborn</option>
                 <option value="tiefling">Tiefling</option>
               </select>
-              <!-- <label for="subrace" id="subrace-label">Subrace:</label>
+            </div>
+          </div>
+          <div class="subraces col-sm-3 col-sm-offset-0 col-xs-8 col-xs-offset-2">
+            <div class="centered">
+              <label for="subrace" id="subrace-label">Subrace:</label>
               <div id="subrace-disabled">
-                <select class="form-control">
+                <select class="form-control subrace-input">
                   <option disabled selected>None</option>
                 </select>
               </div>
-              <div id="gnome-subraces">
-                <select class="form-control" id="gnome-subrace-input">
+              <div class="subrace" id="gnome-subraces">
+                <select class="form-control subrace-input" id="gnome-subrace-input">
                   <option disabled selected>None</option>
                   <option value="forest">Forest</option>
                   <option value="rock">Rock</option>
                 </select>
               </div>
-              <div id="dwarf-subraces">
-                <select class="form-control" id="dwarf-subrace-input">
+              <div class="subrace" id="dwarf-subraces">
+                <select class="form-control subrace-input" id="dwarf-subrace-input">
                   <option disabled selected>None</option>
                   <option value="Hill">Hill</option>
                   <option value="Rock">Mountain</option>
                 </select>
               </div>
-              <div id="halfling-subraces">
-                <select class="form-control" id="halfling-subrace-input">
+              <div class="subrace" id="halfling-subraces">
+                <select class="form-control subrace-input" id="halfling-subrace-input">
                   <option disabled selected>None</option>
                   <option value="Lightfoot">Lightfoot</option>
                   <option value="Stout">Stout</option>
                 </select>
-              </div> -->
+              </div>
             </div>
           </div>
           <div class="col-sm-3  col-sm-offset-0 col-xs-8 col-xs-offset-2">
@@ -93,11 +97,11 @@
               </select>
             </div>
           </div>
-          <div class="col-xs-8 col-xs-offset-2 col-sm-3 col-sm-offset-0">
+          <div class="col-sm-3 col-sm-offset-0 col-xs-8 col-xs-offset-2">
             <div class="centered">
               <label for="player-level">Level:</label>
               <select class="form-control" id="level-input">
-                <option id="" value="1">1</option>
+                <option value="1">1</option>
               </select>
             </div>
           </div>

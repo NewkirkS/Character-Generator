@@ -99,7 +99,7 @@ select {
   margin: 10px;
 }
 
-select#level-input {
+select#level-input, select.subrace-input {
   min-width: 110px;
 }
 
@@ -145,6 +145,10 @@ input {
   margin-top: 0;
 }
 
+.subraces div {
+  display: inline-block;
+}
+
 #player-name-input, #character-name-input {
   position: relative;
   right: 10px;
@@ -160,11 +164,6 @@ input {
 #ability-score-inputs label {
   margin-bottom: 20px;
   width: 100px;
-}
-
-#subrace-label {
-  float: left;
-  margin-top: 12px;
 }
 
 #gnome-subraces {
@@ -253,8 +252,11 @@ input {
   }
 }
 
-@media only screen and (max-width:1000px) {
-  #race-input, #class-input, #level-input {
-    float:right;
+@media only screen and (max-width:767px) {
+  #race-input, #class-input, #level-input, .subrace-input {
+    float: right;
+  }
+  .subraces div {
+    display: block;
   }
 }

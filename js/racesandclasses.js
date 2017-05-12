@@ -208,3 +208,19 @@ var cleric = {
     character.charSavingThrows.chaSave += character.charProfBonus;
   }
 }
+
+//Rogue
+var rogue = {
+  name: "Rogue",
+  classHp: 8,
+  hitDie: "d8",
+  proficiencies: ["Simple Weapons", "Hand crossbows", "Longswords", "Rapiers", "Short swords", "Light Armor"],
+  skills: ["Acrobatics", "Athletics", "Deception", "Insight", "Investigation", "Perception", "Performance", "Persuasion", "Sleight of Hand", "Stealth"],
+  features: ["Expertise", "Sneak Attack", "Thieves Cant"],
+  weapons: [],
+  armor: [],
+  savingThrowsBonus: function(character) {
+    character.charSavingThrows.dexSave += character.charProfBonus;
+    character.charSavingThrows.intSave += character.charProfBonus;
+  }
+}
