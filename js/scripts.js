@@ -203,7 +203,7 @@ $(document).ready(function() {
   $("#class-input").change(function(){
     var characterClass = $("#class-input").val();
     $(".class-skills, #wizard-spells, #cleric-spells, #weapons, #armor, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #cloth-armor, #light-armor, #medium-armor, #shield-armor, #heavy-armor").hide();
-    $("#weapons-show, #armor-show, #club, #greatclub, #handaxe, #javelin, #lightHammer, #mace, #sickle, #spear, #shortbow").show();
+    $("#weapons-show, #armor-show, #rapier, #shortsword, #longsword, #battleaxe, #flail, #glaive, #greataxe, #greatsword, #halberd, #maul, #morningstar, #pike, #scimitar, #trident, #warPick, #warhammer #club, #greatclub, #lightCrossbow, #dart, #sling, #handaxe, #javelin, #lightHammer, #dagger, #quarterstaff, #mace, #sickle, #spear, #handCrossbow, #shortbow, #blowgun, #heavyCrossbow, #longbow, #net").show();
     if (characterClass === "ranger") {
       $("#animal-handling, #athletics, #insight, #investigation, #nature, #perception, #stealth, #survival, #simple-melee, #simple-ranged, #martial-melee, #martial-ranged, #light-armor, #medium-armor, #shield-armor").show();
     } else if (characterClass === "fighter") {
@@ -213,6 +213,9 @@ $(document).ready(function() {
       $("#club, #greatclub, #handaxe, #javelin, #lightHammer, #mace, #sickle, #spear, #shortbow").hide();
     } else if (characterClass === "cleric") {
       $("#history, #insight, #medicine, #persuasion, #religion, #cleric-spells, #simple-melee, #simple-ranged, #light-armor, #medium-armor, #shield-armor").show();
+    } else if (characterClass === "rogue") {
+      $("#simple-melee, #simple-ranged, #longsword, #rapier, #shortsword, #light-armor, #acrobatics, #athletics, #deception, #insight, #investigation, #perception, #performance, #persuasion, #sleight, #stealth, #martial-ranged, #martial-melee").show();
+      $("#battleaxe, #flail, #glaive, #greataxe, #greatsword, #halberd, #maul, #morningstar, #pike, #scimitar, #trident, #warPick, #warhammer, #whip, #blowgun, #heavyCrossbow, #longbow, #net").hide();
     }
   });
 
@@ -221,7 +224,6 @@ $(document).ready(function() {
     event.preventDefault();
 
     $('#character-form-submit').attr('disabled',true);
-
 
     $("#proficiency-bonus-sheet, #strength-sheet, #dexterity-sheet, #constitution-sheet, #intelligence-sheet, #wisdom-sheet, #charisma-sheet, #perception-sheet, #languages-sheet, #ac-sheet, #initiative-sheet, #speed-sheet, #hp-sheet, #hd-sheet, #race-traits-sheet, #class-features-sheet, #spells-sheet, #attacks-sheet, #equipment-sheet").empty();
 

@@ -94,6 +94,7 @@
                 <option id="ranger" value="ranger">Ranger</option>
                 <option id="wizard" value="wizard">Wizard</option>
                 <option id="cleric" value="cleric">Cleric</option>
+                <option id="rogue" value="rogue">Rogue</option>
               </select>
             </div>
           </div>
@@ -149,7 +150,7 @@
 <!-- Skills, Spells, and Equipment checkboxes -->
         <div class="row">
           <div class="col-sm-4 second-row">
-            <h4>Skills: <span id="click-description">(Pick Two)</span></h4>
+            <h4>Skills: <span id="click-description"><br>(Pick 2 to receive <br> Proficiency Bonus)</span></h4>
             <div class="class-skills" id="acrobatics">
               <label>
               <input type="checkbox" value="Acrobatics" name="skills"> Acrobatics (Dex)
@@ -244,7 +245,7 @@
           </div>
           <div class="col-sm-4 spells second-row">
             <div id="spells">
-              <h4>Spells: <span id="click-description">(Click to expand)</span></h4>
+              <h4>Spells: <span id="click-description"><br>(Click to expand)</span></h4>
               <div id="wizard-spells">
                 <h5 id="click-wiz-cantrips">Cantrips: (Pick Four)</h5>
                 <div id="wiz-cantrips">
@@ -336,7 +337,7 @@
             </div>
           </div>
           <div class="col-sm-4 second-row">
-            <h4>Equipment: <span id="click-description">(Click to expand)</span></h4>
+            <h4>Equipment: <span id="click-description"><br>(Click to expand)</span></h4>
             <h5 id="weapons-show">Weapons:</h5>
             <div id="weapons">
               <div id="simple-melee">
@@ -389,7 +390,7 @@
               </div>
               <div id="martial-melee">
                 <h6>Martial melee</h6>
-                <div id="battlaxe">
+                <div id="battleaxe">
                   <label> <input type="checkbox" name="weapons" value="battleaxe"> Battleaxe</label><br>
                 </div>
                 <div id="flail">
@@ -410,7 +411,7 @@
                 <div id="longsword">
                   <label> <input type="checkbox" name="weapons" value="longsword"> Longsword</label><br>
                 </div>
-                <div id="Maul">
+                <div id="maul">
                   <label> <input type="checkbox" name="weapons" value="maul"> Maul</label><br>
                 </div>
                 <div id="morningstar">
@@ -434,21 +435,30 @@
                 <div id="warPick">
                   <label> <input type="checkbox" name="weapons" value="warPick"> War pick</label><br>
                 </div>
-                <div id="">
+                <div id="warhammer">
                   <label> <input type="checkbox" name="weapons" value="warhammer"> Warhammer</label><br>
                 </div>
-                <div id="warhammer">
+                <div id="whip">
                   <label> <input type="checkbox" name="weapons" value="whip"> Whip</label><br>
                 </div>
               </div>
               <div id="martial-ranged">
                 <h6>Martial ranged</h6>
-                <label> <input type="checkbox" name="weapons" value="blowgun"> Blowgun</label><br>
-                <label> <input type="checkbox" name="weapons" value="handCrossbow"> Hand crossbow</label><br>
-                <label> <input type="checkbox" name="weapons" value="heavyCrossbow"> Heavy crossbow</label><br>
-                <label> <input type="checkbox" name="weapons" value="longbow"> Longbow</label><br>
-                <label> <input type="checkbox" name="weapons" value="net"> Net</label><br>
-
+                <div id="blowgun">
+                  <label> <input type="checkbox" name="weapons" value="blowgun"> Blowgun</label><br>
+                </div>
+                <div id="handCrossbow">
+                  <label> <input type="checkbox" name="weapons" value="handCrossbow"> Hand crossbow</label><br>
+                </div>
+                <div id="heavyCrossbow">
+                  <label> <input type="checkbox" name="weapons" value="heavyCrossbow"> Heavy crossbow</label><br>
+                </div>
+                <div id="longbow">
+                  <label> <input type="checkbox" name="weapons" value="longbow"> Longbow</label><br>
+                </div>
+                <div id="net">
+                  <label> <input type="checkbox" name="weapons" value="net"> Net</label><br>
+                </div>
               </div>
             </div>
             <h5 id="armor-show">Armor:</h5>
